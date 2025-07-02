@@ -1,0 +1,598 @@
+###########################
+##### COUNTRY EVENTS ######
+###########################
+
+add_namespace = anarchist_germany
+add_namespace = AGR_anarchist_diplomacy
+add_namespace = SPC_anarchist_diplomacy
+add_namespace = ARG_anarchist_diplomacy
+
+country_event = {
+	id = anarchist_germany.1
+	title = anarchist_germany.1.t
+	desc = anarchist_germany.1.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# Allow Heinrich Müller
+	option = {
+		name = anarchist_germany.1.a 
+		ai_chance = {  
+			base = 50
+			modifier = {
+				has_game_rule = { rule = GER_ai_behavior option = ANARCHIST }
+				add = -50
+			}
+		} 
+	}  
+
+	# Fire Heinrich Müller
+	option = {
+		name = anarchist_germany.1.b 
+		ai_chance = {
+			base = 0
+			modifier = {
+				is_historical_focus_on = no
+				add = 50
+			}
+			modifier = {
+				has_game_rule = { rule = GER_ai_behavior option = ANARCHIST }
+				add = 100
+			}
+		} 
+
+		hidden_effect = {
+			country_event = {
+				id = anarchist_germany.2
+				days = 1
+				random_days = 6
+			}
+			GER = {
+				remove_state_core = 57
+			}
+		}	
+	}   
+}
+
+country_event = {
+	id = anarchist_germany.2
+	title = anarchist_germany.2.t
+	desc = anarchist_germany.2.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# Remain as Germany
+	option = {
+		name = anarchist_germany.2.a 
+		ai_chance = {  
+			base = 50
+		} 
+
+		hidden_effect = {
+			AGR = {
+				transfer_state = 57
+				add_ideas = AGR_ire_of_gestapo
+				add_ideas = AGR_underground_movement
+				add_ideas = AGR_fascist_crackdown
+			}
+			GER = {
+				set_autonomy = {
+					target = AGR
+					autonomous_state = autonomy_autonomous_zone
+					end_wars = yes
+					end_civil_wars = yes
+				}
+			}
+			AGR = {
+				set_politics = {
+					ruling_party = anarchist
+					last_election = "1933.3.5"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = anarchist
+					popularity = 1.0
+				}
+				delete_unit_template_and_units = {
+					division_template = "Infanterie-Division"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Gebirgs-Brigade"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Infanterie-Division (mot.)"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Panzer-Division"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Kavallerie-Brigade"
+				}
+				division_template = {
+					name = "Anarchist Militants"
+					is_locked = yes 
+					priority = 0
+					template_counter = 14
+					regiments = {
+						irregular_infantry = { x = 0 y = 0 }
+						irregular_infantry = { x = 0 y = 1 }
+						irregular_infantry = { x = 0 y = 2 }
+						irregular_infantry = { x = 0 y = 3 }
+					}
+				}
+				add_ideas = AGR_ire_of_gestapo_1
+				add_ideas = AGR_underground_movement_1
+			}
+			57 = {
+				create_unit = {
+					division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+					owner = AGR
+				}
+			}
+			AGR = {
+				add_ideas = AGR_ire_of_gestapo.1
+				add_ideas = AGR_underground_movement.1
+			}
+			GER = {
+				complete_national_focus = GER_remilitarize_the_rhineland
+			}
+		}	
+	}  
+
+	# Switch to Anarchists
+	option = {
+		name = anarchist_germany.2.b 
+		ai_chance = {
+			base = 50
+		} 
+
+		hidden_effect = {
+			AGR = {
+				transfer_state = 57
+			}
+			GER = {
+				set_autonomy = {
+					target = AGR
+					autonomous_state = autonomy_autonomous_zone
+					end_wars = yes
+					end_civil_wars = yes
+				}
+			}
+			AGR = {
+				set_politics = {
+					ruling_party = anarchist
+					last_election = "1933.3.5"
+					election_frequency = 48
+					elections_allowed = no
+				}
+				add_popularity = {
+					ideology = anarchist
+					popularity = 1.0
+				}
+				delete_unit_template_and_units = {
+					division_template = "Infanterie-Division"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Gebirgs-Brigade"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Infanterie-Division (mot.)"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Panzer-Division"
+				}
+				delete_unit_template_and_units = {
+					division_template = "Kavallerie-Brigade"
+				}
+				division_template = {
+					name = "Anarchist Militants"
+					is_locked = yes 
+					priority = 0
+					template_counter = 14
+					regiments = {
+						irregular_infantry = { x = 0 y = 0 }
+						irregular_infantry = { x = 0 y = 1 }
+						irregular_infantry = { x = 0 y = 2 }
+						irregular_infantry = { x = 0 y = 3 }
+					}
+				}
+				add_ideas = AGR_ire_of_gestapo
+				add_ideas = AGR_underground_movement
+				add_ideas = AGR_fascist_crackdown
+			}
+			57 = {
+				create_unit = {
+					division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+					owner = AGR
+				}
+			}
+			AGR = {
+				change_tag_from = ROOT
+			}
+			GER = {
+				complete_national_focus = GER_remilitarize_the_rhineland
+			}
+		}	
+	}   
+}
+
+country_event = {
+	id = anarchist_germany.3
+	title = anarchist_germany.3.t
+	desc = anarchist_germany.3.desc
+	picture = GFX_idea_edelweiss_pirate_band
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		set_global_flag = AGR_lets_kill_hitler
+	}
+
+	#arrival of the Edelweiss Pirates
+	option = {
+		name = anarchist_germany.3.a 
+		51 = {
+			remove_core_of = GER
+			add_core_of = AGR
+		}
+		AGR = {
+			transfer_state = 51
+			set_country_flag = AGR_territory_expansion_2
+			add_ideas = AGR_edelweiss_pirates
+		}
+		hidden_effect = {
+			play_song = "Rhein und Ruhr"
+			mark_focus_tree_layout_dirty = yes
+		}
+
+		ai_chance = {  
+			base = 100
+		} 
+	}  
+}
+
+country_event = {
+	id = anarchist_germany.4
+	title = anarchist_germany.4.t
+	desc = anarchist_germany.4.desc
+	picture = "GFX_report_event_spr_anarchist_uprising2"
+	is_triggered_only = yes
+	fire_only_once = yes
+	immediate = {
+		set_global_flag = AGR_lets_kill_hitler
+	}
+
+	option = {
+		name = anarchist_germany.4.a 
+
+		hidden_effect = {
+			play_song = "Auf Die Barrikaden"
+		}
+
+		ai_chance = {  
+			base = 100
+		} 
+	}  
+}
+
+country_event = { 
+	id = AGR_anarchist_diplomacy.1
+	title = AGR_anarchist_diplomacy.1.t
+	desc = AGR_anarchist_diplomacy.1.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #yes!
+		name = AGR_anarchist_diplomacy.1.a
+
+		AGR = {
+			add_to_faction = ROOT
+		}
+		ai_chance = {  
+			base = 100
+		} 
+	}
+
+	option = { #no
+		name = AGR_anarchist_diplomacy.1.b
+		trigger = {
+			NOT = { is_subject_of = AGR }
+		}
+		ai_chance = {  
+			base = 0
+		} 
+	}
+}
+
+country_event = { 
+	id = SPC_anarchist_diplomacy.1
+	title = SPC_anarchist_diplomacy.1.t
+	desc = SPC_anarchist_diplomacy.1.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #yes!
+		name = SPC_anarchist_diplomacy.1.a
+
+		SPC = {
+			add_to_faction = ROOT
+		}
+		ai_chance = {  
+			base = 100
+		} 
+	}
+
+	option = { #no
+		name = SPC_anarchist_diplomacy.1.b
+		trigger = {
+			NOT = { is_subject_of = SPC }
+		}
+		ai_chance = {  
+			base = 0
+		} 
+	}
+}
+
+country_event = { 
+	id = ARG_anarchist_diplomacy.1 #adding existing anarchists to faction
+	title = ARG_anarchist_diplomacy.1.t
+	desc = ARG_anarchist_diplomacy.1.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #yes!
+		name = ARG_anarchist_diplomacy.1.a
+
+		ARG = {
+			add_to_faction = ROOT
+		}
+		ai_chance = {  
+			base = 100
+		} 
+	}
+
+	option = { #no
+		name = ARG_anarchist_diplomacy.1.b
+		trigger = {
+			NOT = { is_subject_of = ARG }
+		}
+		ai_chance = {  
+			base = 0
+		} 
+	}
+}
+
+country_event = {
+	id = AGR_anarchist_diplomacy.2 #sending delegates to nordic countries
+	title = AGR_anarchist_diplomacy.2.t
+	desc = AGR_anarchist_diplomacy.2.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #yes!
+		name = ARG_anarchist_diplomacy.2.a
+
+		add_ideas = ARG_anarchist_delegates
+		set_country_flag = AGR_delegates_accepted
+
+		ai_chance = {
+			base = 6
+			modifier = {
+				factor = 2
+				has_government = FROM
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 24
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 49
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 0.75
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 0.5
+				}
+			}
+			modifier = {
+				factor = 2
+				any_neighbor_country = {
+					is_major = yes
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					is_justifying_wargoal_against = ROOT
+				}
+			}
+			modifier = {
+				factor = 0
+				FROM = {
+					has_wargoal_against = ROOT
+				}
+			}
+			modifier = {
+				factor = 0.5
+				has_civil_war = yes
+			}
+		}
+		FROM = {
+			country_event = { id = AGR_anarchist_diplomacy.3 hours = 5 random_hours = 5 }
+		}
+	}
+
+	option = { #no
+		name = ARG_anarchist_diplomacy.2.b
+		ai_chance = {
+			base = 2
+			modifier = {
+				factor = 10
+				strength_ratio = {
+				    tag = FROM
+				    ratio > 1
+				}
+			}
+			modifier = {
+				factor = 10
+				strength_ratio = {
+				    tag = FROM
+				    ratio > 1.25
+				}
+			}
+			modifier = {
+				factor = 10
+				has_opinion = {
+					target = FROM
+					value < 0
+				}
+			}
+			modifier = {
+				factor = 10
+				has_opinion = {
+					target = FROM
+					value < -24
+				}
+			}
+			modifier = {
+				add = 10
+				FROM = {
+					has_added_tension_amount > 25
+				}
+			}
+		}
+		FROM = {
+			country_event = { id = AGR_anarchist_diplomacy.4 hours = 5 random_hours = 5 }
+		}
+	}
+}
+
+country_event = {
+	id = AGR_anarchist_diplomacy.3 #they accept
+	title = AGR_anarchist_diplomacy.3.t
+	desc = AGR_anarchist_diplomacy.3.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = {
+		name = AGR_anarchist_diplomacy.3.a
+	}
+
+}
+
+country_event = {
+	id = AGR_anarchist_diplomacy.4 #they reject
+	title = AGR_anarchist_diplomacy.4.t
+	desc = AGR_anarchist_diplomacy.4.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = {
+		name = AGR_anarchist_diplomacy.4.a
+	}
+
+	option = {
+		name = AGR_anarchist_diplomacy.4.b
+		AGR = {
+			declare_war_on = {
+				target = FROM 
+			}
+		}
+		
+	}
+
+}
+
+country_event = { 
+	id = AGR_anarchist_diplomacy.5 #alliance with soviets
+	title = AGR_anarchist_diplomacy.5.t
+	desc = AGR_anarchist_diplomacy.5.desc
+	picture = GFX_report_event_generic_sign_treaty2
+
+	is_triggered_only = yes
+
+	option = { #yes!
+		name = AGR_anarchist_diplomacy.5.a
+
+		AGR = {
+			diplomatic_relation = {
+    			country = SOV
+    			relation = non_aggression_pact
+    			active = yes
+			}
+		}
+
+		SOV = {
+			diplomatic_relation = {
+    			country = AGR
+    			relation = guarantee
+    			active = yes
+			}
+		}
+		ai_chance = {  
+			base = 25
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 24
+				}
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 49
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 0.75
+				}
+			}
+			modifier = {
+				factor = 2
+				strength_ratio = {
+				    tag = FROM
+				    ratio < 0.5
+				}
+			}
+		} 
+	}
+
+	option = { #no
+		name = AGR_anarchist_diplomacy.5.b
+		SOV = {
+			create_wargoal = {
+    			type = puppet_wargoal_focus
+    			target = AGR
+			}
+		}
+		ai_chance = {  
+			base = 75 #you really think you had a chance?
+		} 
+	}
+}

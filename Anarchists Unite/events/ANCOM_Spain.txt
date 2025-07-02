@@ -1,0 +1,443 @@
+###########################
+##### COUNTRY EVENTS ######
+###########################
+
+add_namespace = anarchist_spain
+# offer aid to france
+country_event = {
+	id = anarchist_spain.1
+	title = anarchist_spain.1.t
+	desc = anarchist_spain.1.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept with no condition
+	option = {
+		name = anarchist_spain.1.a 
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 2
+				OR = {
+					has_government = democratic
+					has_government = anarchist
+				}
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = FRA_form_the_popular_front
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = FROM
+					value > 90
+				}
+			}
+			modifier = { #Appropriate PC for Foreign Affairs
+				factor = 1.5
+				SPC = { has_idea = IA_joaquin_ascaso }
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_wargoal_against = SPC
+					AND = {
+						is_subject = yes
+						NOT = { is_subject_of = SPC }
+					}
+					has_completed_focus = FRA_utilize_the_leagues
+					focus_progress = {
+						focus = FRA_utilize_the_leagues
+						progress > 0
+					}
+				}
+			}
+		}
+		SPC = {
+			country_event = {
+				id = anarchist_spain.4
+				hours = 1
+				random_hours = 2
+			}
+		}
+
+	}  
+
+	# accept with condition
+	option = {
+		name = anarchist_spain.1.b 
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 1.5
+				has_government = democratic
+			}
+			modifier = {
+				factor = 1.5
+				has_completed_focus = FRA_form_the_popular_front
+			}
+			modifier = {
+				factor = 1.5
+				is_in_faction_with = ENG
+				ENG = { has_government = democratic }
+			}
+			modifier = {
+				factor = 4
+				fighting_army_strength_ratio = {
+    				tag = GER
+    				ratio > 0.5
+				}
+			}
+		}
+
+		SPC = {
+			country_event = {
+				id = anarchist_spain.2
+				hours = 1
+				random_hours = 2
+			}
+		}
+	
+	}
+
+	#does not accept
+	option = {
+		name = anarchist_spain.1.c
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 10
+				has_completed_focus = FRA_utilize_the_leagues
+			}
+			modifier = {
+				factor = 0.1
+				has_completed_focus = FRA_form_the_popular_front
+			}
+		}
+		SPC = {
+			country_event = {
+				id = anarchist_spain.3
+				hours = 1
+				random_hours = 2
+			}
+		}
+		
+	
+	}
+ 
+}
+
+#france asks for condition
+country_event = {
+	id = anarchist_spain.2
+	title = anarchist_spain.2.t
+	desc = anarchist_spain.2.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept condition
+	option = {
+		name = anarchist_spain.2.a 
+		ai_chance = {  
+			base = 100
+		}
+
+		SPC = {
+			add_ideas = SPC_occitan_anarchism
+			add_timed_idea = {
+    			idea = SPC_factory_payments
+    			days = 360
+			}
+			
+		}
+
+	}  
+
+	# reject condition
+	option = {
+		name = anarchist_spain.2.b 
+		ai_chance = {
+			base = 0
+		} 
+		set_country_flag = ANCOM_no_french_anarchism
+	}
+ 
+}
+
+#france rejects
+country_event = {
+	id = anarchist_spain.3
+	title = anarchist_spain.3.t
+	desc = anarchist_spain.3.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept with no condition
+	option = {
+		name = anarchist_spain.3.a 
+		ai_chance = {  
+			base = 10
+		}
+		set_country_flag = ANCOM_no_french_anarchism
+	}  
+ 
+}
+
+#france accepts
+country_event = {
+	id = anarchist_spain.4
+	title = anarchist_spain.4.t
+	desc = anarchist_spain.4.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept with no condition
+	option = {
+		name = anarchist_spain.4.a 
+		ai_chance = {  
+			base = 100
+		}
+		SPC = {
+			add_ideas = SPC_occitan_anarchism
+		}
+	}  
+ 
+}
+
+country_event = {
+	id = anarchist_spain.5
+	title = anarchist_spain.5.t
+	desc = anarchist_spain.5.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept with no condition
+	option = {
+		name = anarchist_spain.5.a 
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 2
+				OR = {
+					has_government = democratic
+					has_government = anarchist
+				}
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = ENG_global_defense
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = ENG_concessions_to_the_trade_unions
+			}
+			modifier = {
+				factor = 2
+				has_opinion = {
+					target = FROM
+					value > 50
+				}
+			}
+			modifier = {
+				factor = 1.5
+				has_opinion = {
+					target = FROM
+					value > 90
+				}
+			}
+			modifier = { #Appropriate PC for Foreign Affairs
+				factor = 1.5
+				SPC = { has_idea = IA_joaquin_ascaso }
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_wargoal_against = SPC
+					AND = {
+						is_subject = yes
+						NOT = { is_subject_of = SPC }
+					}
+					has_completed_focus = ENG_organize_the_blackshirts
+					focus_progress = {
+						focus = ENG_organize_the_blackshirts
+						progress > 0
+					}
+				}
+			}
+		}
+		SPC = {
+			country_event = {
+				id = anarchist_spain.8
+				hours = 1
+				random_hours = 2
+			}
+		}
+
+	}  
+
+	# accept with condition
+	option = {
+		name = anarchist_spain.5.b 
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 1.5
+				has_government = democratic
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = ENG_global_defense
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = ENG_concessions_to_the_trade_unions
+			}
+			modifier = {
+				factor = 1.5
+				FRA = {
+					has_capitulated = no
+				}
+			}
+			modifier = {
+				factor = 4
+				fighting_army_strength_ratio = {
+    				tag = GER
+    				ratio > 0.5
+				}
+			}
+		}
+
+		SPC = {
+			country_event = {
+				id = anarchist_spain.6
+				hours = 1
+				random_hours = 2
+			}
+		}
+	
+	}
+
+	#does not accept
+	option = {
+		name = anarchist_spain.5.c
+		ai_chance = {
+			base = 10
+			modifier = {
+				factor = 10
+				has_completed_focus = ENG_organize_the_blackshirts
+			}
+			modifier = {
+				factor = 0.1
+				has_completed_focus = ENG_global_defense
+			}
+			modifier = {
+				factor = 0.1
+				has_completed_focus = ENG_concessions_to_the_trade_unions
+			}
+		}
+		SPC = {
+			country_event = {
+				id = anarchist_spain.7
+				hours = 1
+				random_hours = 2
+			}
+		}
+	}
+ 
+}
+
+#france asks for condition
+country_event = {
+	id = anarchist_spain.6
+	title = anarchist_spain.6.t
+	desc = anarchist_spain.2.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept condition
+	option = {
+		name = anarchist_spain.6.a 
+		ai_chance = {  
+			base = 100
+		}
+		118 = {
+			transfer_state_to = SPC
+		}
+		SPC = {
+			add_to_war = {
+    			targeted_alliance = ENG
+    			enemy = GER
+    			hostility_reason = asked_to_join
+			}
+			diplomatic_relation = {
+    			country = ENG
+    			relation = docking_rights
+    			active = yes
+			}
+		}
+	}  
+
+	# reject condition
+	option = {
+		name = anarchist_spain.6.b 
+		ai_chance = {
+			base = 0
+		} 
+	}
+ 
+}
+
+#france rejects
+country_event = {
+	id = anarchist_spain.7
+	title = anarchist_spain.7.t
+	desc = anarchist_spain.7.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept with no condition
+	option = {
+		name = anarchist_spain.7.a 
+		ai_chance = {  
+			base = 10
+		}
+	}  
+ 
+}
+
+#france accepts
+country_event = {
+	id = anarchist_spain.8
+	title = anarchist_spain.8.t
+	desc = anarchist_spain.8.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# accept with no condition
+	option = {
+		name = anarchist_spain.8.a 
+		ai_chance = {  
+			base = 100
+		}
+		118 = {
+			transfer_state_to = SPC
+		}
+		SPC = {
+			diplomatic_relation = {
+    			country = ENG
+    			relation = docking_rights
+    			active = yes
+			}
+		}
+	}  
+ 
+}
+

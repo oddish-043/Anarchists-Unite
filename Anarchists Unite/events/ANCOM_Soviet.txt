@@ -1,0 +1,370 @@
+###########################
+##### COUNTRY EVENTS ######
+###########################
+
+add_namespace = anarchist_russia
+
+country_event = {
+	id = anarchist_russia.1
+	title = anarchist_russia.1.t
+	desc = anarchist_russia.1.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+
+	# infiltrate ural gulags
+	option = {
+		name = anarchist_russia.1.a 
+		ai_chance = {  
+			base = 0
+			modifier = {
+				add = 999
+				OR = {
+					has_country_flag = SOV_AI_RANDOM_ANARCHIST
+					has_game_rule = {
+						rule = SOV_ai_behavior 
+						option = ANARCHIST
+					}
+				}
+			}
+		} 
+
+		
+
+		hidden_effect = {
+			SOV = {
+				IF = {
+					limit = {
+						has_completed_focus = SOV_beaten_but_not_defeated
+					}
+					set_country_flag = SOV_AI_RANDOM_EXILES_FASCIST
+				}
+				else_if = {
+					limit = {
+						has_completed_focus = SOV_the_left_opposition
+					}
+					set_country_flag = SOV_AI_RANDOM_COMMUNIST_LEFT_OPPOSITION_COOPERATIVE
+				}
+				else_if = {
+					limit = {
+						has_completed_focus = SOV_the_right_opposition
+					}
+					set_country_flag = SOV_AI_RANDOM_COMMUNIST_RIGHT_OPPOSITION_COOPERATIVE
+				}
+			}
+			
+			create_dynamic_country = {
+    			original_tag = SOV
+    			transfer_state = 581
+				transfer_state = 398
+				transfer_state = 573
+				transfer_state = 582
+				set_cosmetic_tag = SOV_ancom
+				create_country_leader = {
+					name = SAV_gulag_escapees
+					desc = "POLITICS_GULAG_ESCAPEES_DESC"
+					picture = "GFX_portrait_SPR_anarchist_commune"
+					expire = "1965.1.1"
+					ideology = anarchism
+					traits = {
+						our_right_to_survive
+					}
+				}
+				set_politics = {
+    				ruling_party = anarchist
+				}
+				add_popularity = {
+    				ideology = anarchist
+    				popularity = 1.0
+				}
+				load_focus_tree = {
+  				tree = soviet_focus
+  				keep_completed = no
+				}
+				inherit_technology = SOV
+				every_possible_country = {
+    				limit = { has_character = SAV_victor_serge }
+    				random_character = {
+        				limit = { is_character = SAV_victor_serge }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    			limit = { has_character = SAV_ossip_tsebry }
+    				random_character = {
+        				limit = { is_character = SAV_ossip_tsebry }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_life_and_labor_commune }
+    				random_character = {
+        				limit = { is_character = SAV_life_and_labor_commune }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_volin }
+    				random_character = {
+        				limit = { is_character = SAV_volin }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_stepan_petrichenko }
+    				random_character = {
+        				limit = { is_character = SAV_stepan_petrichenko }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_grigorii_maksimov }
+    				random_character = {
+        				limit = { is_character = SAV_grigorii_maksimov }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_wolf_gordin }
+    				random_character = {
+        				limit = { is_character = SAV_wolf_gordin }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_abba_gordin }
+    				random_character = {
+        				limit = { is_character = SAV_abba_gordin }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_senya_fleshin }
+    				random_character = {
+        				limit = { is_character = SAV_senya_fleshin }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_mollie_steimer }
+    				random_character = {
+        				limit = { is_character = SAV_mollie_steimer }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_syndicalist_commune }
+    				random_character = {
+        				limit = { is_character = SAV_syndicalist_commune }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_nihilist_commune }
+    				random_character = {
+        				limit = { is_character = SAV_nihilist_commune }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_communist_commune }
+    				random_character = {
+        				limit = { is_character = SAV_communist_commune }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				change_tag_from = SOV
+			}
+		}
+	}  
+
+	# infiltrate siberian gulags
+	option = {
+		name = anarchist_russia.1.b 
+		ai_chance = {
+			base = 0
+		} 
+
+		hidden_effect = {
+			SOV = {
+				IF = {
+					limit = {
+						has_completed_focus = SOV_beaten_but_not_defeated
+					}
+					set_country_flag = SOV_AI_RANDOM_EXILES_FASCIST
+				}
+				else_if = {
+					limit = {
+						has_completed_focus = SOV_the_left_opposition
+					}
+					set_country_flag = SOV_AI_RANDOM_COMMUNIST_LEFT_OPPOSITION_COOPERATIVE
+				}
+				else_if = {
+					limit = {
+						has_completed_focus = SOV_the_right_opposition
+					}
+					set_country_flag = SOV_AI_RANDOM_COMMUNIST_RIGHT_OPPOSITION_COOPERATIVE
+				}
+			}
+			create_dynamic_country = {
+    			original_tag = SOV
+    			transfer_state = 579
+				transfer_state = 824
+				transfer_state = 516
+				transfer_state = 878
+				set_cosmetic_tag = SOV_ancom
+				create_country_leader = {
+					name = SAV_gulag_escapees
+					desc = "POLITICS_GULAG_ESCAPEES_DESC"
+					picture = "GFX_portrait_SPR_anarchist_commune"
+					expire = "1965.1.1"
+					ideology = anarchism
+					traits = {
+						our_right_to_survive
+					}
+				}
+				set_politics = {
+    				ruling_party = anarchist
+				}
+				add_popularity = {
+    				ideology = anarchist
+    				popularity = 1.0
+				}
+				load_focus_tree = {
+  				tree = soviet_focus
+  				keep_completed = no
+				}
+				inherit_technology = SOV
+				every_possible_country = {
+    				limit = { has_character = SAV_victor_serge }
+    				random_character = {
+        				limit = { is_character = SAV_victor_serge }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    			limit = { has_character = SAV_ossip_tsebry }
+    				random_character = {
+        				limit = { is_character = SAV_ossip_tsebry }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_life_and_labor_commune }
+    				random_character = {
+        				limit = { is_character = SAV_life_and_labor_commune }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_volin }
+    				random_character = {
+        				limit = { is_character = SAV_volin }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_stepan_petrichenko }
+    				random_character = {
+        				limit = { is_character = SAV_stepan_petrichenko }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_grigorii_maksimov }
+    				random_character = {
+        				limit = { is_character = SAV_grigorii_maksimov }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_wolf_gordin }
+    				random_character = {
+        				limit = { is_character = SAV_wolf_gordin }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_abba_gordin }
+    				random_character = {
+        				limit = { is_character = SAV_abba_gordin }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_senya_fleshin }
+    				random_character = {
+        				limit = { is_character = SAV_senya_fleshin }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_mollie_steimer }
+    				random_character = {
+        				limit = { is_character = SAV_mollie_steimer }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_syndicalist_commune }
+    				random_character = {
+        				limit = { is_character = SAV_syndicalist_commune }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_nihilist_commune }
+    				random_character = {
+        				limit = { is_character = SAV_nihilist_commune }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				every_possible_country = {
+    				limit = { has_character = SAV_communist_commune }
+    				random_character = {
+        				limit = { is_character = SAV_communist_commune }
+        				set_nationality = PREV.PREV
+    				}
+				}
+				change_tag_from = SOV
+			}
+		}	
+	}   
+
+	# stay the course
+	option = {
+		name = anarchist_russia.1.c
+		ai_chance = {
+			base = 50
+			
+		} 
+
+	}   
+}
+
+country_event = {
+	id = anarchist_russia.2
+	title = anarchist_russia.2.t
+	desc = anarchist_russia.2.desc 
+	is_triggered_only = yes
+	fire_only_once = yes
+	hidden = yes
+
+	option = {
+		name = anarchist_russia.2.a 
+		ai_chance = {  
+			base = 100
+		} 
+		set_rule = {
+			can_not_declare_war = yes
+			can_send_volunteers = no
+		}
+		country_lock_all_division_template = yes
+		mark_focus_tree_layout_dirty = yes
+		add_ideas = disarmed_nation
+		add_ideas = closed_economy
+		add_ideas = SAV_love_and_be_loved_idea
+	}  
+
+	
+}
+

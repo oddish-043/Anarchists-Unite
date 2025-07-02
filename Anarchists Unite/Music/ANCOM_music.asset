@@ -1,0 +1,13 @@
+
+music = {
+	name = "Rhein und Ruhr"
+	file = "Rhein und Ruhr.ogg"
+	volume = 0.65
+}
+
+music = {
+	name = "Auf Die Barrikaden"
+	file = "Auf Die Barrikaden.ogg"
+	volume = 0.65
+}
+

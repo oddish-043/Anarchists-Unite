@@ -1,0 +1,16 @@
+
+music_station = "base_music"
+
+music = {
+	song = "Rhein und Ruhr"
+	chance = {
+		factor = 0	
+	}
+}
+
+music = {
+	song = "Auf Die Barrikaden"
+	chance = {
+		factor = 0	
+	}
+}
