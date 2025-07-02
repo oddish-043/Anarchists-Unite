@@ -1,0 +1,41 @@
+﻿focus_tree = {
+	id = nicaragua_focus_tree
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			original_tag = NIC
+		}
+	}
+
+	default = no
+
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 200 y = 1500 }
+
+	initial_show_position = {
+		focus = NIC_memory_of_sandino
+	}
+
+	shared_focus = ANCOM_support_regime
+	shared_focus = ANCOM_support_proletariat
+	shared_focus = ANCOM_syndicalism_in_centroamerica
+
+	#############
+	#First Focus#
+	#############
+
+	focus = {
+		id = NIC_memory_of_sandino
+		icon = GFX_goal_NIC_memory_of_sandino
+		x = 0
+		y = 0
+		cost = 5
+
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+}

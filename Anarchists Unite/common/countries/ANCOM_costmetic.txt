@@ -1,0 +1,29 @@
+ARG_ancom = {
+	color = rgb { 0 0 0 }
+	color_ui = rgb { 0 0 0 }
+}
+
+KOR_ancom = {
+	color = rgb { 0 0 0 }
+	color_ui = rgb { 0 0 0 }
+}
+
+AGR_ancom = {
+	color = rgb { 0 0 0 }
+	color_ui = rgb { 0 0 0 }
+}
+
+AGR_EGOIST = {
+	color = rgb { 0 217 128 }
+	color_ui = rgb { 0 217 128 }
+}
+
+EUS_UNIFIED = {
+	color = rgb { 0 0 0 }
+	color_ui = rgb { 0 0 0 }
+}
+
+MEX_EZLN = {
+	color = rgb { 204 0 0 }
+	color_ui = rgb { 35 35 35 }
+}

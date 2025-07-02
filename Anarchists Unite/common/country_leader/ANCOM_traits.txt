@@ -1,0 +1,417 @@
+@tier1_cp_cap_increase = 10
+@tier2_cp_cap_increase = 20
+@tier3_cp_cap_increase = 30
+
+@tier1_cp_cost = 0
+@tier2_cp_cost = 0
+@tier3_cp_cost = 0
+
+@experience_gain_low = 0.03
+@experience_gain_medium = 0.06
+@experience_gain_high = 0.08
+
+@chief_experience_gain_low = 0.20
+@chief_experience_gain_medium = 0.30
+@chief_experience_gain_high = 0.40
+
+@army_chief_factor_1 = 0.42
+@army_chief_factor_2 = 0.68
+@army_chief_factor_3 = 0.84
+
+@navy_chief_factor_1 = 0.31
+@navy_chief_factor_2 = 0.57
+@navy_chief_factor_3 = 0.73
+
+@air_chief_factor_1 = 0.10
+@air_chief_factor_2 = 0.13
+@air_chief_factor_3 = 0.16
+
+@army_command_factor_1 = 0.42
+@army_command_factor_2 = 0.64
+@army_command_factor_3 = 0.86
+
+@navy_command_factor_1 = 0.41
+@navy_command_factor_2 = 0.62
+@navy_command_factor_3 = 0.83
+
+@air_command_factor_1 = 0.40
+@air_command_factor_2 = 0.60
+@air_command_factor_3 = 0.80
+
+leader_traits = {
+
+	anarchist_zeal = {
+		random = no
+		anarchist_drift = 0.05
+		war_support_factor = 0.1
+		minimum_training_level = -0.1
+		opinion_gain_monthly_same_ideology_factor = 1.0
+	}
+
+	anarcho_communist_council = {
+		random = no
+		surrender_limit = 0.2
+		army_core_defence_factor = 0.15
+		stability_factor = -0.05
+		mobilization_speed = 0.05
+		anarchist_drift = 0.05
+	}
+
+	international_anarchist = {
+		random = no
+		sprite = 13
+		legitimacy_gain_factor = 0.15
+		drift_defence_factor = 0.1
+		request_lease_tension = -0.3
+		production_factory_max_efficiency_factor = 0.1
+		female_random_army_leader_chance = 0.35
+		anarchist_drift = 0.02
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	anti_unionist_pure_anarchist = {
+		random = no
+		sprite = 13
+		consumer_goods_factor = -0.05
+		production_speed_buildings_factor = 0.1
+		industry_free_repair_factor = 0.15
+		anarchist_drift = 0.05
+	}
+
+	transnational_anarchist = {
+		random = no
+		sprite = 13
+		global_building_slots_factor = 0.05
+		conscription_factor = 0.05
+		non_core_manpower = 0.05
+		anarchist_drift = 0.05
+	}
+
+	black_cross_anarchist = {
+		random = no
+		sprite = 13
+		war_support_factor = 0.05
+		stability_factor = -0.1
+		conscription_factor = 0.1
+		anarchist_drift = 0.03
+	}
+	
+	SWI_anarchist = { 
+		random = no
+		sprite = 13 
+		anarchist_drift = 0.05
+	}
+
+	ARG_anarchosyndicalist = {
+		random = no
+		sprite = 13
+		anarchist_drift = 0.1
+		war_support_factor = 0.1
+		minimum_training_level = -0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	social_revolutionary = {
+		random = no
+		sprite = 13
+
+		anarchist_drift = 0.05
+		political_power_factor = 0.1
+		war_support_factor = 0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	anarchist_journalist = {
+		random = no
+		sprite = 13
+		anarchist_drift = 0.05
+		political_power_factor = 0.05
+		female_random_army_leader_chance = 0.35
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	anarchist_poet = {
+		random = no
+		sprite = 13
+		anarchist_drift = 0.05
+		political_power_factor = 0.15
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	pan_anarchist = {
+		random = no
+		anarchist_drift = 0.025
+		opinion_gain_monthly_same_ideology_factor = 1.0
+		political_power_factor = 0.025
+		research_speed_factor = 0.02
+	}
+
+	anarcha_feminist_teacher = {
+		random = no
+		anarchist_drift = 0.025
+		political_power_factor = 0.025
+		conscription_factor = 0.05
+		female_random_army_leader_chance = 0.15
+		training_time_factor = -0.025
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	illegalist_anarchist = {
+		random = no
+		sprite = 15
+		operative_slot = 1
+		intel_network_gain_factor = 0.1
+		operation_anarchist_revolution_1_outcome = 0.25
+		operation_anarchist_revolution_2_outcome = 0.25
+		operation_infiltrate_outcome = 0.25
+		operation_boost_resistance_outcome = 0.35
+		operation_targeted_sabotage_industry_outcome = 0.35
+		operation_targeted_sabotage_resources_outcome = 0.35
+		operation_targeted_sabotage_infrastructure_outcome = 0.35
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	agricultural_theorist = { 
+		random = no
+		sprite = 13
+		anarchist_drift = 0.1
+		monthly_population = 0.05
+		consumer_goods_factor = -0.10
+		economy_cost_factor = -0.1
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	anarcho_pacifist_teacher = {
+		random = no
+		sprite = 15
+		anarchist_drift = 0.05
+		political_power_factor = 0.25
+		conscription_factor = -0.15
+		war_support_factor = -0.15
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	anarcho_pacifist_commune = {
+		random = no
+		sprite = 15
+		anarchist_drift = 0.05
+		political_power_factor = 0.5
+		conscription_factor = -1.0
+		war_support_factor = -1.0
+		stability_factor = 0.5
+		industrial_capacity_factory = -1.0
+		industrial_capacity_dockyard = -1.0
+		enemy_justify_war_goal_time = 1.0
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	king_of_vagabonds = {
+		random = no
+		army_speed_factor = 0.5
+		operative_slot = 1
+		intel_network_gain_factor = 0.1
+		resistance_damage_to_garrison_on_our_occupied_states = 0.5
+		resistance_decay_on_our_occupied_states = -0.5
+		resistance_growth_on_our_occupied_states = 0.5
+		resistance_target_on_our_occupied_states = 0.5
+		operation_anarchist_revolution_1_outcome = 0.25
+		operation_anarchist_revolution_2_outcome = 0.25
+		ai_will_do = {
+			factor = 999
+		}
+	}
+
+	anarchist_historian = {
+		random = no
+		anarchist_drift = 0.05
+		political_power_factor = 0.05
+		autonomy_gain = 1.0
+		ai_will_do = {
+			factor = 899
+		}
+	}
+
+	anarchist_physician = {
+		random = no
+		sprite = 13
+		war_support_factor = 0.15
+		stability_factor = -0.1
+		out_of_supply_factor = -0.75
+		political_power_factor = 0.15
+		ai_will_do = {
+			factor = 999
+		}
+	}
+
+	antifascist_anarchist = {
+		random = no
+		fascism_drift = -0.05
+		anarchist_drift = 0.05
+		stability_factor = 0.15
+		political_power_factor = 0.15
+		ai_will_do = {
+			factor = 899
+		}
+	}
+
+	anarchist_sexologist = {
+		random = no
+		anarchist_drift = 0.01
+		stability_factor = 0.05
+		research_speed_factor = 0.15
+		conscription_factor = 0.05
+		equipment_bonus = {
+			infantry_equipment = {
+				casualty_trickleback = 0.20
+				experience_loss_factor = -0.3
+				instant = yes
+			}
+		}
+	}
+
+	anarchist_book_dealer = {
+		random = no
+		sprite = 10
+		production_speed_industrial_complex_factor = 0.1
+		production_speed_infrastructure_factor = 0.05
+		consumer_goods_factor = -0.10
+		autonomy_gain = 1
+	}
+
+	anarchist_art_critic = {
+		random = no
+		sprite = 13
+		anarchist_drift = 0.5
+		political_power_factor = 0.25
+		drift_defence_factor = 0.5
+		request_lease_tension = -0.15
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	scw_veteran_1 = {
+		sprite = 5
+		training_time_army_factor = -0.1
+		army_attack_factor = 0.1
+		experience_gain_army = @chief_experience_gain_medium
+
+		command_cap_increase = @tier2_cp_cap_increase
+		command_power = @tier2_cp_cost
+
+		ai_will_do = {
+			factor = @army_chief_factor_2
+			modifier = {
+				factor = 0
+				command_power < @tier2_cp_cost
+			}
+		}
+	}
+
+	scw_veteran_2 = {
+		sprite = 9
+		army_defence_factor = 0.1
+		dig_in_speed_factor = 0.16
+		experience_gain_army = @chief_experience_gain_medium
+
+		command_cap_increase = @tier2_cp_cap_increase
+		command_power = @tier2_cp_cost
+
+		ai_will_do = {
+			factor = @army_chief_factor_2
+			modifier = {
+				factor = 0
+				command_power < @tier2_cp_cost
+			}
+		}
+	}
+
+	scw_veteran_3 = {
+		sprite = 5
+		planning_speed = 0.10
+		attrition = -0.08
+		experience_gain_army = @chief_experience_gain_medium
+
+		command_cap_increase = @tier2_cp_cap_increase
+		command_power = @tier2_cp_cost
+
+		ai_will_do = {
+			factor = @army_chief_factor_2
+			modifier = {
+				factor = 0
+				command_power < @tier2_cp_cost
+			}
+		}
+	}
+
+	egoist_anarchism_trait = {
+		random = no
+		fascism_acceptance = -100
+		communism_acceptance = -100
+		democratic_acceptance = -100
+		neutrality_acceptance = -100
+		operation_cost = -0.5
+		consumer_goods_factor = -0.5
+		resistance_decay_on_our_occupied_states = 0.5
+		resistance_growth_on_our_occupied_states = 0.5
+	}
+
+	anarchist_communist_trait = {
+		consumer_goods_factor = -0.15
+		communism_acceptance = 50
+		democratic_acceptance = 50
+		stability_factor = 0.15
+	}
+
+	repentant_ex_bolshevik = {
+		consumer_goods_factor = -0.15
+		anarchist_drift = 0.01
+		political_power_factor = 0.25
+	}
+
+	anarchist_diplomat = {
+		political_power_factor = 0.25
+		communism_acceptance = 50
+		democratic_acceptance = 50
+		anarchist_drift = 0.01
+		autonomy_gain = 1.0
+
+		ai_will_do = {
+			factor = 999
+		}
+	}
+}
+
+
+

@@ -1,0 +1,2471 @@
+operation_anarchist_revolution_1 = { ### 7 1/70
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = operation_anarchist_revolution
+	desc = operation_anarchist_revolution_desc
+	priority = 7
+
+	days = 35
+	network_strength = 70
+	operatives = 2
+	is_staged_coup = yes
+
+	visible = {
+		network_strength = {
+			target = FROM
+			value > 35
+		}
+		has_government = anarchist
+		NOT = {
+			has_country_flag = improved_insurrections
+		}
+	}
+
+	equipment = {
+		infantry_equipment = 12000
+	}
+	# Cannot spawn a civil war in the capital
+	selection_target_state = {
+		is_capital = no
+	}
+	selection_target = {
+		targets = { FROM }
+	}
+	allowed = {
+		NOT = {
+			has_game_rule = {
+				rule = allow_coups
+				option = BLOCKED
+			}
+		}
+	}
+
+	available = {
+		
+		FROM = {
+			NOT = {
+				has_government = anarchist
+			}
+			has_civil_war = no
+			if = {
+				limit = {
+					PREV.ROOT = { has_government = anarchist }
+				}
+				anarchist > 0.2
+			}
+				#set_temp_variable = { coup_ideology@ROOT = PREV.ROOT.current_party_ideology_group }
+				#set_temp_variable = { coup_ideology_popularity@ROOT = party_popularity@ROOT.coup_ideology }
+				#check_variable = { ROOT.coup_ideology_popularity > 0.2 }
+			
+			OR = {
+				AND = {
+					is_major = no
+					has_war = no
+					has_stability < 0.7 #majors are harder to coup
+				}
+				AND = {
+					has_war = no
+					has_stability < 0.5
+				}
+				has_stability < 0.35 #can always coup at low stability
+			}
+		}
+		OR = {
+			has_game_rule = {
+				rule = allow_coups
+				option = FREE
+			}
+			AND = {
+				has_game_rule = {
+					rule = allow_coups
+					option = AI_ONLY
+				}
+				FROM = {
+					is_ai = yes
+				}
+			}
+		}
+	}
+
+	on_start = { #SCOPE_OPERATION
+		FROM = {
+			set_variable = { coup_operation_party@ROOT = PREV.ROOT.current_party_ideology_group }
+		}
+	}
+	risk_chance = 0.3
+	experience = 2.5
+	cost_modifiers = { operation_coup_cost }
+	cost_multiplier = 0
+	outcome_execute = { # SCOPE_OPERATION
+		FROM = {
+			if = {
+				limit = {
+					controls_state = FROM.FROM
+				}
+				set_temp_variable = { coup_civil_war_capital = FROM.FROM }
+			}
+			else = {
+				random_controlled_state = {
+					FROM = { set_temp_variable = { coup_civil_war_capital = PREV } }
+				}
+			}
+
+			set_temp_variable = { ideology = coup_operation_party@ROOT }
+			set_temp_variable = { civil_war_size = party_popularity@var:ideology }
+			clamp_temp_variable = {
+				var = civil_war_size
+				min = 0.1
+			}
+			set_temp_variable = { civil_war_airforce_fraction = civil_war_size }
+			set_temp_variable = { civil_war_navy_fraction = civil_war_size }
+			set_temp_variable = { civil_war_army_fraction = civil_war_size }
+
+			# If ROOT has infiltrated a service, the revolter gets additional troops
+			if = {
+				limit = {
+					ROOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_airforce
+						}
+					}
+				}
+				add_to_temp_variable = { civil_war_airforce_fraction = 0.15 }
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_army
+						}
+					}
+				}
+				add_to_temp_variable = { civil_war_army_fraction = 0.15 }
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_navy
+						}
+						
+					}
+				}
+				add_to_temp_variable = { civil_war_navy_fraction = 0.15 }
+			}
+
+			# create different civil wars depending on ROOT ideology
+			start_civil_war = {
+				capital = coup_civil_war_capital
+				size = civil_war_size
+				ideology = anarchist
+				army_ratio = civil_war_army_fraction
+				navy_ratio = civil_war_navy_fraction
+				air_ratio = civil_war_airforce_fraction
+				retire_country_leader = yes
+				create_country_leader = {
+					name = "Anarchist Commune"
+					desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+					picture = "GFX_portrait_SPR_anarchist_commune"
+					expire = "1965.1.1"
+					ideology = anarchism
+					traits = {
+						our_right_to_survive
+					}
+				}
+				set_cosmetic_tag = ANCOM
+				set_country_flag = autonomous_commune
+			}
+
+			# Clear State
+			clear_variable = coup_operation_party@ROOT
+			hidden_effect = {
+				ROOT = {
+					every_operative = {
+						if = {
+							limit = {
+								has_trait = operative_seducer
+							}
+							ROOT = { set_country_flag = achievement_seducer_spy }
+						}
+					}
+					add_to_variable = {
+						var = total_coups
+						value = 1
+					}
+				}
+			}
+		}
+	}
+}
+
+operation_political_assasination = { ### 7 1/70
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = operation_political_assasination
+	desc = operation_political_assasination_desc
+	priority = 7
+
+	days = 35
+	network_strength = 100
+	operatives = 3
+
+	visible = {
+		network_strength = {
+			target = FROM
+			value > 50
+		}
+		has_government = anarchist
+	}
+
+	equipment = {
+		infantry_equipment = 1
+	}
+
+	allowed = {
+		NOT = {
+			has_game_rule = {
+				rule = allow_coups
+				option = BLOCKED
+			}
+		}
+	}
+
+	available = {
+		
+		FROM = {
+			NOT = {
+				has_government = anarchist
+			}
+			
+			OR = {
+				AND = {
+					is_major = no
+					has_war = no
+					has_stability < 0.7 #majors are harder to coup
+				}
+				AND = {
+					has_war = no
+					has_stability < 0.5
+				}
+				has_stability < 0.35 #can always coup at low stability
+			}
+		}
+		OR = {
+			has_game_rule = {
+				rule = allow_coups
+				option = FREE
+			}
+			AND = {
+				has_game_rule = {
+					rule = allow_coups
+					option = AI_ONLY
+				}
+				FROM = {
+					is_ai = yes
+				}
+			}
+		}
+	}
+
+	risk_chance = 0.3
+	experience = 2.5
+	cost_modifiers = { operation_coup_cost }
+	cost_multiplier = 0
+	outcome_execute = { # SCOPE_OPERATION
+		FROM = {
+			kill_country_leader = yes
+		}
+	}
+}
+
+operation_rescue_anarchist_prisoner = { ### 0 1/35
+	icon = GFX_operations_rescue_captured_operative
+	map_icon = GFX_operations_rescue_captured_operative_map
+	name = operation_rescue_prisoner
+	desc = operation_rescue_prisoner_desc
+	priority = 0
+	
+
+	days = 35
+	network_strength = 30
+	operatives = 1
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		
+		FROM = {
+			core_resistance = {
+				occupied_country_tag = KOR
+				value > 0
+			}
+		}
+		
+		has_country_flag = KOR_free_anarchist_prisoners
+
+	}
+
+	selection_target = {
+		targets = { tag = JAP }
+	}
+
+	selection_target_state = {
+		has_resistance = yes
+		is_core_of = KOR
+	}
+
+	available = {
+		has_country_flag = KOR_free_anarchist_prisoners
+	}
+
+	requirements = {
+		has_country_flag = KOR_free_anarchist_prisoners
+	}
+
+
+	equipment = {
+		
+	}
+	risk_chance = 0.1
+	experience = 2
+	cost_multiplier = 0 # we dont scale in cost for rescues
+
+	outcome_execute = { # SCOPE_OPERATION
+		ROOT = {
+			set_country_flag = KOR_pak_yol_free
+			clr_country_flag = KOR_free_anarchist_prisoners
+		}
+		ROOT = {
+			hidden_effect = {
+				set_country_flag = just_freed_operative_flag
+			}
+		}
+	}
+
+	outcome_potential = {
+		ROOT = {
+			free_random_operative = {
+				captured_by = FROM
+				all = yes
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+			modifier = {
+				FROM = {
+					has_war_with = ROOT
+				}
+				factor = 0
+			}
+		}
+	}
+	phases = {
+		free_operative_free_in_transit = { base = 33 }
+		free_operative_liberate_camp = { base = 33 }
+		free_operative_smuggle_in_escape_gear = { base = 33 }
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_civilian_anarchist_1 = { ### 1 1/35
+	icon = GFX_operations_infiltrate_civilian_govt
+	map_icon = GFX_operations_infiltrate_civilian_govt_map
+	name = operation_infiltrate_civilian
+	desc = operation_infiltrate_civilian_desc
+	priority = 1
+
+	days = 21
+	network_strength = 35
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_civilian
+			}
+		}
+		NOT = {
+			has_country_flag = improved_infiltration_1
+		}
+		NOT = {
+			has_country_flag = improved_infiltration_2
+		}
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+			#has_operation_token = {
+			#	tag = FROM
+			#	token = token_civilian
+			#}
+		#}
+	}
+
+	awarded_tokens = {
+		token_civilian
+	}
+	risk_chance = 0.1
+	outcome_extra_chance = 0.25
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_civilian
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_civilian
+					}
+					add_political_power = 25
+					add_intel = {
+						target = FROM
+						civilian_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_civilian
+					}
+					add_political_power = 25
+				}	
+			}
+		}
+	}
+
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_civilian
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_armed_forces_army_anarchist_1 = { ### 4 1/55
+	icon = GFX_operations_infiltrate_armed_forces
+	map_icon = GFX_operations_infiltrate_armed_forces_map
+	name = operation_infiltrate_armed_forces_army
+	desc = operation_infiltrate_armed_forces_army_desc
+	priority = 4
+	
+	days = 21
+	network_strength = 50
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_army
+			}
+		}
+		NOT = {
+			has_country_flag = improved_infiltration_1
+		}
+		NOT = {
+			has_country_flag = improved_infiltration_2
+		}
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+		#	has_operation_token = {
+		#		tag = FROM
+		#		token = token_army
+		#	}
+		#}
+	}
+	
+	awarded_tokens = {
+		token_army
+	}
+
+	risk_chance = 0.1
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_extra_chance = 0.25
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_army
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_army
+					}
+					army_experience = 10
+					add_intel = {
+						target = FROM
+						army_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_army
+					}
+					army_experience = 10
+				}
+			}
+		}
+	}
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_army
+			}
+		}
+	}
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_turned_pow = {
+			base = 25
+			modifier = {
+				FROM = { has_war = no }
+				factor = 0
+			}
+		}
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_armed_forces_navy_anarchist_1 = { ### 5 1/55
+	icon = GFX_operations_infiltrate_naval_forces
+	map_icon = GFX_operations_infiltrate_naval_forces_map
+	name = operation_infiltrate_armed_forces_navy
+	desc = operation_infiltrate_armed_forces_navy_desc
+	priority = 5
+	
+	days = 21
+	network_strength = 50
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_navy
+			}
+		}
+		NOT = {
+			has_country_flag = improved_infiltration_1
+		}
+		NOT = {
+			has_country_flag = improved_infiltration_2
+		}
+		FROM = {
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}		
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+		#	has_operation_token = {
+		#		tag = FROM
+		#		token = token_navy
+		#	}
+		#}
+		#FROM = {
+		#	any_owned_state = {
+		#		is_coastal = yes
+		#	}
+		#}
+	}
+
+	awarded_tokens = {
+		token_navy
+	}
+	risk_chance = 0.1
+	outcome_extra_chance = 0.25
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_navy
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_navy
+					}
+					navy_experience = 10
+					add_intel = {
+						target = FROM
+						navy_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_navy
+					}
+					navy_experience = 10
+				}
+			}
+		}
+	}
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_navy
+			}
+		}
+	}
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_turned_pow = {
+			base = 25
+			modifier = {
+				FROM = { has_war = no }
+				factor = 0
+			}
+		}
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_armed_forces_airforce_anarchist_1 = { ### 6 1/55
+	icon = GFX_operations_infiltrate_air_forces
+	map_icon = GFX_operations_infiltrate_air_forces_map
+	name = operation_infiltrate_armed_forces_airforce
+	desc = operation_infiltrate_armed_forces_airforce_desc
+	priority = 6
+
+	days = 35
+	network_strength = 50
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_airforce
+			}
+		}	
+		NOT = {
+			has_country_flag = improved_infiltration_1
+		}
+		NOT = {
+			has_country_flag = improved_infiltration_2
+		}
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+		#	has_operation_token = {
+		#		tag = FROM
+		#		token = token_airforce
+		#	}
+		#}
+	}
+
+	awarded_tokens = {
+		token_airforce
+	}
+	risk_chance = 0.1
+	outcome_extra_chance = 0.25
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_airforce
+			}
+		}
+	}
+
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_airforce
+					}
+					air_experience = 10
+					add_intel = {
+						target = FROM
+						airforce_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_airforce
+					}
+					air_experience = 10
+				}
+			}
+		}
+	}
+
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_airforce
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_turned_pow = {
+			base = 25
+			modifier = {
+				FROM = { has_war = no }
+				factor = 0
+			}
+		}
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_civilian_anarchist_2 = { ### 1 1/35
+	icon = GFX_operations_infiltrate_civilian_govt
+	map_icon = GFX_operations_infiltrate_civilian_govt_map
+	name = operation_infiltrate_civilian
+	desc = operation_infiltrate_civilian_desc
+	priority = 1
+
+	days = 21
+	network_strength = 35
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_civilian
+			}
+		}
+		has_country_flag = improved_infiltration_1
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+			#has_operation_token = {
+			#	tag = FROM
+			#	token = token_civilian
+			#}
+		#}
+	}
+
+	awarded_tokens = {
+		token_civilian
+	}
+	risk_chance = 0.1
+	outcome_extra_chance = 0.25
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_civilian
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_civilian
+					}
+					add_political_power = 25
+					add_intel = {
+						target = FROM
+						civilian_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_civilian
+					}
+					add_political_power = 25
+				}	
+			}
+		}
+	}
+
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_civilian
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_armed_forces_army_anarchist_2 = { ### 4 1/55
+	icon = GFX_operations_infiltrate_armed_forces
+	map_icon = GFX_operations_infiltrate_armed_forces_map
+	name = operation_infiltrate_armed_forces_army
+	desc = operation_infiltrate_armed_forces_army_desc
+	priority = 4
+	
+	days = 21
+	network_strength = 50
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_army
+			}
+		}
+		has_country_flag = improved_infiltration_1
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+		#	has_operation_token = {
+		#		tag = FROM
+		#		token = token_army
+		#	}
+		#}
+	}
+	
+	awarded_tokens = {
+		token_army
+	}
+
+	risk_chance = 0.1
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_extra_chance = 0.25
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_army
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_army
+					}
+					army_experience = 10
+					add_intel = {
+						target = FROM
+						army_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_army
+					}
+					army_experience = 10
+				}
+			}
+		}
+	}
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_army
+			}
+		}
+	}
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_turned_pow = {
+			base = 25
+			modifier = {
+				FROM = { has_war = no }
+				factor = 0
+			}
+		}
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_armed_forces_navy_anarchist_2 = { ### 5 1/55
+	icon = GFX_operations_infiltrate_naval_forces
+	map_icon = GFX_operations_infiltrate_naval_forces_map
+	name = operation_infiltrate_armed_forces_navy
+	desc = operation_infiltrate_armed_forces_navy_desc
+	priority = 5
+	
+	days = 21
+	network_strength = 50
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_navy
+			}
+		}
+		has_country_flag = improved_infiltration_1
+		FROM = {
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}		
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+		#	has_operation_token = {
+		#		tag = FROM
+		#		token = token_navy
+		#	}
+		#}
+		#FROM = {
+		#	any_owned_state = {
+		#		is_coastal = yes
+		#	}
+		#}
+	}
+
+	awarded_tokens = {
+		token_navy
+	}
+	risk_chance = 0.1
+	outcome_extra_chance = 0.25
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_navy
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_navy
+					}
+					navy_experience = 10
+					add_intel = {
+						target = FROM
+						navy_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_navy
+					}
+					navy_experience = 10
+				}
+			}
+		}
+	}
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_navy
+			}
+		}
+	}
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_turned_pow = {
+			base = 25
+			modifier = {
+				FROM = { has_war = no }
+				factor = 0
+			}
+		}
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_armed_forces_airforce_anarchist_2 = { ### 6 1/55
+	icon = GFX_operations_infiltrate_air_forces
+	map_icon = GFX_operations_infiltrate_air_forces_map
+	name = operation_infiltrate_armed_forces_airforce
+	desc = operation_infiltrate_armed_forces_airforce_desc
+	priority = 6
+
+	days = 35
+	network_strength = 50
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_airforce
+			}
+		}	
+		has_country_flag = improved_infiltration_1
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+		#	has_operation_token = {
+		#		tag = FROM
+		#		token = token_airforce
+		#	}
+		#}
+	}
+
+	awarded_tokens = {
+		token_airforce
+	}
+	risk_chance = 0.1
+	outcome_extra_chance = 0.25
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_airforce
+			}
+		}
+	}
+
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_airforce
+					}
+					air_experience = 10
+					add_intel = {
+						target = FROM
+						airforce_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_airforce
+					}
+					air_experience = 10
+				}
+			}
+		}
+	}
+
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_airforce
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_turned_pow = {
+			base = 25
+			modifier = {
+				FROM = { has_war = no }
+				factor = 0
+			}
+		}
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_anarchist_revolution_2 = { ### 7 1/70
+	icon = GFX_operations_coup_government
+	map_icon = GFX_operations_coup_government_map
+	name = operation_anarchist_revolution
+	desc = operation_anarchist_revolution_desc
+	priority = 7
+
+	days = 14
+	network_strength = 70
+	operatives = 2
+	is_staged_coup = yes
+
+	visible = {
+		network_strength = {
+			target = FROM
+			value > 35
+		}
+		has_government = anarchist
+		has_country_flag = improved_insurrections
+	}
+
+	equipment = {
+		infantry_equipment = 12000
+	}
+	# Cannot spawn a civil war in the capital
+	selection_target_state = {
+		is_capital = no
+	}
+	selection_target = {
+		targets = { FROM }
+	}
+	allowed = {
+		NOT = {
+			has_game_rule = {
+				rule = allow_coups
+				option = BLOCKED
+			}
+		}
+	}
+
+	available = {
+		
+		FROM = {
+			NOT = {
+				has_government = anarchist
+			}
+			has_civil_war = no
+			if = {
+				limit = {
+					PREV.ROOT = { has_government = anarchist }
+				}
+				anarchist > 0.2
+			}
+				#set_temp_variable = { coup_ideology@ROOT = PREV.ROOT.current_party_ideology_group }
+				#set_temp_variable = { coup_ideology_popularity@ROOT = party_popularity@ROOT.coup_ideology }
+				#check_variable = { ROOT.coup_ideology_popularity > 0.2 }
+			
+			OR = {
+				AND = {
+					is_major = no
+					has_war = no
+					has_stability < 0.7 #majors are harder to coup
+				}
+				AND = {
+					has_war = no
+					has_stability < 0.5
+				}
+				has_stability < 0.35 #can always coup at low stability
+			}
+		}
+		OR = {
+			has_game_rule = {
+				rule = allow_coups
+				option = FREE
+			}
+			AND = {
+				has_game_rule = {
+					rule = allow_coups
+					option = AI_ONLY
+				}
+				FROM = {
+					is_ai = yes
+				}
+			}
+		}
+	}
+
+	on_start = { #SCOPE_OPERATION
+		FROM = {
+			set_variable = { coup_operation_party@ROOT = PREV.ROOT.current_party_ideology_group }
+		}
+	}
+	risk_chance = 0.3
+	experience = 2.5
+	cost_modifiers = { operation_coup_cost }
+	cost_multiplier = 0
+	outcome_execute = { # SCOPE_OPERATION
+		FROM = {
+			if = {
+				limit = {
+					controls_state = FROM.FROM
+				}
+				set_temp_variable = { coup_civil_war_capital = FROM.FROM }
+			}
+			else = {
+				random_controlled_state = {
+					FROM = { set_temp_variable = { coup_civil_war_capital = PREV } }
+				}
+			}
+
+			set_temp_variable = { ideology = coup_operation_party@ROOT }
+			set_temp_variable = { civil_war_size = party_popularity@var:ideology }
+			clamp_temp_variable = {
+				var = civil_war_size
+				min = 0.1
+			}
+			set_temp_variable = { civil_war_airforce_fraction = civil_war_size }
+			set_temp_variable = { civil_war_navy_fraction = civil_war_size }
+			set_temp_variable = { civil_war_army_fraction = civil_war_size }
+
+			# If ROOT has infiltrated a service, the revolter gets additional troops
+			if = {
+				limit = {
+					ROOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_airforce
+						}
+					}
+				}
+				add_to_temp_variable = { civil_war_airforce_fraction = 0.15 }
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_army
+						}
+					}
+				}
+				add_to_temp_variable = { civil_war_army_fraction = 0.15 }
+			}
+			if = {
+				limit = {
+					ROOT = {
+						has_operation_token = {
+							tag = FROM
+							token = token_navy
+						}
+						
+					}
+				}
+				add_to_temp_variable = { civil_war_navy_fraction = 0.15 }
+			}
+
+			# create different civil wars depending on ROOT ideology
+			start_civil_war = {
+				capital = coup_civil_war_capital
+				size = civil_war_size
+				ideology = anarchist
+				army_ratio = civil_war_army_fraction
+				navy_ratio = civil_war_navy_fraction
+				air_ratio = civil_war_airforce_fraction
+				retire_country_leader = yes
+				create_country_leader = {
+					name = "Anarchist Commune"
+					desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+					picture = "GFX_portrait_SPR_anarchist_commune"
+					expire = "1965.1.1"
+					ideology = anarchism
+					traits = {
+						our_right_to_survive
+					}
+				}
+				set_cosmetic_tag = ANCOM
+				set_country_flag = autonomous_commune
+			}
+
+			# Clear State
+			clear_variable = coup_operation_party@ROOT
+			hidden_effect = {
+				ROOT = {
+					every_operative = {
+						if = {
+							limit = {
+								has_trait = operative_seducer
+							}
+							ROOT = { set_country_flag = achievement_seducer_spy }
+						}
+					}
+					add_to_variable = {
+						var = total_coups
+						value = 1
+					}
+				}
+			}
+		}
+	}
+}
+
+operation_infiltrate_civilian_anarchist_3 = { ### 1 1/35
+	icon = GFX_operations_infiltrate_civilian_govt
+	map_icon = GFX_operations_infiltrate_civilian_govt_map
+	name = operation_infiltrate_civilian
+	desc = operation_infiltrate_civilian_desc
+	priority = 1
+
+	days = 21
+	network_strength = 35
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_civilian
+			}
+		}
+		has_country_flag = improved_infiltration_2
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+			#has_operation_token = {
+			#	tag = FROM
+			#	token = token_civilian
+			#}
+		#}
+	}
+
+	awarded_tokens = {
+		token_civilian
+	}
+	risk_chance = 0.1
+	outcome_extra_chance = 0.25
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_civilian
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_civilian
+					}
+					add_political_power = 25
+					add_intel = {
+						target = FROM
+						civilian_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_civilian
+					}
+					add_political_power = 25
+				}	
+			}
+		}
+	}
+
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_civilian
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_armed_forces_army_anarchist_3 = { ### 4 1/55
+	icon = GFX_operations_infiltrate_armed_forces
+	map_icon = GFX_operations_infiltrate_armed_forces_map
+	name = operation_infiltrate_armed_forces_army
+	desc = operation_infiltrate_armed_forces_army_desc
+	priority = 4
+	
+	days = 21
+	network_strength = 50
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_army
+			}
+		}
+		has_country_flag = improved_infiltration_2
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+		#	has_operation_token = {
+		#		tag = FROM
+		#		token = token_army
+		#	}
+		#}
+	}
+	
+	awarded_tokens = {
+		token_army
+	}
+
+	risk_chance = 0.1
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_extra_chance = 0.25
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_army
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_army
+					}
+					army_experience = 10
+					add_intel = {
+						target = FROM
+						army_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_army
+					}
+					army_experience = 10
+				}
+			}
+		}
+	}
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_army
+			}
+		}
+	}
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_turned_pow = {
+			base = 25
+			modifier = {
+				FROM = { has_war = no }
+				factor = 0
+			}
+		}
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_armed_forces_navy_anarchist_3 = { ### 5 1/55
+	icon = GFX_operations_infiltrate_naval_forces
+	map_icon = GFX_operations_infiltrate_naval_forces_map
+	name = operation_infiltrate_armed_forces_navy
+	desc = operation_infiltrate_armed_forces_navy_desc
+	priority = 5
+	
+	days = 21
+	network_strength = 50
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_navy
+			}
+		}
+		has_country_flag = improved_infiltration_2
+		FROM = {
+			any_owned_state = {
+				is_coastal = yes
+			}
+		}		
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+		#	has_operation_token = {
+		#		tag = FROM
+		#		token = token_navy
+		#	}
+		#}
+		#FROM = {
+		#	any_owned_state = {
+		#		is_coastal = yes
+		#	}
+		#}
+	}
+
+	awarded_tokens = {
+		token_navy
+	}
+	risk_chance = 0.1
+	outcome_extra_chance = 0.25
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_navy
+			}
+		}
+	}
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_navy
+					}
+					navy_experience = 10
+					add_intel = {
+						target = FROM
+						navy_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_navy
+					}
+					navy_experience = 10
+				}
+			}
+		}
+	}
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_navy
+			}
+		}
+	}
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_turned_pow = {
+			base = 25
+			modifier = {
+				FROM = { has_war = no }
+				factor = 0
+			}
+		}
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}
+
+operation_infiltrate_armed_forces_airforce_anarchist_3 = { ### 6 1/55
+	icon = GFX_operations_infiltrate_air_forces
+	map_icon = GFX_operations_infiltrate_air_forces_map
+	name = operation_infiltrate_armed_forces_airforce
+	desc = operation_infiltrate_armed_forces_airforce_desc
+	priority = 6
+
+	days = 35
+	network_strength = 50
+	operatives = 2
+
+	visible = {
+		network_national_coverage = {
+			target = FROM
+			value > 0
+		}
+		has_government = anarchist
+		NOT = {
+			has_operation_token = {
+				tag = FROM
+				token = token_airforce
+			}
+		}	
+		has_country_flag = improved_infiltration_2	
+	}
+
+	equipment = {
+		
+	}
+
+	available = {
+		#NOT = {
+		#	has_operation_token = {
+		#		tag = FROM
+		#		token = token_airforce
+		#	}
+		#}
+	}
+
+	awarded_tokens = {
+		token_airforce
+	}
+	risk_chance = 0.1
+	outcome_extra_chance = 0.25
+	risk_modifiers = { operation_infiltrate_risk operation_risk }
+	outcome_modifiers = { operation_infiltrate_outcome operation_outcome }
+	cost_modifiers = { operation_infiltrate_cost operation_cost }
+	cost_multiplier = 0
+	outcome_execute = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_airforce
+			}
+		}
+	}
+
+	outcome_extra_execute = { # SCOPE_OPERATION
+		random_list = {
+			33 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_airforce
+					}
+					air_experience = 10
+					add_intel = {
+						target = FROM
+						airforce_intel = 10
+					}
+				}
+			}
+			67 = {
+				ROOT = {
+					add_operation_token = {
+						tag = FROM
+						token = token_airforce
+					}
+					air_experience = 10
+				}
+			}
+		}
+	}
+
+	outcome_potential = {
+		ROOT = {
+			add_operation_token = {
+				tag = FROM
+				token = token_airforce
+			}
+		}
+	}
+
+	phases = { #infiltration
+		infiltration_border = { base = 25 }
+		infiltration_submarine = { base = 25 }
+		infiltration_paradrop = { 
+			base = 25 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		infiltration_diplomatic = {
+			base = 25
+			modifier = {
+				factor = 20
+				ROOT = { has_war = no }
+				FROM = {
+					has_war = no
+				}
+			}
+		}
+	}
+	phases = { #infiltrate military
+		infiltrate_military_bribe = { base = 25 }
+		infiltrate_military_seduction = { base = 25 }
+		infiltrate_military_turned_pow = {
+			base = 25
+			modifier = {
+				FROM = { has_war = no }
+				factor = 0
+			}
+		}
+		infiltrate_military_ideological_supporter = {
+			base = 25
+			modifier = {
+				FROM = { has_government = ROOT }
+				factor = 0
+			}
+		}
+	}
+	phases = { #exfiltration
+		exfiltration_air_pickup = { 
+			base = 15 
+			modifier = {
+				ROOT = { 
+					has_equipment = {
+						transport_plane_equipment < 1
+					}
+				}
+				factor = 0
+			}
+		}
+		exfiltration_border = { base = 30 }
+		exfiltration_go_to_ground = { base = 30 }
+		exfiltration_submarine_pickup = { base = 25 }
+	}
+}

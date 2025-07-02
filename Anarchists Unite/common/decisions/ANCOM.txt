@@ -1,0 +1,1837 @@
+political_actions = {
+	ANCOM_join_global_anarchist_federation = {
+		icon = GFX_decision_generic_military
+		available = {
+			has_government = anarchist
+			is_government_in_exile = no
+			has_civil_war = no
+			is_subject = no
+		}
+
+		visible = {
+			has_global_flag = anarchists_unite
+			has_country_leader_ideology = anarchism
+			NOT = {tag = ARG}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			ARG = {
+				add_to_faction = ROOT
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+}
+
+ANCOM_pacifist_diplomacy = {
+	ANCOM_preach_pacifism = {
+		icon = GFX_decision_generic_speech
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+			has_government = anarchist
+			original_tag = SOV
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		days_remove = 70
+
+		visible = {
+			has_government = anarchist
+			has_completed_focus = SAV_patience_is_waiting
+		}
+
+		remove_effect = {
+			add_threat = -5
+			every_country = {
+				limit = {
+					OR = {
+						has_government = democratic
+						has_government = communism
+					}
+				}
+				add_popularity = {
+    				ideology = anarchist
+    				popularity = 0.01
+				}
+			}
+		}
+	}
+
+	ANCOM_mediate_peace = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+			has_government = anarchist
+			original_tag = SOV
+			has_completed_focus = SAV_the_new_and_the_good_begins
+		}
+
+		target_trigger = {
+			FROM = {
+				NOT = {
+					has_war_with = ROOT
+					has_government = fascism
+				}
+				any_enemy_country = {
+					NOT = {
+						has_government = fascism
+					}
+				}
+				has_civil_war = no
+				has_war = yes
+				anarchist > 0.3
+			}
+		}
+
+		cost = 100
+
+		fire_only_once = no
+
+		days_remove = 70
+
+		visible = {
+			has_government = anarchist
+			has_completed_focus = SAV_the_new_and_the_good_begins
+		}
+
+		remove_effect = {
+			every_country = {
+				limit = {
+					has_war_with = FROM
+					NOT = {
+						has_government = fascism
+					}
+				}
+				white_peace = FROM
+			}
+		}
+	}
+
+	ANCOM_peaceful_transition = {
+		icon = GFX_decision_generic_nationalism
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+			has_government = anarchist
+			original_tag = SOV
+			has_completed_focus = SAV_the_new_and_the_good_begins
+			FROM = {
+				has_opinion = {
+    				target = ROOT
+    				value > 70
+				}
+			}
+		}
+
+		target_trigger = {
+			FROM = {
+				NOT = {
+					has_government = anarchist
+					has_government = fascism
+				}
+				has_war = no
+				anarchist > 0.7
+				
+			}
+		}
+
+		cost = 150
+
+		fire_only_once = no
+
+		days_remove = 70
+
+		visible = {
+			has_government = anarchist
+			has_completed_focus = SAV_the_new_and_the_good_begins
+		}
+
+		remove_effect = {
+			FROM = {
+				set_politics = {
+    				ruling_party = anarchist
+    				elections_allowed = no
+				}
+				set_cosmetic_tag = ANCOM
+			}
+		}
+	}
+}
+
+ANCOM_allied_diplomacy = {
+	ANCOM_establish_embassy = {
+		icon = GFX_decision_SOV_place_hq
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+			has_government = anarchist
+			original_tag = SOV
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				is_major = no
+				NOT = {
+					has_government = anarchist
+				}
+				any_country = {
+					FROM = {
+						is_guaranteed_by = PREV
+					}
+				}
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		days_remove = 35
+
+		visible = {
+			FROM = {
+				exists = yes
+				is_major = no
+				NOT = {
+					has_government = anarchist
+				}
+			}
+		}
+
+		remove_effect = {
+			FROM = {
+				set_country_flag = ANCOM_embassy_established
+			}
+			add_threat = -10
+		}
+	}
+
+	ANCOM_diplomatic_isolation = {
+		icon = GFX_decision_SWI_consolidate_council_power
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+			has_government = anarchist
+			original_tag = SOV
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				is_major = no
+				NOT = {
+					has_government = anarchist
+				}
+				any_country = {
+					FROM = {
+						is_guaranteed_by = PREV
+					}
+				}
+				has_country_flag = ANCOM_embassy_established
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = no
+
+		days_remove = 70
+
+		visible = {
+			FROM = {
+				exists = yes
+				is_major = no
+				NOT = {
+					has_government = anarchist
+				}
+				any_country = {
+					FROM = {
+						is_guaranteed_by = PREV
+					}
+				}
+				has_country_flag = ANCOM_embassy_established
+			}
+			has_completed_focus = SAV_an_end_to_the_old_world
+		}
+
+		remove_effect = {
+			every_country = {
+				limit = {
+					has_guaranteed = FROM
+				}
+				diplomatic_relation = {
+    				country = FROM
+    				relation = guarantee
+    				active = no
+				}
+				add_opinion_modifier = {
+    				target = FROM
+    				modifier = faction_traitor
+				}
+			}
+		}
+
+	}
+}
+
+debug_decisions = {
+	ANCOM_jump_to_revolt = {
+		icon = GFX_decision_generic_military
+		available = {
+			always = yes
+		}
+
+		visible = {
+			has_country_flag = ANCOM_facc_anarchist_headquarters
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_days_mission_timeout = {
+    			mission = ANCOM_looming_mass_crackdown
+    			days = -365
+			}
+		}
+	}
+
+	ANCOM_character_test = {
+		icon = GFX_decision_generic_military
+		available = {
+			original_tag = SOV
+			has_government = anarchist
+		}
+
+		visible = {
+			original_tag = SOV
+			has_government = anarchist
+		}
+		fire_only_once = no
+		complete_effect = {
+			load_focus_tree = {
+  				tree = soviet_focus
+  				keep_completed = no
+				}
+		}
+	}
+}
+
+FCC_ideological_struggle_balance_of_power_category = {
+	FCC_demilitarization = {
+		icon = GFX_decision_FIN_weapon_caches
+		cost = 25
+		allowed = {
+			tag = FCC
+		}
+		available = {
+			has_completed_focus = FCC_the_ideological_struggle
+		}
+		visible = {
+			has_completed_focus = FCC_the_ideological_struggle
+			NOT = {
+				has_country_flag = FCC_militia_decided
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = FCC_militia_decided
+			add_power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value = -0.16
+    			tooltip_side = FCC_anarchist_side
+			}
+			delete_unit_template_and_units = {
+    			division_template = "Anarchist Militants"
+    			disband = yes
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	FCC_reorganize_militias = {
+		icon = GFX_decision_SWE_set_army_budget
+		cost = 25
+		allowed = {
+			tag = FCC
+		}
+		available = {
+			has_completed_focus = FCC_the_ideological_struggle
+		}
+		visible = {
+			has_completed_focus = FCC_the_ideological_struggle
+			NOT = {
+				has_country_flag = FCC_militia_decided
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			set_country_flag = FCC_militia_decided
+			add_power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value = 0.16
+    			tooltip_side = FCC_communist_side
+			}
+			set_division_template_lock = {
+    			division_template = "Anarchist Militants"
+    			is_locked = no
+			}
+		}
+	}
+
+	FCC_soviet_planners = {
+		icon = GFX_decision_eng_trade_unions_support
+		cost = 25
+		allowed = {
+			tag = FCC
+		}
+		available = {
+			has_completed_focus = FCC_lobby_soviet_support
+			SOV = {
+				exists = yes
+			}
+		}
+		visible = {
+			has_completed_focus = FCC_lobby_soviet_support
+		}
+		fire_only_once = no
+		days_remove = 35
+		complete_effect = {
+			add_power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value = 0.10
+    			tooltip_side = FCC_communist_side
+			}
+		}
+		modifier = {
+			communism_drift = 0.01
+			stability_weekly_factor = 0.01
+		}
+	}
+
+	FCC_english_unions = {
+		icon = GFX_decision_eng_trade_unions_support
+		cost = 25
+		allowed = {
+			tag = FCC
+		}
+		available = {
+			has_completed_focus = FCC_lobby_british_support
+			ENG = {
+				exists = yes
+			}
+		}
+		visible = {
+			has_completed_focus = FCC_lobby_british_support
+		}
+		fire_only_once = no
+		days_remove = 35
+		complete_effect = {
+			add_power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value = -0.10
+    			tooltip_side = FCC_anarchist_side
+			}
+		}
+		modifier = {
+			anarchist_drift = 0.01
+			production_speed_buildings_factor = 0.15
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	FCC_league_of_nations_speech = {
+		icon = GFX_decision_generic_political_address
+		cost = 25
+		allowed = {
+			tag = FCC
+		}
+		available = {
+			has_completed_focus = FCC_lobby_league_of_nations
+			NOT = { has_global_flag = LoN_disbanded_flag }
+		}
+		visible = {
+			has_completed_focus = FCC_lobby_league_of_nations
+		}
+		fire_only_once = no
+		days_remove = 35
+		complete_effect = {
+			add_power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value = -0.10
+    			tooltip_side = FCC_anarchist_side
+			}
+			add_threat = 3
+			every_other_country = {
+				add_timed_idea = {
+					idea = ANCOM_anarchist_delegates
+					days = 35
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	FCC_stoke_tensions = {
+		icon = GFX_decision_generic_protection
+		cost = 25
+		allowed = {
+			tag = FCC
+		}
+		available = {
+			has_completed_focus = FCC_lobby_brazilian_support
+			BRA = {
+				exists = yes
+			}
+		}
+		visible = {
+			has_completed_focus = FCC_lobby_brazilian_support
+		}
+		fire_only_once = no
+		days_remove = 35
+		complete_effect = {
+			add_power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value = 0.10
+    			tooltip_side = FCC_communist_side
+			}
+			add_threat = 1
+			random_list = {
+    			95 = {
+    			    add_threat = 4
+    			}
+    			5 = {
+					BRA = {
+    			    	create_wargoal = {
+    						type = puppet_wargoal_focus
+    						target = USA
+						}
+					}
+    			}
+			}
+		}
+	}
+
+	FCC_contact_french_illegalists = {
+		icon = GFX_decision_onmap_recruit_operative
+		cost = 25
+		allowed = {
+			tag = FCC
+		}
+		available = {
+			has_completed_focus = FCC_lobby_french_support
+		}
+		visible = {
+			has_completed_focus = FCC_lobby_french_support
+		}
+		fire_only_once = no
+		days_remove = 35
+		complete_effect = {
+			add_power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value = -0.10
+    			tooltip_side = FCC_anarchist_side
+			}
+		}
+		modifier = {
+			consumer_goods_factor = -0.1
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+}
+
+ANCOM_the_seeds_of_revolution = {
+
+	SAV_organize_prison_escape = {
+		icon = generic_nationalism
+
+		cost = 25
+
+		days_remove = 35
+
+		visible = {
+			has_completed_focus = SAV_rescuing_purge_victims
+			has_government = anarchist
+			NOT = {
+				has_global_flag = SOV_soviet_civil_war_over
+			}
+		}
+
+		remove_effect = {
+			random_list = {
+				20 = {
+					modifier = {
+						add = 10
+						has_character = SAV_aida_basevich
+					}
+					modifier = {
+						add = 10
+						has_character = SAV_peter_arshinov
+					}
+					modifier = {
+						add = 10
+						has_character = SAV_aron_baron
+					}
+					modifier = {
+						add = 10
+						has_character = IA_olga_taratuta
+					}
+					modifier = {
+						add = 10
+						has_character = SAV_hristo_zarezankov
+					}
+					modifier = {
+						add = 10
+						has_character = SAV_nazar_zuychenko
+					}
+					modifier = {
+						add = 10
+						has_character = SAV_lev_zadov
+					}
+					modifier = {
+						add = 10
+						has_character = SAV_victor_bilash
+					}
+					add_manpower = 500
+					random_controlled_state = {
+						create_unit = {
+    						division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    						owner = ROOT
+						}
+					}
+				}
+				10 = {
+					modifier = {
+						add = -10
+						has_character = SAV_aida_basevich
+					}
+					every_possible_country = {
+    					limit = { has_character = SAV_aida_basevich }
+    					random_character = {
+        				limit = { is_character = SAV_aida_basevich }
+        				set_nationality = PREV.PREV
+    					}
+					}
+				}
+				10 = {
+					modifier = {
+						add = -10
+						has_character = SAV_peter_arshinov
+					}
+					every_possible_country = {
+    					limit = { has_character = SAV_peter_arshinov }
+    					random_character = {
+        				limit = { is_character = SAV_peter_arshinov }
+        				set_nationality = PREV.PREV
+    					}
+					}
+				}
+				10 = {
+					modifier = {
+						add = -10
+						has_character = SAV_aron_baron
+					}
+					every_possible_country = {
+    					limit = { has_character = SAV_aron_baron }
+    					random_character = {
+        				limit = { is_character = SAV_aron_baron }
+        				set_nationality = PREV.PREV
+    					}
+					}
+				}
+				10 = {
+					modifier = {
+						add = -10
+						has_character = IA_olga_taratuta
+					}
+					every_possible_country = {
+    					limit = { has_character = IA_olga_taratuta }
+    					random_character = {
+        				limit = { is_character = IA_olga_taratuta }
+        				set_nationality = PREV.PREV
+    					}
+					}
+				}
+				10 = {
+					modifier = {
+						add = -10
+						has_character = SAV_hristo_zarezankov
+					}
+					every_possible_country = {
+    					limit = { has_character = SAV_hristo_zarezankov }
+    					random_character = {
+        				limit = { is_character = SAV_hristo_zarezankov }
+        				set_nationality = PREV.PREV
+    					}
+					}
+				}
+				10 = {
+					modifier = {
+						add = -10
+						has_character = SAV_nazar_zuychenko
+					}
+					every_possible_country = {
+    					limit = { has_character = SAV_nazar_zuychenko }
+    					random_character = {
+        				limit = { is_character = SAV_nazar_zuychenko }
+        				set_nationality = PREV.PREV
+    					}
+					}
+				}
+				10 = {
+					modifier = {
+						add = -10
+						has_character = SAV_lev_zadov
+					}
+					every_possible_country = {
+    					limit = { has_character = SAV_lev_zadov }
+    					random_character = {
+        				limit = { is_character = SAV_lev_zadov }
+        				set_nationality = PREV.PREV
+    					}
+					}
+				}
+				10 = {
+					modifier = {
+						add = -10
+						has_character = SAV_victor_bilash
+					}
+					every_possible_country = {
+    					limit = { has_character = SAV_victor_bilash }
+    					random_character = {
+        				limit = { is_character = SAV_victor_bilash }
+        				set_nationality = PREV.PREV
+    					}
+					}
+				}
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+
+	}
+
+	SAV_reclaim_core_teritory = {
+		icon = generic_nationalism
+
+		visible = {
+			has_completed_focus = SAV_an_end_to_leninist_hypocrisy
+			has_government = anarchist
+			NOT = {
+				has_global_flag = SOV_soviet_civil_war_over
+			}
+			any_other_country = {
+				any_owned_state = {
+					is_core_of = ROOT
+				}
+				NOT = {
+					has_war_with = ROOT
+					tag = TAN
+				}
+			}
+		}
+
+		remove_effect = {
+			every_other_country = {
+				limit = {
+					any_owned_state = {
+						is_core_of = ROOT
+					}
+					NOT = {
+						has_war_with = ROOT
+					}
+				}
+				declare_war_on = {
+    				target = PREV
+    				type = annex_everything
+				}
+			}
+		}
+
+	}
+
+	SAV_ignight_uprising = {
+		icon = generic_nationalism
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = SAV_an_end_to_leninist_hypocrisy
+			has_government = anarchist
+			any_other_country = {
+				any_owned_state = {
+					is_core_of = ROOT
+				}
+				has_war_with = ROOT
+				original_tag = SOV
+			}
+		}
+
+		remove_effect = {
+			every_other_country = {
+				limit = {
+					any_owned_state = {
+						is_core_of = ROOT
+					}
+					has_war_with = ROOT
+					original_tag = SOV
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+				random_controlled_state = {
+					create_unit = {
+    					division = "name = \"Prison Escapees\" division_template = \"Prison Escapees\" start_experience_factor = 0.5"
+    					owner = ROOT
+    					count = 5
+    					allow_spawning_on_enemy_provs = yes
+					}
+				}
+
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+
+	}
+
+	ANCOM_integrate_commune = {
+
+		icon = generic_nationalism
+
+		allowed = {
+			always = yes
+		}
+
+		available = {
+			has_government = anarchist
+			FROM = {
+				has_civil_war = no
+				any_controlled_state = {
+					is_in_home_area = yes
+				}
+			}
+		}
+
+		target_trigger = {
+			FROM = {
+				exists = yes
+				has_country_flag = autonomous_commune
+				has_civil_war = no
+				any_controlled_state = {
+					is_in_home_area = yes
+					any_neighbor_state = {
+						is_controlled_by = ROOT
+					}
+				}
+			}
+		}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		days_remove = 35
+
+		modifier = {
+			
+		}
+
+		visible = {
+			has_global_flag = anarchists_unite
+			FROM = {
+				exists = yes
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				FROM = {
+					set_country_flag = SPR_ignite_uprising_timer_flag
+					activate_mission = SPR_ignite_uprising_timer_mission
+				}
+			}
+		}
+
+		remove_effect = {
+			puppet = {
+				target = FROM
+				end_wars = no
+			}
+		}
+
+	}
+
+}
+
+ANCOM_build_the_FACC = {
+	ANCOM_boost_anarchist_support = {
+		custom_cost_trigger = {
+    		anarchist > 0.10
+			has_political_power > 50
+		}
+		custom_cost_text = decision_cost_APOP_10
+		icon = GFX_decision_generic_prepare_civil_war
+		target_root_trigger = { 
+			OR = {
+				original_tag = GUA
+				original_tag = HON
+				original_tag = NIC
+				original_tag = COS
+				original_tag = PAN
+				original_tag = CUB
+				original_tag = DOM
+				original_tag = HAI
+				original_tag = ELS
+			}
+		}
+		targets = { GUA HON NIC COS PAN CUB DOM HAI ELS }
+		fire_only_once = no
+		target_trigger = {
+			FROM = {
+				exists = yes
+				NOT = {
+					has_government = anarchist
+				}
+			}
+		}
+		visible = {
+			has_country_flag = ANCOM_facc_anarchist_headquarters
+		}
+		days_remove = 7
+		available = {
+			FROM = {
+				NOT = {
+					has_government = anarchist
+				}
+			}
+		}
+		complete_effect = {
+			add_popularity = {
+				ideology = anarchist
+				popularity = -0.1
+			}
+			add_political_power = -50
+			FROM = {
+				add_popularity = {
+					ideology = anarchist
+					popularity = 0.1
+				}
+			}
+		}
+		ai_will_do = {
+			base = 999
+		}
+	}
+
+	FCC_end_war_in_americas = {
+
+    	icon = generic_civil_support
+
+		allowed = {
+            tag = FCC
+		}
+
+    	visible = {
+			313 = {
+				is_controlled_by = FCC
+			}
+			314 = {
+				is_controlled_by = FCC
+			}
+			312 = {
+				is_controlled_by = FCC
+			}
+			317 = {
+				is_controlled_by = FCC
+			}
+			316 = {
+				is_controlled_by = FCC
+			}
+			304 = {
+				is_controlled_by = FCC
+			}
+			315 = {
+				is_controlled_by = FCC
+			}
+			318 = {
+				is_controlled_by = FCC
+			}
+			319 = {
+				is_controlled_by = FCC
+			}
+		}
+
+		available = {
+           313 = {
+				is_controlled_by = FCC
+			}
+			314 = {
+				is_controlled_by = FCC
+			}
+			312 = {
+				is_controlled_by = FCC
+			}
+			317 = {
+				is_controlled_by = FCC
+			}
+			316 = {
+				is_controlled_by = FCC
+			}
+			304 = {
+				is_controlled_by = FCC
+			}
+			315 = {
+				is_controlled_by = FCC
+			}
+			318 = {
+				is_controlled_by = FCC
+			}
+			319 = {
+				is_controlled_by = FCC
+			}
+			FCC = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+        }
+
+		fire_only_once = yes
+
+		complete_effect = {
+			every_country = {
+				limit = {
+					has_war_with = FCC
+				}
+				white_peace = FCC
+			}
+			FCC = {
+				annex_country = {
+    				target = GUA
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = HON
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = NIC
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = COS
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = PAN
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = CUB
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = DOM
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = HAI
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = ELS
+    				transfer_troops = no
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+    }
+
+	ANCOM_looming_mass_crackdown = {
+
+		icon = GFX_decision_revolt
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		priority = 10
+
+		fire_only_once = yes
+
+		days_mission_timeout = 75
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			NOT = { has_completed_focus = ANCOM_central_american_uprising }
+		}
+
+		timeout_effect = {
+			every_country = {
+				limit = {
+					OR = {
+						original_tag = GUA 
+						original_tag = HON 
+						original_tag = NIC 
+						original_tag = COS 
+						original_tag = PAN 
+						original_tag = CUB 
+						original_tag = DOM 
+						original_tag = HAI 
+						original_tag = ELS
+					}
+				}
+				give_military_access = GUA
+				give_military_access = HON
+				give_military_access = NIC
+				give_military_access = COS
+				give_military_access = PAN
+				give_military_access = CUB
+				give_military_access = DOM
+				give_military_access = HAI
+				give_military_access = ELS
+			}
+
+			every_state = {
+				limit = {
+					is_core_of = FCC
+				}
+				transfer_state_to = FCC
+			}
+			
+			FCC = {
+				division_template = {
+					name = "Anarchist Militants"
+					is_locked = yes 
+					priority = 0
+					template_counter = 14
+					regiments = {
+						irregular_infantry = { x = 0 y = 0 }
+						irregular_infantry = { x = 0 y = 1 }
+						irregular_infantry = { x = 0 y = 2 }
+						irregular_infantry = { x = 0 y = 3 }
+					}
+				}
+				IF = {
+					limit = {
+						GUA = {
+							has_country_flag = ANCOM_facc_anarchist_headquarters
+						}
+					}
+					change_tag_from = GUA
+				}
+				else_if = {
+					limit = {
+						HON = {
+							has_country_flag = ANCOM_facc_anarchist_headquarters
+						}
+					}
+					change_tag_from = HON
+				}
+				else_if = {
+					limit = {
+						NIC = {
+							has_country_flag = ANCOM_facc_anarchist_headquarters
+						}
+					}
+					change_tag_from = NIC
+				}
+				else_if = {
+					limit = {
+						COS = {
+							has_country_flag = ANCOM_facc_anarchist_headquarters
+						}
+					}
+					change_tag_from = COS
+				}
+				else_if = {
+					limit = {
+						PAN = {
+							has_country_flag = ANCOM_facc_anarchist_headquarters
+						}
+					}
+					change_tag_from = PAN
+				}
+				else_if = {
+					limit = {
+						CUB = {
+							has_country_flag = ANCOM_facc_anarchist_headquarters
+						}
+					}
+					change_tag_from = CUB
+				}
+				else_if = {
+					limit = {
+						DOM = {
+							has_country_flag = ANCOM_facc_anarchist_headquarters
+						}
+					}
+					change_tag_from = DOM
+				}
+				else_if = {
+					limit = {
+						HAI = {
+							has_country_flag = ANCOM_facc_anarchist_headquarters
+						}
+					}
+					change_tag_from = HAI
+				}
+				else_if = {
+					limit = {
+						ELS = {
+							has_country_flag = ANCOM_facc_anarchist_headquarters
+						}
+					}
+					change_tag_from = ELS
+				}
+			}
+			FCC = {
+				random_controlled_state = {
+					IF = {
+						limit = {
+							GUA = {
+								has_country_flag = ANCOM_militant_supporters
+							}
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+					}
+				}
+				random_controlled_state = {
+					IF = {
+						limit = {
+							HON = {
+								has_country_flag = ANCOM_militant_supporters
+							}
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+					}
+				}
+				random_controlled_state = {
+					IF = {
+						limit = {
+							NIC = {
+								has_country_flag = ANCOM_militant_supporters
+							}
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+					}
+				}
+				random_controlled_state = {
+					IF = {
+						limit = {
+							COS = {
+								has_country_flag = ANCOM_militant_supporters
+							}
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+					}
+				}
+				random_controlled_state = {
+					IF = {
+						limit = {
+							PAN = {
+								has_country_flag = ANCOM_militant_supporters
+							}
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+					}
+				}
+				random_controlled_state = {
+					IF = {
+						limit = {
+							CUB = {
+								has_country_flag = ANCOM_militant_supporters
+							}
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+					}
+				}
+				random_controlled_state = {
+					IF = {
+						limit = {
+							DOM = {
+								has_country_flag = ANCOM_militant_supporters
+							}
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+					}
+				}
+				random_controlled_state = {
+					IF = {
+						limit = {
+							HAI = {
+								has_country_flag = ANCOM_militant_supporters
+							}
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+					}
+				}
+				random_controlled_state = {
+					IF = {
+						limit = {
+							ELS = {
+								has_country_flag = ANCOM_militant_supporters
+							}
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FCC
+						}
+					}
+				}
+				inherit_technology = ROOT
+				complete_national_focus = FCC_central_american_uprising
+			}
+
+			GUA = {
+				declare_war_on = {
+					target = FCC
+					type = annex_everything
+				}
+			}
+			HON = {
+				declare_war_on = {
+					target = FCC
+					type = annex_everything
+				}
+			}
+			NIC = {
+				declare_war_on = {
+					target = FCC
+					type = annex_everything
+				}
+			}
+			COS = {
+				declare_war_on = {
+					target = FCC
+					type = annex_everything
+				}
+			}
+			PAN = {
+				declare_war_on = {
+					target = FCC
+					type = annex_everything
+				}
+			}
+			CUB = {
+				declare_war_on = {
+					target = FCC
+					type = annex_everything
+				}
+			}
+			DOM = {
+				declare_war_on = {
+					target = FCC
+					type = annex_everything
+				}
+			}
+			HAI = {
+				declare_war_on = {
+					target = FCC
+					type = annex_everything
+				}
+			}
+			ELS = {
+				declare_war_on = {
+					target = FCC
+					type = annex_everything
+				}
+			}
+		}
+	}
+
+	FCC_looming_us_intervention = {
+
+		icon = GFX_decision_revolt
+
+		available = {
+			hidden_trigger = { always = no }
+		}
+
+		priority = 10
+
+		fire_only_once = yes
+
+		days_mission_timeout = 100
+
+		is_good = no
+
+		cancel_if_not_visible = yes
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			NOT = { has_completed_focus = FCC_break_up_ufc }
+		}
+
+		timeout_effect = {
+			USA = {
+				declare_war_on = {
+    				target = FCC
+    				type = annex_everything
+				}
+			}
+		}
+	}
+
+	FCC_arm_independence_movement_1 = {
+		cost = 25
+		icon = GFX_decision_generic_prepare_civil_war
+		target_root_trigger = {
+			original_tag = FCC
+			has_government = anarchist
+		}
+		targets = { 689 690 693 686 694 308 692 691 695 }
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_controlled_by = ENG
+					is_controlled_by = USA
+					is_controlled_by = FRA
+					is_controlled_by = HOL
+				}
+			}
+			
+		}
+		state_target = yes
+		on_map_mode = map_only
+		fire_only_once = no 
+		available = {
+			FROM = {
+				OR = {
+					is_controlled_by = ENG
+					is_controlled_by = USA
+					is_controlled_by = FRA
+					is_controlled_by = HOL
+				}
+			}
+		}
+
+		visible = {
+			FCC = {
+				has_completed_focus = FCC_ultimatum_to_colonial_powers
+			}
+			
+		}
+
+		days_remove = 30
+
+		remove_effect = {
+			FROM = {
+				add_compliance = -25
+				add_resistance = 25
+			}
+		}
+	}
+
+	FCC_arm_independence_movement_2 = {
+		cost = 25
+		icon = GFX_decision_generic_prepare_civil_war
+		target_root_trigger = {
+			original_tag = FCC
+			has_government = anarchist
+		}
+		targets = { 311 }
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ENG
+			}
+			
+		}
+		state_target = yes
+		on_map_mode = map_only
+		fire_only_once = no 
+		available = {
+			FROM = {
+				is_controlled_by = ENG
+			}
+		}
+
+		visible = {
+			FCC = {
+				has_completed_focus = FCC_demand_free_belize
+			}
+			
+		}
+
+		days_remove = 30
+
+		remove_effect = {
+			FROM = {
+				add_compliance = -25
+				add_resistance = 25
+			}
+		}
+	}
+
+	FCC_arm_independence_movement_3 = {
+		cost = 25
+		icon = GFX_decision_generic_prepare_civil_war
+		target_root_trigger = {
+			original_tag = FCC
+			has_government = anarchist
+		}
+		targets = { 685 }
+		target_trigger = {
+			FROM = {
+				is_controlled_by = USA
+			}
+			
+		}
+		state_target = yes
+		on_map_mode = map_only
+		fire_only_once = no 
+		available = {
+			FROM = {
+				is_controlled_by = USA
+			}
+		}
+
+		visible = {
+			FCC = {
+				has_completed_focus = FCC_reclaiming_the_canal
+			}
+			
+		}
+
+		days_remove = 30
+
+		remove_effect = {
+			FROM = {
+				add_compliance = -25
+				add_resistance = 25
+			}
+		}
+	}
+
+	FCC_integrate_independent_state = {
+		cost = 50
+		icon = GFX_decision_SOV_the_workers_dictatorship
+		target_root_trigger = {
+			original_tag = FCC
+			has_government = anarchist
+		}
+		targets = { BAH JAM BLZ PUE CRC GDL BAS TRI PAN }
+		target_trigger = {
+			FROM = {
+				is_subject = no
+			}
+			
+		}
+		
+		fire_only_once = no
+
+		available = {
+			FROM = {
+				has_opinion = {
+    				target = FCC
+    				value > 74
+				}
+			}
+		}
+
+		visible = {
+
+			has_completed_focus = FCC_integrate_centro_america_and_caribean
+
+		}
+
+		days_remove = 30
+
+		remove_effect = {
+			FCC = {
+				annex_country = {
+    				target = FROM
+    				transfer_troops = no
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = FROM
+				}
+				add_core_of = FCC
+			}
+		}
+	}
+}

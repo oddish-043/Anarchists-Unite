@@ -1,0 +1,4336 @@
+﻿focus_tree = {
+	id = anarchist_germany_focus_tree
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			original_tag = AGR
+		}
+	}
+
+	default = no
+
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 3200 y = 1200 }
+
+	initial_show_position = {
+		focus = AGR_return_of_the_faud
+	}
+
+	#########################
+	#Return of the FAUD path#
+	#########################
+
+	focus = {
+		id = AGR_return_of_the_faud
+		icon = GFX_focus_ARG_establish_the_free_association
+		x = 0
+		y = 0
+		cost = 5
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 300
+			57 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+			set_country_flag = AGR_spreading_the_underground
+		}
+	}
+
+	focus = {
+		id = AGR_collecting_donations
+		icon = GFX_SOV_respect_baltic_self_determination_ccp_2d_sov_compatibility
+		relative_position_id = AGR_return_of_the_faud
+		x = -3
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_return_of_the_faud }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 300
+		}
+	}
+
+	focus = {
+		id = AGR_underground_smuggling
+		icon = GFX_SOV_an_adaptable_army_ccp_2d_sov_compatibility
+		relative_position_id = AGR_return_of_the_faud
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_return_of_the_faud }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			IF = {
+				limit = {
+					has_idea = AGR_underground_movement
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement
+    				add_idea = AGR_underground_movement_1a
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_1b
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_1b
+    				add_idea = AGR_underground_movement_2a
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_2a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_2a
+    				add_idea = AGR_underground_movement_3b
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_assasinate_local_fascists
+		icon = GFX_focus_IRQ_attempted_assasination_of_sidqi
+		relative_position_id = AGR_return_of_the_faud
+		x = 3
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_return_of_the_faud }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.4
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_insurrectionary_workers
+		icon = GFX_focus_AFG_against_kabul
+		relative_position_id = AGR_return_of_the_faud
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_return_of_the_faud }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			IF = {
+				limit = {
+					has_idea = AGR_underground_movement
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement
+    				add_idea = AGR_underground_movement_1b
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_1a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_1a
+    				add_idea = AGR_underground_movement_2a
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_2b
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_2b
+    				add_idea = AGR_underground_movement_3a
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_fire_bomb_local_gestapo
+		icon = GFX_focus_RAJ_bathe_in_hellfire
+		prerequisite = { focus = AGR_collecting_donations }
+		prerequisite = { focus = AGR_underground_smuggling }
+		x = 1
+		y = 1
+		relative_position_id = AGR_collecting_donations
+		cost = 5
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+				IF = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo
+    					add_idea = AGR_ire_of_gestapo_1a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1a
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1a
+    					add_idea = AGR_ire_of_gestapo_2a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1b
+    					add_idea = AGR_ire_of_gestapo_2e
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1c
+    					add_idea = AGR_ire_of_gestapo_2c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2b
+    					add_idea = AGR_ire_of_gestapo_3c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2c
+    					add_idea = AGR_ire_of_gestapo_3a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2d
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2d
+    					add_idea = AGR_ire_of_gestapo_3b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2e
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2e
+    					add_idea = AGR_ire_of_gestapo_3e
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3b
+					}
+					swap_ideas = {
+		   				remove_idea = AGR_ire_of_gestapo_3b
+	    				add_idea = AGR_ire_of_gestapo_4b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3c
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_3c
+	    				add_idea = AGR_ire_of_gestapo_4a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3d
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_3d
+	    				add_idea = AGR_ire_of_gestapo_4c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_4c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_4c
+    					add_idea = AGR_ire_of_gestapo_5
+					}
+				}
+
+		}
+	}
+
+	focus = {
+		id = AGR_fire_bomb_wermacht_recruiting_office
+		icon = GFX_focus_CHL_avenge_the_pacification_of_araucania
+		prerequisite = { focus = AGR_insurrectionary_workers }
+		prerequisite = { focus = AGR_assasinate_local_fascists }
+		x = 1
+		y = 1
+		relative_position_id = AGR_insurrectionary_workers
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+				IF = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo
+    					add_idea = AGR_ire_of_gestapo_1a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1a
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1a
+    					add_idea = AGR_ire_of_gestapo_2a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1b
+    					add_idea = AGR_ire_of_gestapo_2e
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1c
+    					add_idea = AGR_ire_of_gestapo_2c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2b
+    					add_idea = AGR_ire_of_gestapo_3c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2c
+    					add_idea = AGR_ire_of_gestapo_3a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2d
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2d
+    					add_idea = AGR_ire_of_gestapo_3b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2e
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2e
+    					add_idea = AGR_ire_of_gestapo_3e
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3b
+					}
+					swap_ideas = {
+		   				remove_idea = AGR_ire_of_gestapo_3b
+	    				add_idea = AGR_ire_of_gestapo_4b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3c
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_3c
+	    				add_idea = AGR_ire_of_gestapo_4a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3d
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_3d
+	    				add_idea = AGR_ire_of_gestapo_4c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_4c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_4c
+    					add_idea = AGR_ire_of_gestapo_5
+					}
+				}
+
+		}
+	}
+
+	
+	focus = {
+		id = AGR_king_of_the_vagabonds
+		icon = GFX_goal_agr_king_of_the_vagabonds
+		prerequisite = { focus = AGR_collecting_donations }
+		x = 0
+		y = 2
+		relative_position_id = AGR_collecting_donations
+		cost = 5
+				
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_return_of_the_king_tt
+			set_country_flag = AGR_return_of_the_king
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_safehouse_network
+		icon = GFX_focus_SWE_hygienic_housing
+		prerequisite = { focus = AGR_underground_smuggling }
+		x = 0
+		y = 2
+		relative_position_id = AGR_underground_smuggling
+		cost = 5
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_safehouse_network_tt
+			IF = {
+				limit = {
+					has_idea = AGR_underground_movement_1a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_1a
+    				add_idea = AGR_underground_movement_2b
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_2a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_2a
+    				add_idea = AGR_underground_movement_3a
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_3b
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_3b
+    				add_idea = AGR_underground_movement_4a
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_surge_in_support
+		icon = GFX_focus_ARG_no_gods_no_masters
+		prerequisite = { 
+			focus = AGR_insurrectionary_workers
+		}
+		x = 0
+		y = 2
+		relative_position_id = AGR_insurrectionary_workers
+		cost = 5
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = AGR_surge_in_support_idea
+			57 = {
+				create_unit = {
+					division = "name = \"Anarchist Wreckers\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+					owner = AGR
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_sabotage_nazi_comms
+		icon = GFX_focus_generic_communism_anti_fascism
+		prerequisite = { focus = AGR_assasinate_local_fascists }
+		x = 0
+		y = 2
+		relative_position_id = AGR_assasinate_local_fascists
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+				IF = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo
+    					add_idea = AGR_ire_of_gestapo_1b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1a
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_1a
+	    				add_idea = AGR_ire_of_gestapo_2e
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1c
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_1c
+	    				add_idea = AGR_ire_of_gestapo_2d
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2a
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_2a
+	    				add_idea = AGR_ire_of_gestapo_3e
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2b
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_2b
+	    				add_idea = AGR_ire_of_gestapo_3d
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2c
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_2c
+	    				add_idea = AGR_ire_of_gestapo_3b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3a
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_3a
+	    				add_idea = AGR_ire_of_gestapo_4b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3c
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_3c
+	    				add_idea = AGR_ire_of_gestapo_4c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_4a
+					}
+					swap_ideas = {
+	    				remove_idea = AGR_ire_of_gestapo_4a
+	    				add_idea = AGR_ire_of_gestapo_5
+					}
+				}
+
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_return_anarchist_expats
+		icon = GFX_goal_agr_return_anarchist_expats
+		prerequisite = { focus = AGR_king_of_the_vagabonds }
+		x = -1
+		y = 1
+		relative_position_id = AGR_king_of_the_vagabonds
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_expats_returned_tt
+			set_country_flag = AGR_expats_returned
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_liberate_jewish_scientists
+		icon = GFX_focus_research
+		prerequisite = { focus = AGR_king_of_the_vagabonds }
+		prerequisite = { focus = AGR_safehouse_network }
+		x = 1
+		y = 1
+		relative_position_id = AGR_king_of_the_vagabonds
+		cost = 5
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_research_slot = 1
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_community_defense
+		icon = GFX_focus_generic_workers
+		prerequisite = { focus = AGR_safehouse_network }
+		prerequisite = { focus = AGR_surge_in_support }
+		x = 2
+		y = 0
+		relative_position_id = AGR_liberate_jewish_scientists
+		cost = 5
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+
+				IF = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo
+    					add_idea = AGR_ire_of_gestapo_1c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1a
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1a
+    					add_idea = AGR_ire_of_gestapo_2c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1b
+    					add_idea = AGR_ire_of_gestapo_2d
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1c
+    					add_idea = AGR_ire_of_gestapo_2b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2a
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2a
+    					add_idea = AGR_ire_of_gestapo_3a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2c
+    					add_idea = AGR_ire_of_gestapo_3c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2d
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2d
+    					add_idea = AGR_ire_of_gestapo_3d
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2e
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2e
+    					add_idea = AGR_ire_of_gestapo_3b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3a
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_3a
+    					add_idea = AGR_ire_of_gestapo_4a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_3b
+    					add_idea = AGR_ire_of_gestapo_4c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3e
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_3e
+    					add_idea = AGR_ire_of_gestapo_4b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_4b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_4b
+		 				add_idea = AGR_ire_of_gestapo_5
+					}
+				}
+
+		}
+	}
+
+	focus = {
+		id = AGR_extending_our_grasp
+		icon = GFX_focus_generic_annex_country_2
+		prerequisite = { focus = AGR_surge_in_support }
+		prerequisite = { focus = AGR_sabotage_nazi_comms }
+		x = 2
+		y = 0
+		relative_position_id = AGR_community_defense
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = AGR_extending_our_grasp_tt
+			set_country_flag = AGR_territory_expansion_1
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_buying_time
+		icon = GFX_focus_generic_subjugation
+		prerequisite = { focus = AGR_sabotage_nazi_comms }
+		x = 2
+		y = 0
+		relative_position_id = AGR_extending_our_grasp
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_autonomy_score = {
+    			value = 250
+    			localization = "Buying Time"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_raid_gestapo_shipments
+		icon = GFX_focus_generic_supply_line
+		prerequisite = { focus = AGR_return_anarchist_expats }
+		prerequisite = { focus = AGR_liberate_jewish_scientists }
+		x = 1
+		y = 1
+		relative_position_id = AGR_return_anarchist_expats
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+				IF = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo
+    					add_idea = AGR_ire_of_gestapo_1c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1a
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1a
+    					add_idea = AGR_ire_of_gestapo_2c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1b
+    					add_idea = AGR_ire_of_gestapo_2d
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_1c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_1c
+    					add_idea = AGR_ire_of_gestapo_2b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2a
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2a
+    					add_idea = AGR_ire_of_gestapo_3a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2c
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2c
+    					add_idea = AGR_ire_of_gestapo_3c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2d
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2d
+    					add_idea = AGR_ire_of_gestapo_3d
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_2e
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_2e
+    					add_idea = AGR_ire_of_gestapo_3b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3a
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_3a
+    					add_idea = AGR_ire_of_gestapo_4a
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_3b
+    					add_idea = AGR_ire_of_gestapo_4c
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_3e
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_3e
+    					add_idea = AGR_ire_of_gestapo_4b
+					}
+				}
+				else_if = {
+					limit = {
+						has_idea = AGR_ire_of_gestapo_4b
+					}
+					swap_ideas = {
+    					remove_idea = AGR_ire_of_gestapo_4b
+		 				add_idea = AGR_ire_of_gestapo_5
+					}
+				}
+		}
+	}
+
+	focus = {
+		id = AGR_underground_workshops
+		icon = GFX_focus_NOR_empower_sivorg
+		prerequisite = { focus = AGR_liberate_jewish_scientists }
+		prerequisite = { focus = AGR_community_defense }
+		x = 2
+		y = 0
+		relative_position_id = AGR_raid_gestapo_shipments
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = AGR_underground_workshops_tt
+			IF = {
+				limit = {
+					has_idea = AGR_underground_movement_3a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_3a
+    				add_idea = AGR_underground_movement_4a
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_4a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_4a
+    				add_idea = AGR_underground_movement_5a
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_4b
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_4b
+    				add_idea = AGR_underground_movement_5b
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_5b
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_5b
+    				add_idea = AGR_underground_movement_6
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_getaway_cars
+		icon = GFX_focus_FIN_motti_tactics
+		prerequisite = { focus = AGR_community_defense }
+		prerequisite = { focus = AGR_extending_our_grasp }
+		x = 2
+		y = 0
+		relative_position_id = AGR_underground_workshops
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = AGR_getaway_cars_tt
+			IF = {
+				limit = {
+					has_idea = AGR_underground_movement_3a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_3a
+    				add_idea = AGR_underground_movement_4b
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_4a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_4a
+    				add_idea = AGR_underground_movement_5b
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_5a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_5a
+    				add_idea = AGR_underground_movement_6
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_underground_tool_libraries
+		icon = GFX_focus_generic_modernize_industry
+		prerequisite = { focus = AGR_extending_our_grasp }
+		prerequisite = { focus = AGR_buying_time }
+		x = 2
+		y = 0
+		relative_position_id = AGR_getaway_cars
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = AGR_underground_tool_libraries_tt
+			IF = {
+				limit = {
+					has_idea = AGR_underground_movement_1b
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_1b
+    				add_idea = AGR_underground_movement_2a
+				}
+			}	
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_2a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_2a
+    				add_idea = AGR_underground_movement_3b
+				}
+			}	
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_3a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_3a
+    				add_idea = AGR_underground_movement_4a
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_4a
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_4a
+    				add_idea = AGR_underground_movement_5a
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_4b
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_4b
+    				add_idea = AGR_underground_movement_5b
+				}
+			}
+			else_if = {
+				limit = {
+					has_idea = AGR_underground_movement_5b
+				}
+				swap_ideas = {
+    				remove_idea = AGR_underground_movement_5b
+    				add_idea = AGR_underground_movement_6
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_emptying_the_coffers
+		icon = GFX_focus_ETH_adopt_the_lira
+		prerequisite = { focus = AGR_raid_gestapo_shipments }
+		prerequisite = { focus = AGR_underground_workshops }
+		x = 1
+		y = 1
+		relative_position_id = AGR_raid_gestapo_shipments
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_political_power = 300			
+		}
+	}
+
+	focus = {
+		id = AGR_hit_and_run_attacks
+		icon = GFX_focus_generic_total_war
+		prerequisite = { focus = AGR_getaway_cars }
+		prerequisite = { focus = AGR_underground_tool_libraries }
+		x = 1
+		y = 1
+		relative_position_id = AGR_getaway_cars
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_autonomy_score = {
+    			value = 250
+    			localization = "Hit and Run Attacks"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_the_end_draws_near
+		icon = GFX_SOV_liberate_ryutin_ccp_2d_sov_compatibility
+		prerequisite = { focus = AGR_emptying_the_coffers }
+		prerequisite = { focus = AGR_hit_and_run_attacks }
+		available = {
+			date > 1939.01.01
+		}
+		x = 2
+		y = 1
+		relative_position_id = AGR_emptying_the_coffers
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = AGR_the_end_draws_near_tt
+			hidden_effect = {
+				country_event = {
+					id = anarchist_germany.3
+					days = 1
+				}
+			}	
+		}
+	}
+
+	############
+	#SCW branch#
+	############
+
+	focus = {
+		id = AGR_supporting_the_scw
+		icon = GFX_focus_spr_no_pasaran
+		relative_position_id = AGR_return_of_the_faud
+		x = 7
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_return_of_the_faud }
+		available = {
+			AND = {
+				country_exists = SPC
+				NOT = { has_global_flag = scw_over}	
+			}
+		}
+		bypass = {
+			has_global_flag = scw_over
+		}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			unlock_decision_tooltip = AGR_send_manpower
+		}
+	}
+
+	focus = {
+		id = AGR_scw_arms_shipments
+		icon = GFX_focus_SOV_support_spanish_poum
+		relative_position_id = AGR_supporting_the_scw
+		x = -2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_supporting_the_scw }
+		available = {
+			AND = {
+				country_exists = SPC
+				NOT = { has_global_flag = scw_over}	
+			}
+		}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			unlock_decision_tooltip = AGR_send_guns
+		}
+	}
+
+	focus = {
+		id = AGR_scw_fighters
+		icon = GFX_focus_generic_invite_republican_spanish_exiles
+		relative_position_id = AGR_supporting_the_scw
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_supporting_the_scw }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_scw_fighters_tt
+			IF = {
+				limit = {
+					NOT = {
+						country_exists = SPC
+					}
+					has_global_flag = scw_over
+				}
+				set_country_flag = AGR_scw_vets_return
+			}
+			else_if = {
+				limit = {
+					country_exists = SPC
+					has_global_flag = scw_over
+				}
+				set_country_flag = AGR_scw_vets_return
+				add_manpower = 10000
+				add_equipment_to_stockpile = {
+    				type = infantry_equipment
+    				amount = 5000
+					producer = SPC
+				}
+				SPC = {
+					add_manpower = -10000
+					add_equipment_to_stockpile = {
+    					type = infantry_equipment
+    					amount = -5000
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					country_exists = SPC
+					NOT = {
+						has_global_flag = scw_over
+					}
+				}
+				add_ideas = AGR_scw_fighters_idea
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_scw_german_solidarity
+		icon = GFX_focus_generic_befriend_communist_spain_focus
+		relative_position_id = AGR_supporting_the_scw
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_supporting_the_scw }
+		available = {
+			AND = {
+				country_exists = SPC
+				NOT = { has_global_flag = scw_over}	
+			}
+		}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			SPC = {
+				add_ideas = AGR_scw_german_solidarity_idea
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_anarchist_international
+		icon = GFX_focus_spr_anarchism_knows_no_borders
+		relative_position_id = AGR_scw_fighters
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_scw_arms_shipments }
+		prerequisite = { focus = AGR_scw_fighters }
+		prerequisite = { focus = AGR_scw_german_solidarity }
+		available = {
+			AND = {
+				country_exists = SPC
+				has_global_flag = scw_over
+			}
+		}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = anarchist_international_tt
+			if = {
+				limit = {
+					country_exists = SPC
+					has_global_flag = scw_over
+					AGR = {
+						is_subject = no
+					}
+					SPC = {
+						NOT = {
+							is_in_faction_with = AGR
+						}
+					}
+				}
+				SPC = {
+					create_faction = "Global Anarchist Federation"
+					add_to_faction = AGR
+					if = {
+						limit = {
+							any_other_country = {
+								NOT = { is_in_faction_with = ROOT }
+								is_subject = no
+								has_government = anarchist
+							}
+						}
+						every_other_country = {
+							limit = {
+								NOT = { is_in_faction_with = ROOT }
+								is_subject = no
+								has_government = anarchist
+							}
+							country_event = {
+								id = SPC_anarchist_diplomacy.1
+								hours = 6
+							}
+						}
+					}	
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						country_exists = SPC
+					}
+					has_global_flag = scw_over
+					AGR = {
+						is_subject = no
+					}
+				}
+				AGR = {
+					create_faction = "Global Anarchist Federation"
+					if = {
+						limit = {
+							any_other_country = {
+								NOT = { is_in_faction_with = ROOT }
+								is_subject = no
+								has_government = anarchist
+							}
+						}
+						every_other_country = {
+							limit = {
+								NOT = { is_in_faction_with = ROOT }
+								is_subject = no
+								has_government = anarchist
+							}
+							country_event = {
+								id = AGR_anarchist_diplomacy.1
+								hours = 6
+							}
+						}
+					}	
+				}
+			}
+			else_if = {
+				limit = {
+					country_exists = SPC
+					has_global_flag = scw_over
+					AGR = {
+						is_subject = yes
+					}
+					SPC = {
+						NOT = {
+							is_in_faction_with = AGR
+						}
+					}
+				}
+				add_ideas = AGR_anarchist_international_idea
+			}
+		}
+	}
+
+	#################
+	#economic branch#
+	#################
+
+	focus = {
+		id = AGR_fill_potholes
+		icon = GFX_SOV_infrastructure_effort_nsb_ccp_2d_sov_compatibility
+		x = 6
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_return_of_the_faud }
+		available = {
+			57 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_supporting_the_scw
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			57 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_westfalen_infrastructure
+		icon = GFX_SOV_industrial_modernization_ccp_2d_sov_compatibility
+		x = -2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_fill_potholes }
+		available = {
+			57 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_fill_potholes
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			57 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_retooling_production
+		icon = GFX_SOV_modernize_aircraft_facilities_ccp_2d_sov_compatibility
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_fill_potholes }
+		relative_position_id = AGR_fill_potholes
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+    			bonus = 0.5
+    			uses = 2
+    			category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_engineering_workshops
+		icon = GFX_goal_generic_production2
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_fill_potholes }
+		relative_position_id = AGR_fill_potholes
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+    			bonus = 0.5
+    			uses = 2
+    			category = electronics
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_commandeer_refineries
+		icon = GFX_SOV_oil_production_ccp_2d_sov_compatibility
+		x = -2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_westfalen_infrastructure }
+		available = {
+			57 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_westfalen_infrastructure
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			57 = {
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = synthetic_refinery
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_scrapping_chromium
+		icon = GFX_focus_generic_chromium
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_westfalen_infrastructure }
+		available = {
+			57 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_westfalen_infrastructure
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			57 = {
+				add_resource = {
+    				type = chromium
+    				amount = 2
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_land_expropriation
+		icon = GFX_SOV_bringing_breakaways_back_to_the_fold_ccp_2d_sov_compatibility
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_retooling_production }
+		available = {
+			57 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_retooling_production
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			57 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_stealing_rubber
+		icon = GFX_focus_BRA_rubber_war
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_engineering_workshops }
+		available = {
+			57 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_engineering_workshops
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			57 = {
+				add_resource = {
+    				type = rubber
+    				amount = 2
+				}
+				add_resource = {
+    				type = tungsten
+    				amount = 2
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_stealing_trucks
+		icon = GFX_focus_generic_truck
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_engineering_workshops }
+		available = {
+			country_exists = GER
+		}
+		relative_position_id = AGR_engineering_workshops
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+    			type = motorized_equipment
+    			amount = 200
+    			producer = GER
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+    			type = motorized_equipment
+    			amount = -200
+    			producer = GER
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_expropriate_hannover_factories
+		icon = GFX_focus_DEN_heavy_regulations
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_commandeer_refineries }
+		prerequisite = { focus = AGR_scrapping_chromium }
+		available = {
+			59 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_commandeer_refineries
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			59 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_expropriate_hessen_factories
+		icon = GFX_focus_DEN_heavy_regulations
+		x = 3
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_scrapping_chromium }
+		prerequisite = { focus = AGR_land_expropriation }
+		available = {
+			55 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_commandeer_refineries
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			55 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_engineering_skillshares
+		icon = GFX_focus_generic_university_1
+		x = 6
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_land_expropriation }
+		prerequisite = { focus = AGR_stealing_rubber }
+		relative_position_id = AGR_commandeer_refineries
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+    			bonus = 0.75
+    			uses = 2
+    			category = electronics
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_improved_recycling
+		icon = GFX_focus_SOV_merge_plants
+		x = 8
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_stealing_rubber }
+		prerequisite = { focus = AGR_stealing_trucks }
+		relative_position_id = AGR_commandeer_refineries
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = AGR_improved_recycling_idea
+		}
+		
+	}
+
+	focus = {
+		id = AGR_hannover_infrastructure
+		icon = GFX_focus_generic_public_works
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_expropriate_hannover_factories }
+		available = {
+			59 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_expropriate_hannover_factories
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			59 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_hannover_dockyards
+		icon = GFX_focus_generic_refit_civilian_ships
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_expropriate_hannover_factories }
+		available = {
+			59 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_expropriate_hannover_factories
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			59 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_hessen_infrastructure
+		icon = GFX_focus_generic_land_reclamation
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_expropriate_hessen_factories }
+		available = {
+			55 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_expropriate_hessen_factories
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			55 = {
+				add_building_construction = {
+					type = infrastructure
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_hessen_pirate_radio
+		icon = GFX_focus_generic_radio_communication
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_expropriate_hessen_factories }
+		available = {
+			55 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_expropriate_hessen_factories
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			55 = {
+				add_building_construction = {
+					type = radar_station
+					level = 1
+					instant_build = yes
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_expand_westfalen_military_industry
+		icon = GFX_focus_generic_reorient_production
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_hannover_infrastructure }
+		prerequisite = { focus = AGR_hannover_dockyards }
+		available = {
+			57 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_hannover_infrastructure
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			57 = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_expand_regional_military_industry
+		icon = GFX_goal_generic_military_sphere
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_expand_westfalen_military_industry }
+		prerequisite = { focus = AGR_hessen_infrastructure }
+		relative_position_id = AGR_expand_westfalen_military_industry
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_expand_regional_military_industry_tt
+			every_controlled_state = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_public_transit
+		icon = GFX_focus_generic_road_investment
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_hessen_pirate_radio }
+		prerequisite = { focus = AGR_engineering_skillshares }
+		relative_position_id = AGR_hessen_pirate_radio
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = SPR_anarchist_public_transport
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_military_recycling
+		icon = GFX_focus_generic_central_planning
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_engineering_skillshares }
+		prerequisite = { focus = AGR_improved_recycling }
+		relative_position_id = AGR_engineering_skillshares
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			57 = {
+				add_resource = {
+    				type = aluminium
+    				amount = 2
+				}
+				add_resource = {
+    				type = steel
+    				amount = 2
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_commandeer_nazi_trains
+		icon = GFX_focus_generic_railroad
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_improved_recycling }
+		relative_position_id = AGR_improved_recycling
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+    			type = train_equipment
+    			amount = 25
+    			producer = GER
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+    			type = train_equipment
+    			amount = -25
+    			producer = GER
+				}
+			}
+			add_autonomy_score = {
+    			value = 100
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	#################
+	#military branch#
+	#################
+
+	focus = {
+		id = AGR_insurrectionary_militias
+		icon = GFX_SOV_barrier_troops_ccp_2d_sov_compatibility
+		x = 33
+		y = 1
+		cost = 0
+		prerequisite = { focus = AGR_return_of_the_faud }
+		available = {
+			GER = {
+				has_war_with_major = yes
+			}
+		}
+		bypass = {
+			GER = {
+				has_war_with_major = yes
+			}
+		}
+		relative_position_id = AGR_return_of_the_faud
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_insurrectionary_militias_tt
+			set_technology = {
+    			militia_tech = 1
+			}
+			AGR = {
+				division_template = {
+					name = "People's Militias"
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+						militia = { x = 1 y = 2 }
+						militia = { x = 2 y = 0 }
+						militia = { x = 2 y = 1 }
+						militia = { x = 2 y = 2 }
+					}
+					support = {
+        				artillery = { x = 0 y = 0 }
+    				}
+				}
+			}
+		}
+
+		bypass_effect = {
+			set_technology = {
+    			militia_tech = 1
+			}
+			AGR = {
+				division_template = {
+					name = "People's Militias"
+					regiments = {
+						militia = { x = 0 y = 0 }
+						militia = { x = 0 y = 1 }
+						militia = { x = 0 y = 2 }
+						militia = { x = 1 y = 0 }
+						militia = { x = 1 y = 1 }
+						militia = { x = 1 y = 2 }
+						militia = { x = 2 y = 0 }
+						militia = { x = 2 y = 1 }
+						militia = { x = 2 y = 2 }
+					}
+					support = {
+        				artillery = { x = 0 y = 0 }
+    				}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_militia_training
+		icon = GFX_focus_generic_infiltration
+		x = -10
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_insurrectionary_militias }
+		relative_position_id = AGR_insurrectionary_militias
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 1
+				category = land_doctrine
+			}
+			army_experience = 25
+			add_tech_bonus = {
+    			bonus = 0.75
+    			uses = 1
+    			category = infantry_tech
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_militia_discipline
+		icon = GFX_SOV_muster_the_old_guard_ccp_2d_sov_compatibility
+		x = -4
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_militia_training }
+		relative_position_id = AGR_militia_training
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			army_experience = 25
+			add_tech_bonus = {
+    			bonus = 0.75
+    			uses = 1
+    			category = support_tech
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_artillery_theft
+		icon = GFX_goal_agr_artillery_theft
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_militia_training }
+		available = {
+			country_exists = GER
+		}
+		mutually_exclusive = { focus = AGR_tank_theft }
+		relative_position_id = AGR_militia_training
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+    			type = artillery_equipment
+    			amount = 200
+    			producer = GER
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+    			type = artillery_equipment
+    			amount = -200
+    			producer = GER
+				}
+			}
+			add_autonomy_score = {
+    			value = 50
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_artillery_doctrine
+		icon = GFX_focus_SWE_let_fly_all_guns
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_artillery_theft }
+		relative_position_id = AGR_artillery_theft
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 1
+				category = cat_superior_firepower
+			}
+			army_experience = 25
+		}
+	}
+
+	focus = {
+		id = AGR_artillery_research
+		icon = GFX_focus_PER_construct_air_defenses
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_artillery_theft }
+		relative_position_id = AGR_artillery_theft
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = artillery
+			}
+			army_experience = 25
+		}
+	}
+
+	focus = {
+		id = AGR_artillery_supremacy
+		icon = GFX_focus_BEL_better_than_maginot
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_artillery_doctrine }
+		prerequisite = { focus = AGR_artillery_research }
+		relative_position_id = AGR_artillery_doctrine
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = ARG_artillery_supremacy_idea
+		}
+	}
+
+	focus = {
+		id = AGR_tank_theft
+		icon = GFX_goal_agr_tank_theft
+		x = 5
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_militia_training }
+		available = {
+			country_exists = GER
+		}
+		mutually_exclusive = { focus = AGR_artillery_theft }
+		relative_position_id = AGR_militia_training
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+    			type = light_tank_chassis
+    			amount = 200
+    			producer = GER
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+    			type = light_tank_chassis
+    			amount = -200
+    			producer = GER
+				}
+			}
+			add_autonomy_score = {
+    			value = 50
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_tank_doctrine
+		icon = GFX_focus_SOV_the_glory_of_the_red_army_alternative
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_tank_theft }
+		relative_position_id = AGR_tank_theft
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			division_template = {
+				name = "Anarchist Light Armor Division"
+				is_locked = yes 
+				priority = 0
+				template_counter = 1
+				regiments = {
+					light_armor = { x = 0 y = 0 }
+					light_armor = { x = 0 y = 1 }
+					light_armor = { x = 1 y = 0 }
+					light_armor = { x = 1 y = 1 }
+					motorized = { x = 2 y = 0 }
+					motorized = { x = 2 y = 1 }
+				}
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 1
+				category = cat_mobile_warfare
+			}
+			army_experience = 25
+		}
+	}
+
+	focus = {
+		id = AGR_tank_research
+		icon = GFX_focus_NORDIC_com_materiel
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_tank_theft }
+		relative_position_id = AGR_tank_theft
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = armor
+			}
+			army_experience = 25
+		}
+	}
+
+	focus = {
+		id = AGR_tank_supremacy
+		icon = GFX_focus_GER_wunderwaffe
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_tank_doctrine }
+		prerequisite = { focus = AGR_tank_research }
+		relative_position_id = AGR_tank_doctrine
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = ARG_tank_supremacy_idea
+		}
+	}
+
+	focus = {
+		id = AGR_militia_specialists
+		icon = GFX_focus_AFG_mountain_training
+		x = -2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_militia_training }
+		relative_position_id = AGR_militia_training
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = mountaineers_tech
+			}
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = marine_tech
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_spec_ops_deployment
+		icon = GFX_focus_AUS_osterreichische_gebirgsjager
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_militia_specialists }
+		relative_position_id = AGR_militia_specialists
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			AGR = {
+				division_template = {
+					name = "Mountain Militia"
+					regiments = {
+						mountaineers = { x = 0 y = 0 }
+						mountaineers = { x = 0 y = 1 }
+						mountaineers = { x = 0 y = 2 }
+						mountaineers = { x = 1 y = 0 }
+						mountaineers = { x = 1 y = 1 }
+						mountaineers = { x = 1 y = 2 }
+					}
+					support = {
+        				artillery = { x = 0 y = 0 }
+    				}
+				}
+				division_template = {
+					name = "Marine Militia"
+					regiments = {
+						marine = { x = 0 y = 0 }
+						marine = { x = 0 y = 1 }
+						marine = { x = 0 y = 2 }
+						marine = { x = 1 y = 0 }
+						marine = { x = 1 y = 1 }
+						marine = { x = 1 y = 2 }
+					}
+				}
+				57 = {
+					create_unit = {
+						division = "name = \"First Mountaneers\" division_template = \"Mountain Militia\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+					create_unit = {
+						division = "name = \"Second Mountaneers\" division_template = \"Mountain Militia\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+					create_unit = {
+						division = "name = \"First Marines\" division_template = \"Marine Militia\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+					create_unit = {
+						division = "name = \"Second Marines\" division_template = \"Marine Militia\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_militia_elections
+		icon = GFX_SOV_expand_aviation_institutes_ccp_2d_sov_compatibility
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_militia_discipline }
+		relative_position_id = AGR_militia_discipline
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+			army_experience = 25
+		}
+	}
+
+	focus = {
+		id = AGR_peoples_militias
+		icon = GFX_focus_SOV_mobilization_plan
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_spec_ops_deployment }
+		prerequisite = { focus = AGR_militia_elections }
+		relative_position_id = AGR_spec_ops_deployment
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = ARG_peoples_militia_idea
+		}
+	}
+
+	focus = {
+		id = AGR_air_militias
+		icon = GFX_focus_NORDIC_dem_airforce
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_insurrectionary_militias }
+		available = {
+			any_country_with_original_tag = {
+    			original_tag_to_check = FRA
+    			has_government = fascism
+			}
+			57 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_insurrectionary_militias
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_recruit_Georg_Glaser_tt
+			57 = {
+				add_building_construction = {
+					type = air_base
+					level = 1
+					instant_build = yes
+				}
+			}
+			air_experience = 50
+			set_country_flag = agr_georg_glaser_recruited
+		}
+	}
+
+	focus = {
+		id = AGR_fighter_theft
+		icon = GFX_goal_agr_fighter_theft
+		x = -2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_air_militias }
+		available = {
+			country_exists = GER
+		}
+		relative_position_id = AGR_air_militias
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+    			type = small_plane_airframe
+    			amount = 200
+    			producer = GER
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+    			type = small_plane_airframe
+    			amount = -200
+    			producer = GER
+				}
+			}
+			add_autonomy_score = {
+    			value = 50
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_tac_bomber_theft
+		icon = GFX_goal_agr_tac_bomber_theft
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_air_militias }
+		available = {
+			country_exists = GER
+		}
+		relative_position_id = AGR_air_militias
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+    			type = small_plane_cas_airframe
+    			amount = 200
+    			producer = GER
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+    			type = small_plane_cas_airframe
+    			amount = -200
+    			producer = GER
+				}
+			}
+			add_autonomy_score = {
+    			value = 50
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_nav_bomber_theft
+		icon = GFX_goal_agr_nav_bomber_theft
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_air_militias }
+		available = {
+			country_exists = GER
+		}
+		relative_position_id = AGR_air_militias
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_equipment_to_stockpile = {
+    			type = small_plane_naval_bomber_airframe
+    			amount = 200
+    			producer = GER
+			}
+			GER = {
+				add_equipment_to_stockpile = {
+    			type = small_plane_naval_bomber_airframe
+    			amount = -200
+    			producer = GER
+				}
+			}
+			add_autonomy_score = {
+    			value = 50
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_fighter_development
+		icon = GFX_focus_SOV_flying_clubs
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_fighter_theft }
+		mutually_exclusive = { focus = AGR_tac_bomber_development }
+		mutually_exclusive = { focus = AGR_nav_bomber_development }
+		relative_position_id = AGR_fighter_theft
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = light_fighter
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_tac_bomber_development
+		icon = GFX_focus_generic_armored_air_support
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_tac_bomber_theft }
+		mutually_exclusive = { focus = AGR_fighter_development }
+		mutually_exclusive = { focus = AGR_nav_bomber_development }
+		relative_position_id = AGR_tac_bomber_theft
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = cas_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_nav_bomber_development
+		icon = GFX_focus_generic_cryptologic_bomb
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_nav_bomber_theft }
+		mutually_exclusive = { focus = AGR_fighter_development }
+		mutually_exclusive = { focus = AGR_tac_bomber_development }
+		relative_position_id = AGR_nav_bomber_theft
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = naval_air
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_fighter_production
+		icon = GFX_focus_SMB_purchase_aircraft
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_fighter_development }
+		relative_position_id = AGR_fighter_development
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = AGR_fighter_production_idea
+		}
+	}
+
+	focus = {
+		id = AGR_tac_bomber_production
+		icon = GFX_focus_generic_aircraft_production
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_tac_bomber_development }
+		relative_position_id = AGR_tac_bomber_development
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = AGR_tac_bomber_production_idea
+		}
+	}
+
+	focus = {
+		id = AGR_nav_bomber_production
+		icon = GFX_focus_generic_torpedo_production
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_nav_bomber_development }
+		relative_position_id = AGR_nav_bomber_development
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = AGR_nav_bomber_production_idea
+		}
+	}
+
+	focus = {
+		id = AGR_heavy_fighter_development
+		icon = GFX_focus_generic_long_range_aircraft
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_fighter_production }
+		relative_position_id = AGR_fighter_production
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = cat_heavy_fighter
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_flight_experiments
+		icon = GFX_focus_generic_early_helicopter
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_heavy_fighter_development }
+		available = {
+			57 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_heavy_fighter_development
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			IF = {
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				57 = {
+					add_building_construction = {
+						type = air_facility
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					bonus = 0.75
+					uses = 2
+					category = air_equipment
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_heavy_bomber_development
+		icon = GFX_focus_SWE_marauder_bombers
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_tac_bomber_production }
+		relative_position_id = AGR_tac_bomber_production
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 1
+				category = cat_strategic_bomber
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_race_for_the_bomb
+		icon = GFX_SOV_soviet_atomic_bomb_project_ccp_2d_sov_compatibility
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_heavy_bomber_development }
+		available = {
+			59 = {
+				is_owned_and_controlled_by = AGR
+			}
+		}
+		relative_position_id = AGR_heavy_bomber_development
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			IF = {
+				limit = {
+					has_dlc = "Gotterdammerung"
+				}
+				59 = {
+					add_building_construction = {
+						type = nuclear_facility
+						level = 1
+						instant_build = yes
+					}
+				}
+			}
+			else = {
+				add_tech_bonus = {
+					bonus = 0.75
+					uses = 1
+					category = nuclear
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_the_black_fleet
+		icon = GFX_goal_agr_the_black_fleet
+		x = 8
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_insurrectionary_militias }
+		relative_position_id = AGR_insurrectionary_militias
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			navy_experience = 50
+			AGR_Ernst_Schneider = {
+				remove_unit_leader_trait = underground_operator
+				gain_xp = 50
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_naval_production
+		icon = GFX_goal_generic_construct_naval_dockyard
+		x = -3
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_the_black_fleet }
+		relative_position_id = AGR_the_black_fleet
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_naval_production_tt
+			every_controlled_state = {
+				IF = {
+					limit = {
+						is_coastal = yes
+					}
+					add_building_construction = {
+						type = dockyard
+						level = 2
+						instant_build = yes
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_steal_nazi_destroyers
+		icon = GFX_goal_agr_steal_nazi_destroyers
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_the_black_fleet }
+		available = {
+			country_exists = GER
+			AGR = {
+				any_controlled_state = { is_coastal = yes }
+			}
+		}
+		relative_position_id = AGR_the_black_fleet
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_steal_nazi_destroyers_tt
+			GER = {
+				transfer_ship = {
+					type = destroyer
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = destroyer
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = destroyer
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = destroyer
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = destroyer
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = destroyer
+					target = AGR
+					exclude_refitting = no
+				}
+			}
+			add_autonomy_score = {
+    			value = 50
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_destroyers_research
+		icon = GFX_focus_generic_destroyer
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_steal_nazi_destroyers }
+		mutually_exclusive = { focus = AGR_subs_research }
+		relative_position_id = AGR_steal_nazi_destroyers
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = dd_tech
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_destroyers_supremacy
+		icon = GFX_focus_generic_trade_interdiction
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_destroyers_research }
+		relative_position_id = AGR_destroyers_research
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = AGR_destroyers_supremacy_idea
+		}
+	}
+
+	focus = {
+		id = AGR_steal_nazi_subs
+		icon = GFX_goal_agr_steal_nazi_subs
+		x = 2
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_the_black_fleet }
+		available = {
+			country_exists = GER
+			AGR = {
+				any_controlled_state = { is_coastal = yes }
+			}
+		}
+		relative_position_id = AGR_the_black_fleet
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_steal_nazi_subs_tt
+			GER = {
+				transfer_ship = {
+					type = submarine
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = submarine
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = submarine
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = submarine
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = submarine
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = submarine
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = submarine
+					target = AGR
+					exclude_refitting = no
+				}
+			}
+			add_autonomy_score = {
+    			value = 50
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_subs_research
+		icon = GFX_goal_generic_navy_submarine
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_steal_nazi_subs }
+		mutually_exclusive = { focus = AGR_destroyers_research }
+		relative_position_id = AGR_steal_nazi_subs
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = ss_tech
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_subs_supremacy
+		icon = GFX_focus_generic_cruiser_submarines
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_subs_research }
+		relative_position_id = AGR_subs_research
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = AGR_subs_supremacy_idea
+		}
+	}
+
+	focus = {
+		id = AGR_naval_doctrine_development
+		icon = GFX_SOV_an_oceangoing_navy_ccp_2d_sov_compatibility
+		x = 4
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_the_black_fleet }
+		relative_position_id = AGR_the_black_fleet
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 1
+				category = naval_doctrine
+			}
+			navy_experience = 25
+		}
+	}
+
+	focus = {
+		id = AGR_naval_doctrine_expansion
+		icon = GFX_SOV_naval_infantry_ccp_2d_sov_compatibility
+		x = 0
+		y = 2
+		cost = 5
+		prerequisite = { focus = AGR_naval_doctrine_development }
+		prerequisite = { focus = AGR_destroyers_research focus = AGR_subs_research }
+		relative_position_id = AGR_naval_doctrine_development
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 1
+				category = naval_doctrine
+			}
+			navy_experience = 25
+		}
+	}
+
+	focus = {
+		id = AGR_naval_doctrine_perfection
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_naval_doctrine_expansion }
+		prerequisite = { focus = AGR_destroyers_supremacy focus = AGR_subs_supremacy }
+		relative_position_id = AGR_subs_supremacy
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 2
+				category = naval_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_steal_nazi_cruiser
+		icon = GFX_goal_agr_steal_nazi_cruiser
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_naval_production }
+		available = {
+			country_exists = GER
+			AGR = {
+				any_controlled_state = { is_coastal = yes }
+			}
+		}
+		relative_position_id = AGR_naval_production
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_steal_nazi_cruiser_tt
+			GER = {
+				transfer_ship = {
+					type = light_cruiser
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = light_cruiser
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = light_cruiser
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = light_cruiser
+					target = AGR
+					exclude_refitting = no
+				}
+				transfer_ship = {
+					type = heavy_cruiser
+					target = AGR
+					exclude_refitting = no
+				}
+			}
+			add_autonomy_score = {
+    			value = 50
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_steal_nazi_carrier
+		icon = GFX_goal_agr_steal_nazi_carrier
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_steal_nazi_cruiser }
+		available = {
+			country_exists = GER
+			GER = {
+				has_design_based_on = ship_hull_carrier
+			}
+			AGR = {
+				any_controlled_state = { is_coastal = yes }
+			}
+		}
+		mutually_exclusive = { focus = AGR_steal_nazi_battleship }
+		relative_position_id = AGR_steal_nazi_cruiser
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_steal_nazi_carrier_tt
+			GER = {
+				transfer_ship = {
+					type = carrier
+					target = AGR
+					exclude_refitting = no
+				}
+			}
+			add_autonomy_score = {
+    			value = 250
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_naval_bombing_focus
+		icon = GFX_focus_ARG_study_the_battle_of_the_river_plate
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_steal_nazi_carrier }
+		prerequisite = { focus = AGR_nav_bomber_production }
+		relative_position_id = AGR_steal_nazi_carrier
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = AGR_naval_bombing_focus_idea
+		}
+	}
+
+	focus = {
+		id = AGR_naval_bombing_supremacy
+		icon = GFX_focus_GER_graf_zeppelin
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_naval_bombing_focus }
+		relative_position_id = AGR_naval_bombing_focus
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 1
+				category = naval_doctrine
+			}
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 1
+				category = air_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_rocketry_experiments
+		icon = GFX_focus_rocketry
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_naval_bombing_supremacy }
+		relative_position_id = AGR_naval_bombing_supremacy
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			set_technology = {
+				experimental_rockets = 1
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_steal_nazi_battleship
+		icon = GFX_goal_agr_steal_nazi_battleship
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_steal_nazi_cruiser }
+		available = {
+			country_exists = GER
+			AGR = {
+				any_controlled_state = { is_coastal = yes }
+			}
+		}
+		mutually_exclusive = { focus = AGR_steal_nazi_carrier }
+		relative_position_id = AGR_steal_nazi_cruiser
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = AGR_steal_nazi_battleship_tt
+			GER = {
+				transfer_ship = {
+					type = battleship
+					target = AGR
+					exclude_refitting = no
+				}
+			}
+			add_autonomy_score = {
+    			value = 50
+    			localization = "Movement Progress"
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_battleship_research
+		icon = GFX_focus_NORDIC_com_navy
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = AGR_steal_nazi_battleship }
+		relative_position_id = AGR_steal_nazi_battleship
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = bb_tech
+			}
+		}
+	}
+
+	##################
+	#Kill Hitler Path#
+	##################
+	
+	focus = {
+		id = AGR_expropriating_funds
+		icon = GFX_focus_CONGO_gold_and_diamonds
+		prerequisite = { focus = AGR_the_end_draws_near }
+		allow_branch = {
+			has_global_flag = AGR_lets_kill_hitler
+		}
+		x = -2
+		y = 1
+		relative_position_id = AGR_the_end_draws_near
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = AGR_expropriating_funds_tt
+			set_country_flag = AGR_bank_robberies
+		}
+	}
+
+	focus = {
+		id = AGR_blinding_the_cyclops
+		icon = GFX_goal_agr_blinding_the_cyclopse
+		prerequisite = { focus = AGR_the_end_draws_near }
+		allow_branch = {
+			has_global_flag = AGR_lets_kill_hitler
+		}
+		x = 0
+		y = 1
+		relative_position_id = AGR_the_end_draws_near
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			remove_ideas = AGR_ire_of_gestapo_5
+			remove_ideas = AGR_ire_of_gestapo_4c
+			remove_ideas = AGR_ire_of_gestapo_3b
+			remove_ideas = AGR_ire_of_gestapo_3c
+			remove_ideas = AGR_ire_of_gestapo_3d
+			remove_ideas = AGR_fascist_crackdown
+		}
+	}
+
+	focus = {
+		id = AGR_moving_above_ground
+		icon = GFX_focus_DEN_civilian_preparations
+		prerequisite = { focus = AGR_the_end_draws_near }
+		allow_branch = {
+			has_global_flag = AGR_lets_kill_hitler
+		}
+		x = 2
+		y = 1
+		relative_position_id = AGR_the_end_draws_near
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			remove_ideas = AGR_underground_movement_6
+			swap_ideas = {
+				remove_idea = AGR_surge_in_support_idea
+				add_idea = AGR_surge_in_support_idea_2
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_the_head_of_the_snake
+		icon = GFX_goal_agr_the_head_of_the_snake
+		prerequisite = { focus = AGR_expropriating_funds }
+		prerequisite = { focus = AGR_blinding_the_cyclops }
+		prerequisite = { focus = AGR_moving_above_ground }
+		x = 0
+		y = 1
+		relative_position_id = AGR_blinding_the_cyclops
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			GER = {
+				retire_character = GER_adolf_hitler
+				add_ideas = AGR_leadership_in_chaos
+				set_autonomy = {
+    				target = AGR
+    				autonomous_state = autonomy_free
+    				end_wars = yes
+    				end_civil_wars = yes
+				}
+				remove_from_faction = AGR
+			}
+			GER = {
+				declare_war_on = {
+    				target = AGR
+    				type = annex_everything
+				}
+			}
+			every_state = {
+				limit = {
+					is_core_of = GER
+				}
+				add_core_of = AGR
+			}
+			AGR = {
+				every_controlled_state = {
+					create_unit = {
+						division = "name = \"Anarchist Wreckers\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+					create_unit = {
+						division = "name = \"Anarchist Wreckers\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+					create_unit = {
+						division = "name = \"Anarchist Wreckers\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+					create_unit = {
+						division = "name = \"Anarchist Wreckers\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+					create_unit = {
+						division = "name = \"Anarchist Wreckers\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+				}
+				set_country_flag = AGR_regional_uprisings
+
+				hidden_effect = {
+					country_event = {
+						id = anarchist_germany.4
+						days = 1
+					}
+				}
+			}
+		}
+	}
+
+	##############################
+	#Anarchism on the World Stage#
+	##############################
+
+	focus = {
+		id = AGR_anarchist_europe
+		icon = GFX_SOV_a_global_class_struggle_ccp_2d_sov_compatibility
+		prerequisite = { focus = AGR_the_head_of_the_snake }
+		available = {
+			AGR = {
+				has_war = no
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = AGR_the_head_of_the_snake
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_research_slot = 2
+		}
+	}
+
+	focus = {
+		id = AGR_stirners_legacy
+		icon = GFX_focus_AGR_striners_legacy
+		prerequisite = { focus = AGR_anarchist_europe }
+		mutually_exclusive = {
+			focus = AGR_syndicalist_future
+			focus = AGR_kropotkins_legacy
+		}
+		x = -11
+		y = 1
+		relative_position_id = AGR_anarchist_europe
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_country_leader_role = {
+			    character = AGR_Anarchist_Commune
+			    promote_leader = yes
+			    country_leader = {
+			        ideology = egoist_anarchism
+			        expire = "1965.1.1.1"
+        			traits = { 
+						our_right_to_survive
+						egoist_anarchism_trait
+					}
+			    }
+			}
+			remove_country_leader_role = {
+    			character = AGR_Anarchist_Commune
+			    ideology = anarcho_syndicalism
+			}
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = AGR_EGOIST
+		}
+	}
+
+	focus = {
+		id = AGR_the_russian_nihilists
+		icon = GFX_focus_AFG_scavenging
+		prerequisite = { focus = AGR_stirners_legacy }
+		x = -2
+		y = 1
+		relative_position_id = AGR_stirners_legacy
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			every_country = {
+				limit = {
+					original_tag = SOV
+					NOT = {
+						has_government = anarchist
+					}
+				}
+				add_ideas = ARG_anarchist_influence
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_pure_anarchism
+		icon = GFX_focus_ETH_support_from_the_japanese_communists
+		prerequisite = { focus = AGR_stirners_legacy }
+		x = 0
+		y = 1
+		relative_position_id = AGR_stirners_legacy
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			every_country = {
+				limit = {
+					original_tag = JAP
+					NOT = {
+						has_government = anarchist
+					}
+				}
+				add_ideas = ARG_anarchist_influence
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_global_illegalist_union
+		icon = GFX_focus_AFG_work_with_german_inteligence
+		prerequisite = { focus = AGR_stirners_legacy }
+		x = 2
+		y = 1
+		relative_position_id = AGR_stirners_legacy
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			create_intelligence_agency = {
+    			name = "Illegalist Union"
+    			icon = GFX_black_wave
+			}
+			add_ideas = KOR_agency_idea_2
+		}
+	}
+
+	focus = {
+		id = AGR_the_ego_and_its_own
+		icon = GFX_focus_CHL_the_patagonian_giants
+		prerequisite = { focus = AGR_the_russian_nihilists }
+		prerequisite = { focus = AGR_pure_anarchism }
+		prerequisite = { focus = AGR_global_illegalist_union }
+		x = 0
+		y = 1
+		relative_position_id = AGR_pure_anarchism
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					OR = {
+						is_in_faction_with = ROOT
+						is_guaranteed_by = ROOT
+						has_non_aggression_pact_with = ROOT
+					}
+					is_major = yes
+					NOT = {
+						AGR = {
+							has_wargoal_against = PREV
+						}
+					}
+					NOT = {
+						has_government = anarchist
+					}
+				}
+				if = {
+					limit = {
+						ROOT = { is_faction_leader = yes }
+					}
+					ROOT = { remove_from_faction = PREV }
+				}
+				else_if = {
+					limit = {
+						is_faction_leader = yes
+					}
+					ROOT = { leave_faction = yes }
+				}
+				if = {
+					limit = {
+						ROOT = {
+							has_guaranteed = PREV
+						}
+					}
+					ROOT = {
+						diplomatic_relation = {
+						    country = PREV
+						    relation = guarantee
+						    active = no
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_non_aggression_pact_with = ROOT
+					}
+					ROOT = {
+						diplomatic_relation = {
+						    country = PREV
+						    relation = non_aggression_pact
+						    active = no
+						}
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+				}
+			}
+			every_other_country = {
+				limit = {
+					is_major = yes
+					NOT = { is_in_faction_with = ROOT }
+					NOT = { is_guaranteed_by = ROOT }
+					NOT = { has_non_aggression_pact_with = ROOT }
+					NOT = {
+						AGR = {
+							has_wargoal_against = PREV
+						}
+					}
+					NOT = {
+						has_government = anarchist
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_syndicalist_future
+		icon = GFX_focus_ARG_women_in_industry
+		prerequisite = { focus = AGR_anarchist_europe }
+		mutually_exclusive = {
+			focus = AGR_stirners_legacy
+			focus = AGR_kropotkins_legacy
+		}
+		x = -5
+		y = 1
+		relative_position_id = AGR_anarchist_europe
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			AGR_Anarchist_Commune = {
+				add_country_leader_trait = {
+    			    ideology = anarcho_syndicalism
+    			    trait =	ARG_anarchosyndicalist
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_the_solidarity_federation
+		icon = GFX_focus_AGR_the_solidarity_federation
+		prerequisite = { focus = AGR_syndicalist_future }
+		x = -2
+		y = 1
+		relative_position_id = AGR_syndicalist_future
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			every_country = {
+				limit = {
+					original_tag = ENG
+					NOT = {
+						has_government = anarchist
+					}
+				}
+				add_ideas = ARG_anarchist_influence
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_the_iww
+		icon = GFX_focus_AGR_the_iww
+		prerequisite = { focus = AGR_syndicalist_future }
+		x = 0
+		y = 1
+		relative_position_id = AGR_syndicalist_future
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			every_country = {
+				limit = {
+					original_tag = USA
+					NOT = {
+						has_government = anarchist
+					}
+				}
+				add_ideas = ARG_anarchist_influence
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_and_end_to_fascism
+		icon = GFX_focus_ITA_liberation_or_death
+		prerequisite = { focus = AGR_syndicalist_future }
+		x = 2
+		y = 1
+		relative_position_id = AGR_syndicalist_future
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					OR = {
+						is_in_faction_with = ROOT
+						is_guaranteed_by = ROOT
+						has_non_aggression_pact_with = ROOT
+					}
+					has_government = fascism
+					NOT = {
+						AGR = {
+							has_wargoal_against = PREV
+						}
+					}
+				}
+				if = {
+					limit = {
+						ROOT = { is_faction_leader = yes }
+					}
+					ROOT = { remove_from_faction = PREV }
+				}
+				else_if = {
+					limit = {
+						is_faction_leader = yes
+					}
+					ROOT = { leave_faction = yes }
+				}
+				if = {
+					limit = {
+						ROOT = {
+							has_guaranteed = PREV
+						}
+					}
+					ROOT = {
+						diplomatic_relation = {
+						    country = PREV
+						    relation = guarantee
+						    active = no
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_non_aggression_pact_with = ROOT
+					}
+					ROOT = {
+						diplomatic_relation = {
+						    country = PREV
+						    relation = non_aggression_pact
+						    active = no
+						}
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+				}
+			}
+			every_other_country = {
+				limit = {
+					has_government = fascism
+					NOT = { is_in_faction_with = ROOT }
+					NOT = { is_guaranteed_by = ROOT }
+					NOT = { has_non_aggression_pact_with = ROOT }
+					NOT = {
+						AGR = {
+							has_wargoal_against = PREV
+						}
+					}	
+				}
+				ROOT = {
+					create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_greater_union_of_syndicates
+		icon = GFX_focus_CHL_union_of_hispanic_republics
+		prerequisite = { focus = AGR_the_solidarity_federation }
+		prerequisite = { focus = AGR_the_iww }
+		prerequisite = { focus = AGR_and_end_to_fascism }
+		x = 0
+		y = 1
+		relative_position_id = AGR_the_iww
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			unlock_decision_tooltip = AGR_form_european_union
+		}
+	}
+
+	focus = {
+		id = AGR_kropotkins_legacy
+		icon = GFX_focus_AGR_kropotkins_legacy
+		prerequisite = { focus = AGR_anarchist_europe }
+		mutually_exclusive = {
+			focus = AGR_stirners_legacy
+			focus = AGR_syndicalist_future
+		}
+		x = 0
+		y = 1
+		relative_position_id = AGR_anarchist_europe
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_country_leader_role = {
+			    character = AGR_Anarchist_Commune
+			    promote_leader = yes
+			    country_leader = {
+			        ideology = anarchist_communism
+			        expire = "1965.1.1.1"
+        			traits = { 
+						our_right_to_survive
+						anarchist_communist_trait
+					}
+			    }
+			}
+			remove_country_leader_role = {
+    			character = AGR_Anarchist_Commune
+			    ideology = anarcho_syndicalism
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_anti_imperialist_anarchism
+		icon = GFX_focus_ETH_african_wildfire
+		prerequisite = { focus = AGR_kropotkins_legacy }
+		x = -1
+		y = 1
+		relative_position_id = AGR_kropotkins_legacy
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			unlock_decision_tooltip = AGR_support_resistance_decision
+			unlock_decision_tooltip = AGR_arm_resistance_decision
+			unlock_decision_tooltip = AGR_support_independence_decision
+			unlock_decision_tooltip = AGR_anti_colonialism_decision
+			unlock_decision_tooltip = AGR_demand_peace_decision
+		}
+	}
+
+	focus = {
+		id = AGR_anarchism_in_the_americas
+		icon = GFX_focus_GER_align_south_america
+		prerequisite = { focus = AGR_anti_imperialist_anarchism }
+		x = -1
+		y = 1
+		relative_position_id = AGR_anti_imperialist_anarchism
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			unlock_decision_tooltip = ARG_anarchist_delegates_americas
+		}
+	}
+
+	focus = {
+		id = AGR_anarchism_in_asia
+		icon = GFX_focus_GER_south_east_asian_natural_wealth
+		prerequisite = { focus = AGR_anti_imperialist_anarchism }
+		x = 1
+		y = 1
+		relative_position_id = AGR_anti_imperialist_anarchism
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			unlock_decision_tooltip = ARG_anarchist_delegates_asia
+		}
+	}
+
+	focus = {
+		id = AGR_dealing_with_the_nkvd
+		icon = GFX_focus_PER_communist_afghanistan_intervention
+		prerequisite = { focus = AGR_anarchism_in_the_americas }
+		prerequisite = { focus = AGR_anarchism_in_asia }
+		mutually_exclusive = { focus = AGR_military_alliance }
+		available = {
+			NOT = {
+				has_global_flag = AGR_soviet_alliance_accepted
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = AGR_anarchism_in_the_americas
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			every_country = {
+				limit = {
+					original_tag = SOV
+				}
+				add_ideas = AGR_intelligence_sabotage
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_anarchist_diplomacy
+		icon = GFX_focus_AGR_anarchist_diplomacy
+		prerequisite = { focus = AGR_anarchist_europe }
+		x = 4
+		y = 1
+		relative_position_id = AGR_anarchist_europe
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			unlock_decision_tooltip = ARG_anarchist_delegates
+		}
+	}
+
+	focus = {
+		id = AGR_return_east_poland
+		icon = GFX_focus_POL_prussia_line
+		prerequisite = { focus = AGR_anarchist_diplomacy }
+		mutually_exclusive = {
+			focus = AGR_support_polish_comrades
+		}
+		available = {
+			OR = {
+				AGR = {
+					any_owned_state = {
+						is_core_of = POL
+					}
+				}
+				any_country = {
+					is_subject_of = AGR
+					any_owned_state = {
+						is_core_of = POL
+					}
+				}
+			}
+			SOV = {
+				exists = yes
+			}
+		}
+		x = -1
+		y = 1
+		relative_position_id = AGR_anarchist_diplomacy
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			every_country = {
+				limit = {
+					original_tag = SOV
+				}
+				transfer_state = 97
+				transfer_state = 784
+				transfer_state = 96
+				transfer_state = 95
+				transfer_state = 94
+				transfer_state = 93
+				transfer_state = 91
+				transfer_state = 89
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_soviet_alliance
+		icon = GFX_focus_GER_alliance_with_the_ussr
+		prerequisite = { focus = AGR_return_east_poland }
+		prerequisite = { focus = AGR_kropotkins_legacy }
+		x = -1
+		y = 1
+		relative_position_id = AGR_return_east_poland
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			SOV = {
+				country_event = { id = AGR_anarchist_diplomacy.5 hours = 5 random_hours = 5 }
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_spheres_of_influence
+		icon = GFX_focus_GER_spheres_of_influence
+		prerequisite = { focus = AGR_return_east_poland }
+		x = 1
+		y = 1
+		relative_position_id = AGR_return_east_poland
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			IF = {
+				limit = {
+					any_controlled_state = {
+						is_core_of = HUN
+					}
+				}
+				every_controlled_state = {
+					limit = {
+						is_core_of = HUN
+					}
+					transfer_state_to = SOV
+				}
+			}
+			IF = {
+				limit = {
+					any_controlled_state = {
+						is_core_of = ROM
+					}
+				}
+				every_controlled_state = {
+					limit = {
+						is_core_of = ROM
+					}
+					transfer_state_to = SOV
+				}
+			}
+			IF = {
+				limit = {
+					any_controlled_state = {
+						is_core_of = BUL
+					}
+				}
+				every_controlled_state = {
+					limit = {
+						is_core_of = BUL
+					}
+					transfer_state_to = SOV
+				}
+			}
+
+			IF = {
+				limit = {
+					any_subject_country = {
+						original_tag = HUN
+					}
+				}
+				SOV = {
+					annex_country = {
+						target = HUN
+						transfer_troops = no
+					}
+				}
+			}
+
+			IF = {
+				limit = {
+					any_subject_country = {
+						original_tag = ROM
+					}
+				}
+				SOV = {
+					annex_country = {
+						target = ROM
+						transfer_troops = no
+					}
+				}
+			}
+
+			IF = {
+				limit = {
+					any_subject_country = {
+						original_tag = BUL
+					}
+				}
+				SOV = {
+					annex_country = {
+						target = BUL
+						transfer_troops = no
+					}
+				}
+			}
+			NOR = {
+				add_ideas = ARG_anarchist_influence
+			}
+			SWE = {
+				add_ideas = ARG_anarchist_influence
+			}
+			FIN = {
+				add_ideas = ARG_anarchist_influence
+			}
+			ICE = {
+				add_ideas = ARG_anarchist_influence
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_military_alliance
+		icon = GFX_focus_SOV_the_supreme_soviet
+		prerequisite = { focus = AGR_soviet_alliance }
+		prerequisite = { focus = AGR_spheres_of_influence }
+		mutually_exclusive = { focus = AGR_dealing_with_the_nkvd }
+		available = {
+			has_global_flag = AGR_soviet_alliance_accepted
+		}
+		x = 1
+		y = 1
+		relative_position_id = AGR_soviet_alliance
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			SOV = {
+				dismantle_faction = yes
+			}
+			faction_leader = {
+				add_to_faction = SOV
+				add_to_faction = TAN
+				add_to_faction = MON
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_mahknos_dream
+		icon = GFX_focus_HUN_the_kingdom_of_ukraine
+		prerequisite = { focus = AGR_military_alliance }
+		x = 0
+		y = 1
+		relative_position_id = AGR_military_alliance
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			UKR = {
+    			every_state = {
+					limit = {
+						is_core_of = UKR
+					}
+					transfer_state_to = PREV
+				}
+				create_country_leader = {
+					name = "Anarchist Commune"
+					desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+					picture = "GFX_portrait_SPR_anarchist_commune"
+					expire = "1965.1.1"
+					ideology = anarchism
+					traits = {
+						our_right_to_survive
+					}
+				}
+				set_cosmetic_tag = ANCOM
+				set_country_flag = autonomous_commune
+				set_politics = {
+    				ruling_party = anarchist
+    				elections_allowed = no
+				}
+				AGR = {
+					set_autonomy = {
+    					target = UKR
+    					autonomous_state = autonomy_federated_commune
+    					end_wars = no
+    					end_civil_wars = no
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_support_polish_comrades
+		icon = GFX_focus_POL_the_four_year_plan
+		prerequisite = { focus = AGR_anarchist_diplomacy }
+		mutually_exclusive = {
+			focus = AGR_return_east_poland
+		}
+		available = {
+			OR = {
+				AGR = {
+					any_owned_state = {
+						is_core_of = POL
+					}
+				}
+				any_country = {
+					is_subject_of = AGR
+					any_owned_state = {
+						is_core_of = POL
+					}
+				}
+			}
+		}
+		x = 2
+		y = 1
+		relative_position_id = AGR_anarchist_diplomacy
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			10 = {
+				add_extra_state_shared_building_slots = 4
+				add_building_construction = {
+					type = industrial_complex
+					level = 2
+					instant_build = yes
+				}
+				add_building_construction = {
+					type = arms_factory
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = AGR_establish_balkan_communes
+		icon = GFX_focus_generic_balkan_diplomacy
+		prerequisite = { focus = AGR_support_polish_comrades }
+		x = 0
+		y = 1
+		relative_position_id = AGR_support_polish_comrades
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			unlock_decision_tooltip = AGR_establish_slovenian_commune
+			unlock_decision_tooltip = AGR_establish_croatian_commune
+			unlock_decision_tooltip = AGR_establish_hungarian_commune
+			unlock_decision_tooltip = AGR_establish_serbian_commune
+			unlock_decision_tooltip = AGR_establish_romanian_commune
+			unlock_decision_tooltip = AGR_establish_bulgarian_commune
+			unlock_decision_tooltip = AGR_establish_greek_commune
+			unlock_decision_tooltip = AGR_establish_transylvanian_commune
+			set_country_flag = AGR_balkan_anarchism
+		}
+	}
+
+	focus = {
+		id = AGR_global_revolution
+		icon = GFX_focus_AGR_global_revolution
+		prerequisite = {
+			focus = AGR_mahknos_dream
+			focus = AGR_dealing_with_the_nkvd
+			focus = AGR_greater_union_of_syndicates
+			focus = AGR_the_ego_and_its_own
+		}
+		x = -9
+		y = 3
+		relative_position_id = AGR_establish_balkan_communes
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = AGR_global_revolution_idea
+		}
+	}
+}

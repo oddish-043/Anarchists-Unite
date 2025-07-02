@@ -1,0 +1,218 @@
+
+FCC_ideological_struggle_balance = {
+	initial_value = -0.25
+	left_side = FCC_anarchist_side	
+	right_side = FCC_communist_side	
+	decision_category = FCC_ideological_struggle_balance_of_power_category
+	### The "middle ground"
+	range = {
+		id = FCC_balance_range
+		min = -0.15
+		max = 0.15
+		modifier = {
+			party_popularity_stability_factor = 0.0
+			research_speed_factor = 0.0
+			improve_relations_maintain_cost_factor = 0.0
+			min_export = 0.5
+			trade_opinion_factor = 0.5
+			consumer_goods_factor = 0.0
+			stability_weekly_factor = -0.01
+		}
+		on_activate = {
+			
+		}
+		on_deactivate = {
+			
+		}
+
+	}
+
+	### Decentralization - Anarchist
+	side = {
+		id = FCC_anarchist_side
+		icon = GFX_bop_ETH_anarchist_side
+		range = {
+			id = ETH_total_anarchist_range
+			min = -1
+			max = -0.9
+			modifier = {
+
+				party_popularity_stability_factor = 0.5
+				research_speed_factor = -0.25
+				improve_relations_maintain_cost_factor = 0.5
+				min_export = 0.0
+				trade_opinion_factor = 0.0
+				consumer_goods_factor = -0.30
+				stability_weekly_factor = -0.5
+
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = ETH_anarchist_dominant_range
+			min = -0.9
+			max = -0.65
+			modifier = {
+				party_popularity_stability_factor = 0.25
+				research_speed_factor = -0.1
+				improve_relations_maintain_cost_factor = 0.25
+				min_export = 0.1
+				trade_opinion_factor = 0.1
+				consumer_goods_factor = -0.2
+				stability_weekly_factor = -0.1
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = ETH_anarchist_power_range
+			min = -0.65
+			max = -0.35
+			modifier = {
+
+				party_popularity_stability_factor = 0.1
+				research_speed_factor = -0.05
+				improve_relations_maintain_cost_factor = 0.1
+				min_export = 0.25
+				trade_opinion_factor = 0.25
+				consumer_goods_factor = -0.1
+				stability_weekly_factor = -0.05
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+		range = {
+			id = ETH_anarchist_influence_range
+			min = -0.35
+			max = -0.15
+			modifier = {
+				party_popularity_stability_factor = 0.05
+				research_speed_factor = -0.05
+				improve_relations_maintain_cost_factor = 0.05
+				min_export = 0.35
+				trade_opinion_factor = 0.35
+				consumer_goods_factor = -0.05
+				stability_weekly_factor = -0.02
+				
+			}
+			on_activate = {
+				
+			}
+			on_deactivate = {
+				
+			}
+
+		}
+	}
+	# Centralization - Communist
+	side = {
+		id = FCC_communist_side	
+		icon = GFX_bop_ETH_communist_side
+		range = {
+			id = ETH_communist_influence_range
+			min = 0.15
+			max = 0.35
+			modifier = {
+				drift_defence_factor = -0.05
+				stability_weekly = -0.01
+				improve_relations_maintain_cost_factor = -0.05
+				min_export = 0.6
+				trade_opinion_factor = 0.6
+				consumer_goods_factor = 0.05
+				communism_drift = 0.01
+				stability_weekly_factor = -0.02
+			}
+			on_activate = {
+				add_ideas = FCC_communism_on_the_rise_idea
+			}
+			on_deactivate = {
+				remove_ideas = FCC_communism_on_the_rise_idea
+			}
+
+		}
+		range = {
+			id = ETH_communist_power_range
+			min = 0.35
+			max = 0.65
+			modifier = {
+				drift_defence_factor = -0.1
+				stability_weekly = -0.05
+				improve_relations_maintain_cost_factor = -0.1
+				min_export = 0.75
+				trade_opinion_factor = 0.75
+				consumer_goods_factor = 0.1
+				communism_drift = 0.02
+				stability_weekly_factor = -0.05
+			}
+			on_activate = {
+				add_ideas = FCC_communist_surge_idea
+			}
+			on_deactivate = {
+				remove_ideas = FCC_communist_surge_idea
+			}
+
+		}
+		range = {
+			id = ETH_communist_dominant_range
+			min = 0.65
+			max = 0.9
+			modifier = {
+				drift_defence_factor = -0.2
+				stability_weekly = -0.1
+				improve_relations_maintain_cost_factor = -0.5
+				min_export = 0.8
+				trade_opinion_factor = 1.0
+				consumer_goods_factor = 0.2
+				communism_drift = 0.03
+				stability_weekly_factor = -0.1
+			}
+			on_activate = {
+				add_ideas = FCC_looming_communist_uprising_idea
+			}
+			on_deactivate = {
+				remove_ideas = FCC_looming_communist_uprising_idea
+			}
+
+		}
+		range = {
+			id = ETH_communist_total_control_range
+			min = 0.9
+			max = 1
+			modifier = {
+				drift_defence_factor = -0.5
+				stability_weekly = -0.2
+				improve_relations_maintain_cost_factor = -0.75
+				min_export = 1.0
+				trade_opinion_factor = 1.5
+				consumer_goods_factor = 0.5
+				communism_drift = 0.04
+				stability_weekly_factor = -0.5
+			}
+			on_activate = {
+				add_ideas = FCC_imminent_communist_uprising_idea
+			}
+			on_deactivate = {
+				remove_ideas = FCC_imminent_communist_uprising_idea
+			}
+
+		}
+	}
+}
+

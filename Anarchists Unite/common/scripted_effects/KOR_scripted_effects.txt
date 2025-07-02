@@ -1,0 +1,34 @@
+KOR_partisan_uprising = {
+	
+	# ensure noone has tried creating a template in advance 
+	delete_unit_template_and_units = {
+		division_template = "Korean Partisans"
+		disband = yes #will refund equipment and manpower
+	}
+
+	# Create the template 
+	division_template = {
+		name = "Korean Partisans"
+		is_locked = yes
+		priority = 0
+		template_counter = 0
+		regiments = {
+			irregular_infantry = { x = 0 y = 0 }
+			irregular_infantry = { x = 0 y = 1 }
+			irregular_infantry = { x = 0 y = 2 }
+		}
+	}
+	every_owned_state = {
+		limit = {
+			check_variable = { KOR_resistance_force_strength > 0 }
+		}
+		create_unit = { 
+			# unit detauls 
+			division = "division_template = \"Korean Partisans\" start_experience_factor = 0.2  start_equipment_factor = 0.75" 
+			# country to spawn unit for 
+			owner = ROOT 
+			allow_spawning_on_enemy_provs = yes 
+			count = KOR_resistance_force_strength
+		}
+	}
+}

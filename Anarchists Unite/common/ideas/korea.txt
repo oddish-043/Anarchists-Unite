@@ -1,0 +1,215 @@
+ideas = {
+	country = {
+
+		KOR_the_long_exile = {
+			allowed = {
+				always = no
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		KOR_korean_volunteers = {
+			allowed = {
+				always = no
+				tag = KOR
+				is_government_in_exile = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				weekly_manpower = 500
+			}
+		}
+
+		KOR_agency_idea_1 = {
+			allowed = {
+				always = no
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			picture = anarchist_insurrectionaries
+
+			modifier = {
+				operative_slot = 2
+			}
+		}
+
+		KOR_agency_idea_2 = {
+			allowed = {
+				always = no
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+			picture = anarchist_insurrectionaries
+
+			modifier = {
+				operative_slot = 4
+			}
+		}
+
+		kor_building_nobility = {
+			allowed = {
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				promote_cost_factor = -0.5
+				grant_medal_cost_factor = -0.2
+				military_leader_cost_factor = -0.5
+				army_leader_cost_factor = -0.5 
+				assign_army_leader_cp_cost = -10
+			}
+		}
+
+		kor_rightful_emperor = {
+			allowed = {
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				compliance_growth_on_our_occupied_states = -0.5
+				resistance_activity = -0.5
+				resistance_damage_to_garrison_on_our_occupied_states = 0.5
+				resistance_decay_on_our_occupied_states = -0.5
+				resistance_growth_on_our_occupied_states = 0.5
+			}
+		}
+
+		KOR_juche_idea = {
+			allowed = {
+				always = no
+				tag = KOR
+				is_government_in_exile = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				army_core_attack_factor = 1.0
+				army_core_defence_factor = 1.0
+				compliance_growth_on_our_occupied_states = -0.25
+				resistance_damage_to_garrison_on_our_occupied_states = 0.25
+				resistance_decay_on_our_occupied_states = -0.25
+				resistance_growth_on_our_occupied_states = 0.25
+				communism_drift = 0.05
+			}
+		}
+
+		KOR_the_long_war = {
+			allowed = {
+				always = no
+				tag = KOR
+				is_government_in_exile = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 3.0
+				defense_bonus_against = 3.0
+				breakthrough_bonus_against = 3.0
+			}
+		}
+
+		KOR_foreign_aid = {
+			allowed = {
+				always = no
+				tag = KOR
+				is_government_in_exile = yes
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = generic_volunteer_expedition_bonus
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 5.0
+				production_factory_max_efficiency_factor = 5.0
+			}
+		}
+
+		KOR_rebuilding = {
+			allowed = {
+				always = no
+				tag = KOR
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			picture = smuggling_idea
+
+			modifier = {
+				industry_free_repair_factor = 1.0
+				industry_repair_factor = 1.0
+			}
+		}
+	}
+
+}

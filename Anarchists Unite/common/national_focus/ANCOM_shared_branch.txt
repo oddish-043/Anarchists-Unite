@@ -1,0 +1,972 @@
+
+#Intelligence Branch
+
+shared_focus = {
+	id = ANCOM_intel
+	
+	dynamic = yes
+
+	x = 0
+	y = 0
+
+	offset = {
+		x = -15
+		y = 18
+		trigger = {
+			tag = ARG
+		}
+	}
+	offset = {
+		x = 48
+		y = 20
+		trigger = {
+			tag = SPR 
+		}
+	}
+
+	offset = {
+		x = 55
+		y = 12
+		trigger = {
+			tag = ETH
+		}
+	}
+
+	offset = {
+		x = 11
+		y = 5
+		trigger = {
+			tag = KOR
+		}
+	}
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	#allow_branch = {
+	#	has_global_flag = anarchistsUnite
+	#}
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	bypass = {
+		
+	}
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = ANCOM_recruit
+	 
+	relative_position_id = ANCOM_intel
+	prerequisite = { focus = ANCOM_intel }
+	x = -2
+	y = 1
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = ANCOM_op_upgrade
+	 
+	relative_position_id = ANCOM_intel
+	prerequisite = { focus = ANCOM_intel }
+	x = 0
+	y = 1
+
+	cost = 10
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	completion_reward = {
+	
+		add_war_support = 0.1
+
+		add_popularity = {
+			ideology = ROOT
+			popularity = 0.05
+		}
+
+	}
+}
+
+shared_focus = {  
+	id = ANCOM_stockpile
+	 
+	relative_position_id = ANCOM_intel 
+	prerequisite = { focus = ANCOM_intel }
+	prerequisite = { focus = ANCOM_army }  
+	x = 2
+	y = 1
+
+	cost = 10
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	completion_reward = {
+		add_equipment_to_stockpile = {
+			type = infantry_equipment
+			amount = 10000
+		}
+		add_equipment_to_stockpile = {
+			type = support_equipment
+			amount = 1000
+		}
+	}
+}
+
+shared_focus = {
+	id = ANCOM_op_sec
+	 
+	relative_position_id = ANCOM_recruit
+	prerequisite = { focus = ANCOM_recruit }
+	
+	x = -1
+	y = 1
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_improved_op
+	 
+	relative_position_id = ANCOM_recruit
+	prerequisite = { focus = ANCOM_recruit }
+	prerequisite = { focus = ANCOM_op_upgrade }
+	x = 1
+	y = 1
+
+	cost = 10
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	completion_reward = {
+		set_country_flag = improved_infiltration_1
+	}
+}
+
+shared_focus = {
+	id = ANCOM_insurrection_eq
+	 
+	relative_position_id = ANCOM_op_upgrade
+	prerequisite = { focus = ANCOM_op_upgrade }
+	prerequisite = { focus = ANCOM_stockpile }
+	mutually_exclusive = { focus = ANCOM_expand_training }
+	x = 1
+	y = 1
+
+	cost = 10
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_widescale_inf
+	 
+	relative_position_id = ANCOM_op_sec
+	prerequisite = { focus = ANCOM_op_sec }
+	prerequisite = { focus = ANCOM_improved_op }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	available = { 
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_improved_ins
+	 
+	relative_position_id = ANCOM_improved_op
+	prerequisite = { focus = ANCOM_improved_op }
+	prerequisite = { focus = ANCOM_insurrection_eq }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+
+	completion_reward = {
+		set_country_flag = improved_insurrections
+	}
+}
+
+shared_focus = {
+	id = ANCOM_imp_op_2
+	 
+	relative_position_id = ANCOM_widescale_inf
+	prerequisite = { focus = ANCOM_widescale_inf }
+	prerequisite = { focus = ANCOM_improved_ins }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+
+	completion_reward = {
+		set_country_flag = improved_infiltration_2
+	}
+}
+
+#military branch
+
+shared_focus = {
+	id = ANCOM_army
+	 
+	relative_position_id = ANCOM_intel
+	x = 4
+	y = 0
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	#allow_branch = {
+	#	has_global_flag = anarchistsUnite
+	#}
+
+	bypass = {
+		
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_doctrine
+	 
+	relative_position_id = ANCOM_army
+	prerequisite = { focus = ANCOM_army }
+	x = 0
+	y = 1
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_mil_production
+	 
+	relative_position_id = ANCOM_army
+	prerequisite = { focus = ANCOM_army }
+	prerequisite = { focus = ANCOM_econ }
+	x = 2
+	y = 1
+
+	cost = 10
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+
+	completion_reward = {
+		random_core_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = ANCOM_expand_training
+	mutually_exclusive = { focus = ANCOM_insurrection_eq }
+	relative_position_id = ANCOM_doctrine
+	prerequisite = { focus = ANCOM_doctrine }
+	prerequisite = { focus = ANCOM_stockpile}
+	x = -1
+	y = 1
+
+	cost = 10
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_mil_production_2
+	 
+	relative_position_id = ANCOM_doctrine
+	mutually_exclusive = { focus = ANCOM_civ_focus }
+	prerequisite = { focus = ANCOM_doctrine }
+	prerequisite = { focus = ANCOM_mil_production }
+	prerequisite = { focus = ANCOM_civ_production }
+	x = 3
+	y = 1
+
+	cost = 10
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		 
+	}
+
+	completion_reward = {
+		random_core_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = arms_factory
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = ANCOM_peoples_mil
+	 
+	relative_position_id = ANCOM_expand_training
+	prerequisite = { focus = ANCOM_expand_training }
+	x = -1
+	y = 1
+
+	cost = 10
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = ANCOM_tanks
+	 
+	relative_position_id = ANCOM_expand_training
+	prerequisite = { focus = ANCOM_expand_training }
+	prerequisite = { focus = ANCOM_mil_production_2 }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	completion_reward = {
+
+	}
+}
+
+shared_focus = {
+	id = ANCOM_planes
+	 
+	relative_position_id = ANCOM_expand_training
+	prerequisite = { focus = ANCOM_expand_training }
+	prerequisite = { focus = ANCOM_mil_production_2 }
+	x = 3
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_boats
+	 
+	relative_position_id = ANCOM_mil_production_2
+	prerequisite = { focus = ANCOM_mil_production_2 }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	available = { 
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+#economic branch
+shared_focus = {
+	id = ANCOM_econ
+	 
+	relative_position_id = ANCOM_army
+	x = 5
+	y = 0
+
+	cost = 10
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	#allow_branch = {
+	#	has_global_flag = anarchistsUnite
+	#}
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_civ_production
+	 
+	relative_position_id = ANCOM_econ
+	prerequisite = { focus = ANCOM_econ }
+	x = -1
+	y = 1
+ 
+	cost = 10
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+
+	completion_reward = {
+		random_owned_controlled_state = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = ANCOM_airport
+	 
+	relative_position_id = ANCOM_econ
+	prerequisite = { focus = ANCOM_econ }
+	x = 1
+	y = 1
+
+	cost = 10
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	}
+
+	completion_reward = {
+		random_core_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = air_base
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = ANCOM_civ_focus
+	 
+	relative_position_id = ANCOM_civ_production
+	mutually_exclusive = { focus = ANCOM_mil_production_2 }
+	prerequisite = { focus = ANCOM_civ_production }
+	prerequisite = { focus = ANCOM_airport }
+	x = 1
+	y = 1
+
+	cost = 10
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	} 
+
+	completion_reward = {
+		random_owned_controlled_state = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_owned_controlled_state = { 
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}
+		}
+	}   
+}  
+ 
+shared_focus = {
+	id = ANCOM_public_transit
+	 
+	relative_position_id = ANCOM_airport
+	prerequisite = { focus = ANCOM_airport }
+	prerequisite = { focus = ANCOM_civ_production }
+	x = 1
+	y = 1
+
+	cost = 5 
+ 
+	available = {  
+		has_government = anarchist
+	}  
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 20
+	}   
+
+	completion_reward = {
+		random_core_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+		random_core_state = {
+			add_building_construction = {
+				type = infrastructure
+				level = 1
+				instant_build = yes
+			}
+		}
+	}
+}
+
+shared_focus = {
+	id = ANCOM_trains
+	 
+	relative_position_id = ANCOM_civ_focus
+	prerequisite = { focus = ANCOM_civ_focus }
+	prerequisite = { focus = ANCOM_public_transit }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_radio
+	 
+	relative_position_id = ANCOM_public_transit
+	prerequisite = { focus = ANCOM_civ_focus }
+	prerequisite = { focus = ANCOM_public_transit }
+	x = 3
+	y = 1
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_airports_2
+	 
+	relative_position_id = ANCOM_public_transit
+	prerequisite = { focus = ANCOM_civ_focus }
+	prerequisite = { focus = ANCOM_public_transit }
+	x = 1
+	y = 1
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+
+	completion_reward = {
+		
+	}
+}
+
+shared_focus = {
+	id = ANCOM_builders
+	 
+	relative_position_id = ANCOM_airports_2
+	prerequisite = { focus = ANCOM_trains }
+	prerequisite = { focus = ANCOM_radio }
+	prerequisite = { focus = ANCOM_airports_2 }
+	x = 0
+	y = 1
+
+	cost = 5
+
+	available = {
+		has_government = anarchist
+	}
+
+	bypass = {
+		
+	}
+
+	ai_will_do = {
+		factor = 10
+	}
+
+	completion_reward = {
+		
+	}
+}

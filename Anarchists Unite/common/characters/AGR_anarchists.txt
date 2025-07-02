@@ -1,0 +1,693 @@
+characters={
+
+	AGR_Anarchist_Commune = {
+		name = "Insurrectionary Anarchist Cell"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_SPR_anarchist_commune"
+			}
+		}
+		country_leader = {
+			ideology = anarcho_syndicalism
+			traits = {
+				our_right_to_survive
+			}
+		}
+	}
+	
+	#First Set
+
+	AGR_Rudolf_Rocker = {
+		name = "Rudolf Rocker"
+		
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Rudolf_Rocker_small"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Rudolf_Rocker
+			traits = {
+				antifascist_anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Milly_Witkop = {
+		name = "Milly Witkop"
+		gender = female
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Milly_Witkop_small"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Milly_Witkop
+			traits = {
+				international_anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Raphael_Friedeberg = {
+		name = "Raphael Friedeberg"
+		
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Raphael_Friedeberg_small"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Raphael_Friedeberg
+			traits = {
+				anarchist_physician
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Ernst_Schneider = {
+		name = "Ernst Schneider"
+		
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Ernst_Schneider_small"
+			}
+
+			army = {
+        		large = "GFX_portrait_agr_Ernst_Schneider_large"
+        		small = "GFX_portrait_agr_Ernst_Schneider_small"
+    		}
+
+		}
+
+		advisor = {
+			slot = navy_chief
+			idea_token = AGR_Ernst_Schneider
+			traits = {
+				navy_amphibious_assault_1
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+
+		navy_leader = {
+			traits = {
+				blockade_runner
+				superior_tactician
+				lone_wolf
+			}
+			skill = 3
+    		attack_skill = 3
+    		defense_skill = 4
+			maneuvering_skill = 3
+			coordination_skill = 5
+			visible = {
+				has_government = anarchist
+			}
+		}
+		
+		corps_commander = {
+			traits = {
+				underground_operator
+				naval_invader
+				brave
+				war_hero
+				trait_reckless
+			}
+			skill = 1
+    		attack_skill = 2
+    		defense_skill = 1
+    		planning_skill = 2
+    		logistics_skill = 1
+			visible = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	#Second Set
+
+	AGR_Gregor_Gog = {
+		name = "Gregor Gog"
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Gregor_Gog_small"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Gregor_Gog
+			traits = {
+				king_of_vagabonds
+			}
+			visible = {
+				has_country_flag = AGR_return_of_the_king
+			}
+			available = {
+				has_country_flag = AGR_return_of_the_king
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Meta_Kraus_Fessel = {
+		name = "Meta Kraus-Fessel"
+		gender = female
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Meta_Kraus_Fessel_small"
+			}
+
+		}
+		
+		advisor = {
+			slot = theorist
+			ledger = civilian
+			idea_token = AGR_Meta_Kraus_Fessel
+			traits = {
+				anarchist_sexologist
+			}
+			visible = {
+				has_country_flag = AGR_return_of_the_king
+			}
+			available = {
+				has_country_flag = AGR_return_of_the_king
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Max_Nettlau = {
+		name = "Max Nettlau"
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Max_Nettlau_small"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Max_Nettlau
+			traits = {
+				anarchist_historian
+			}
+			visible = {
+				has_country_flag = AGR_return_of_the_king
+			}
+			available = {
+				has_country_flag = AGR_return_of_the_king
+				has_government = anarchist
+			}
+		}
+	}
+
+	#Third Set
+
+	AGR_Hanka_Grothendieck = {
+		name = "Hanka Grothendieck"
+		gender = female
+		portraits = {
+			civilian = {
+				large="GFX_portrait_agr_Hanka_Grothendieck_large"
+				small="GFX_portrait_agr_Hanka_Grothendieck_small"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Hanka_Grothendieck
+			traits = {
+				anarcha_feminist_teacher
+			}
+			visible = {
+				has_country_flag = AGR_expats_returned
+			}
+			available = {
+				has_country_flag = AGR_expats_returned
+			}
+		}
+	}
+
+	AGR_Charles_Lahr = {
+		name = "Charles Lahr"
+		portraits = {
+			civilian = {
+				small ="GFX_portrait_agr_Charles_Lahr_small"
+			}
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Charles_Lahr
+			traits = {
+				anarchist_book_dealer
+			}
+
+			visible = {
+				has_country_flag = AGR_expats_returned
+			}
+			available = {
+				has_country_flag = AGR_expats_returned
+			}
+		}
+	}
+
+	#Fourth Set
+
+	AGR_Walter_Mehring = {
+		name = "Walter Mehring"
+		
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Walter_Mehring_small"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Walter_Mehring
+			traits = {
+				anarchist_journalist
+			}
+			visible = {
+				has_country_flag = AGR_second_expats_return
+			}
+			available = {
+				has_country_flag = AGR_second_expats_return
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Fritz_Kater = {
+		name = "Fritz Kater"
+		
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Fritz_Kater_small"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Fritz_Kater
+			traits = {
+				ARG_anarchosyndicalist
+			}
+			visible = {
+				has_country_flag = AGR_second_expats_return
+			}
+			available = {
+				has_country_flag = AGR_second_expats_return
+				has_government = anarchist
+			}
+		}
+	}
+
+	#SCW Fighters
+
+	AGR_Carl_Einstein ={
+		name = "Carl Einstein"
+		portraits = {
+			civilian = {
+				small ="GFX_portrait_agr_Carl_Einstein_small"
+			}
+
+			army = {
+        		large = "GFX_portrait_agr_Carl_Einstein_large"
+        		small = "GFX_portrait_agr_Carl_Einstein_small"
+    		}
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = AGR_Carl_Einstein
+			traits = {
+				anarchist_art_critic
+			}
+
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+			}
+			available = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				media_personality
+				infantry_officer
+				militias_officer
+			}
+			skill = 2
+    		attack_skill = 3
+    		defense_skill = 4
+    		planning_skill = 4
+    		logistics_skill = 3
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Helmut_Kirschey ={
+		name = "Helmut Kirschey"
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Helmut_Kirschey_small"
+			}
+
+			army = {
+        		large = "GFX_portrait_agr_Helmut_Kirschey_large"
+        		small = "GFX_portrait_agr_Helmut_Kirschey_small"
+    		}
+
+		}
+		
+		advisor = {
+			slot = high_command
+			idea_token = AGR_Helmut_Kirschey
+			ledger = all
+			traits = {
+				scw_veteran_1
+			}
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+			}
+			available = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				infantry_officer
+				militias_officer
+				organizer
+				trickster
+			}
+			skill = 2
+    		attack_skill = 4
+    		defense_skill = 4
+    		planning_skill = 3
+    		logistics_skill = 3
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Helmut_Rudiger = {
+		name = "Helmut Rüdiger"
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Helmut_Rudiger_small"
+			}
+
+			army = {
+        		large = "GFX_portrait_agr_Helmut_Rudiger_large"
+        		small = "GFX_portrait_agr_Helmut_Rudiger_small"
+    		}
+
+		}
+		
+		advisor = {
+			slot = high_command
+			idea_token = AGR_Helmut_Rudiger
+			ledger = all
+			traits = {
+				scw_veteran_2
+			}
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+			}
+			available = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				infantry_officer
+				militias_officer
+				organizer
+				adaptable
+			}
+			skill = 2
+    		attack_skill = 3
+    		defense_skill = 4
+    		planning_skill = 3
+    		logistics_skill = 4
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Augustin_Souchy = {
+		name = "Augustin Souchy"
+		
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Augustin_Souchy_small"
+			}
+
+			army = {
+        		large = "GFX_portrait_agr_Augustin_Souchy_large"
+        		small = "GFX_portrait_agr_Augustin_Souchy_small"
+    		}
+
+		}
+		
+		advisor = {
+			slot = high_command
+			idea_token = AGR_Augustin_Souchy
+			ledger = all
+			traits = {
+				scw_veteran_3
+			}
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+			}
+			available = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				media_personality
+				infantry_officer
+				militias_officer
+				organizer
+				hill_fighter
+			}
+			skill = 2
+    		attack_skill = 3
+    		defense_skill = 3
+    		planning_skill = 4
+    		logistics_skill = 4
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Sacha_Schapiro = {
+		name = "Sacha Schapiro"
+		portraits =  {
+			civilian = {
+				small = "GFX_portrait_agr_Sacha_Schapiro_small"
+			}
+
+			army = {
+        		large = "GFX_portrait_agr_Sacha_Schapiro_large"
+        		small = "GFX_portrait_agr_Sacha_Schapiro_small"
+    		}
+		}
+		advisor = {
+			slot = army_chief
+			idea_token = AGR_Sacha_Schapiro
+			traits = {
+				army_chief_offensive_3
+			}
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+			}
+			available = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+
+		field_marshal = {
+			traits = {
+				infantry_officer
+				militias_officer
+				organizer
+				adaptable
+			}
+			skill = 5
+    		attack_skill = 7
+    		defense_skill = 4
+    		planning_skill = 5
+    		logistics_skill = 5
+			visible = {
+				has_country_flag = AGR_scw_vets_return
+				has_government = anarchist
+			}
+		}
+	}
+
+	#Edelweiss Pirates
+
+	AGR_Bartholomaus_Schink = {
+		name = "Bartholomäus Schink"
+		portraits = {
+			army = {
+        		large = "GFX_portrait_agr_Bartholomaus_Schink_large"
+    		}
+		}
+
+		corps_commander = {
+			traits = {
+				edelweiss_pirate
+			}
+			skill = 1
+    		attack_skill = 1
+    		defense_skill = 1
+    		planning_skill = 1
+    		logistics_skill = 1
+			visible = {
+				has_country_flag = AGR_edelweiss_pirates_arrive
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Fritz_Theilen = {
+		name = "Fritz Theilin"
+		portraits = {
+			army = {
+        		large = "GFX_portrait_agr_Fritz_Theilen_large"
+    		}
+		}
+
+		corps_commander = {
+			traits = {
+				edelweiss_pirate
+			}
+			skill = 1
+    		attack_skill = 1
+    		defense_skill = 1
+    		planning_skill = 1
+    		logistics_skill = 1
+			visible = {
+				has_country_flag = AGR_edelweiss_pirates_arrive
+				has_government = anarchist
+			}
+		}
+	}
+
+	AGR_Getrud_Koch = {
+		name = "Gertrud Koch"
+		gender = female
+		portraits = {
+			army = {
+        		large = "GFX_portrait_agr_Getrud_Koch_large"
+    		}
+		}
+
+		corps_commander = {
+			traits = {
+				edelweiss_pirate
+			}
+			skill = 1
+    		attack_skill = 1
+    		defense_skill = 1
+    		planning_skill = 1
+    		logistics_skill = 1
+			visible = {
+				has_country_flag = AGR_edelweiss_pirates_arrive
+				has_government = anarchist
+			}
+		}
+	}
+
+	#Military Buildup
+
+	AGR_Georg_Glaser = {
+		name = "Georg K. Glaser"
+		portraits = {
+			civilian = {
+				small="GFX_portrait_agr_Georg_Glaser_small"
+			}
+
+			army = {
+        		large = "GFX_portrait_agr_Georg_Glaser_large"
+        		small = "GFX_portrait_agr_Georg_Glaser_small"
+    		}
+		}
+		
+		advisor = {
+			slot = air_chief
+			idea_token = AGR_Georg_Glaser
+			traits = {
+				air_chief_reform_1
+			}
+			visible = {
+				has_country_flag = agr_georg_glaser_recruited
+			}
+			available = {
+				has_country_flag = agr_georg_glaser_recruited
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				media_personality
+				infantry_officer
+				organizer
+			}
+			skill = 3
+    		attack_skill = 3
+    		defense_skill = 5
+    		planning_skill = 4
+    		logistics_skill = 4
+
+			visible = {
+				has_country_flag = agr_georg_glaser_recruited
+			}
+		}
+	}
+}

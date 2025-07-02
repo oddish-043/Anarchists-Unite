@@ -1,0 +1,254 @@
+KOR_fascism_plan = {
+	name = "Korea Fascist Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = KOR
+	}
+	enable = {
+		OR = {
+			has_country_flag = KOR_AI_RANDOM_FASCISM
+			has_game_rule = {
+				rule = KOR_AI_BEHAVIOR
+				option = FASCISM
+			}	
+		}
+
+	}
+	abort = {
+		is_subject = yes 
+	}
+
+	ai_national_focuses = {
+		KOR_strengthen_government_authority
+		KOR_rally_behind_Yi_Kang
+		KOR_build_patriotic_nobility
+		KOR_rightful_emperor
+		KOR_found_korean_patriot_organization
+		KOR_reach_out_to_diaspora
+		KOR_underground_aid
+		KOR_foreign_arms_purchasing
+		KOR_form_the_korean_volunteer_association
+		KOR_smuggling_network
+		KOR_foreign_arms_smuggling
+		KOR_petition_the_kmt
+		KOR_expand_opperational_capacity
+		KOR_found_korean_liberation_army
+		KOR_korea_restored
+		KOR_integrate_liberation_armies
+		KOR_deal_with_the_devil
+		KOR_centralize_imperial_power
+		KOR_align_with_germany
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+KOR_communist_plan = {
+	name = "Korean Communist Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = KOR
+	}
+	enable = {
+		OR = {
+			has_country_flag = KOR_AI_RANDOM_COMMUNIST
+			has_game_rule = {
+				rule = KOR_AI_BEHAVIOR
+				option = COMMUNIST
+			}	
+		}
+
+	}
+	abort = {
+		is_subject = yes 
+	}
+
+	ai_national_focuses = {
+		KOR_strengthen_government_authority
+		KOR_juche_philosophy
+		KOR_found_korean_patriot_organization
+		KOR_underground_aid
+		KOR_smuggling_network
+		KOR_reach_out_to_diaspora
+		KOR_foreign_arms_purchasing
+		KOR_foreign_arms_smuggling
+		KOR_expand_opperational_capacity
+		KOR_petition_the_kmt
+		KOR_found_korean_liberation_army
+		KOR_form_the_korean_volunteer_association
+		KOR_demand_soviet_intervention
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+KOR_democratic_plan = {
+	name = "Korean Democratic Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = KOR
+	}
+	enable = {
+		OR = {
+			has_country_flag = KOR_AI_RANDOM_DEMOCRATIC
+			has_game_rule = {
+				rule = KOR_AI_BEHAVIOR
+				option = DEMOCRATIC
+			}	
+		}
+	}
+	abort = {
+		is_subject = yes 
+	}
+
+	ai_national_focuses = { 
+		KOR_reach_out_to_anarchists
+		KOR_the_center_holds
+		KOR_seek_foreign_aid
+		KOR_long_war_for_independence
+		KOR_found_korean_patriot_organization
+		KOR_reach_out_to_diaspora
+		KOR_underground_aid
+		KOR_foreign_arms_purchasing
+		KOR_foreign_arms_smuggling
+		KOR_smuggling_network
+		KOR_anarchist_mutual_aid
+		KOR_petition_the_kmt
+		KOR_found_korean_liberation_army
+		KOR_form_the_korean_volunteer_association
+		KOR_expand_opperational_capacity
+		KOR_train_anarchist_insurrectionaries
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+
+KOR_anarchist_plan = {
+	name = "Korea Anarchist Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = KOR
+	}
+	enable = {
+		AND = {
+			OR = {
+				has_country_flag = KOR_AI_RANDOM_ANARCHIST
+				has_game_rule = {
+					rule = KOR_ai_behavior 
+					option = ANARCHIST
+				}
+			}
+		}
+	}
+	abort = {
+		is_subject = yes 
+	}
+
+	ai_national_focuses = {
+		KOR_reach_out_to_anarchists
+		KOR_disband_the_KPG
+		KOR_organize_prison_breaks
+		KOR_rebuild_the_black_wave
+		KOR_reach_out_to_diaspora
+		KOR_foreign_arms_purchasing
+		KOR_foreign_arms_smuggling
+		KOR_petition_the_kmt
+		KOR_found_korean_liberation_army
+		KOR_form_the_korean_volunteer_association
+		KOR_rebuild_the_heroic_corp
+		KOR_underground_aid
+		KOR_smuggling_network
+		KOR_anarchist_mutual_aid
+		KOR_expand_opperational_capacity
+		KOR_chinese_volunteers
+		KOR_japanese_volunteers
+		KOR_establish_insurrectionary_cells
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+

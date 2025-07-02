@@ -1,0 +1,126 @@
+political_actions = {
+	
+    anti_anarchist_raids = {
+
+    	icon = generic_civil_support
+
+    	visible = {
+			NOT = { has_government = anarchist }
+		}
+
+		available = {
+            anarchist > 0.1
+            if = {
+				limit = {
+					tag = SPR
+				}
+				NOT = {
+					has_idea = SPR_political_violence
+				}
+			}
+        }
+	
+		modifier = {
+			anarchist_drift = -0.05
+			stability_weekly = 0.007
+		}
+	
+		days_remove = 120
+		cost = 50
+
+		complete_effect = {
+			add_stability = -0.1
+		}
+		
+		remove_effect = {
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+    }
+	
+	ban_anarchism = {
+
+		icon = generic_civil_support
+
+		available = {
+			anarchist < 0.2
+			IF = {
+				limit = {
+					tag = SPR
+				}
+				NOT = {
+					has_idea = SPR_political_violence
+				}
+			}
+			IF = {
+				limit = {
+					# TODO JA, add the correct dlc requirements
+					has_dlc = "Arms Against Tyranny"
+					original_tag = CHL
+				}
+				custom_trigger_tooltip = {
+					tooltip = CHL_can_not_have_anarchy_tt
+					NOT = {
+						OR = {
+							has_idea = idea_CHL_near_anarchic_society
+							has_idea = idea_CHL_near_anarchic_society_2
+							has_idea = idea_CHL_near_anarchic_society_3
+							has_idea = idea_CHL_near_anarchic_society_4
+						}
+					}
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_government = anarchist }
+			anarchist > 0
+		}
+
+		remove_trigger = {
+			hidden_trigger = {
+				OR = {
+					has_government = anarchist
+				}
+			}
+		}
+	
+		modifier = {
+			anarchist_drift = -0.05
+		}
+	
+		days_remove = -1
+		cost = 100
+		
+		complete_effect = {
+			hidden_effect = {
+				set_temp_variable = {
+					var = ban_ideology_var
+					value = party_popularity@anarchist
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = -1
+				}
+				add_popularity = {
+					ideology = anarchist
+					popularity = ban_ideology_var
+				}
+				multiply_temp_variable = {
+					var = ban_ideology_var
+					value = 0.66
+				}
+				set_country_flag = banned_anarchist_flag
+			}
+			custom_effect_tooltip = ban_anarchism_tt
+			add_stability = ban_ideology_var
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+}

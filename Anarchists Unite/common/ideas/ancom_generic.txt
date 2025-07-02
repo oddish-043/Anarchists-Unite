@@ -1,0 +1,6362 @@
+ideas = {
+	hidden_ideas = {
+		SAV_prison_riots = {
+			removal_cost = -1
+			cancel = {
+				has_global_flag = SOV_soviet_civil_war_over
+				NOT = {
+					any_enemy_country = {
+						original_tag = SOV
+					}
+				}
+			}
+
+			on_remove = {
+				delete_unit_template_and_units = {
+    				division_template = "Prison Escapees"
+    				disband = yes #will refund equipment and manpower
+				}
+			}
+		}
+	}
+	hidden_ideas = {
+		ALG_liberation_struggle = {
+			removal_cost = -1
+			cancel = {
+				ALG = {
+					controls_state = 459
+					controls_state = 460
+					controls_state = 513
+				}
+			}
+
+			on_remove = {
+				every_country = {
+					limit = {
+						has_war_with = ALG
+					}
+					white_peace = ALG
+				}
+			}
+		}
+	}
+	hidden_ideas = {
+		SPC_occitan_anarchism = {
+			removal_cost = -1
+			cancel = {
+				FRA = {
+					has_capitulated = yes
+				}
+			}
+
+			on_remove = {
+				19 = {
+					transfer_state_to = OCC
+				}
+				806 = {
+					transfer_state_to = OCC
+				}
+				31 = {
+					transfer_state_to = OCC
+				}
+				22 = {
+					transfer_state_to = OCC
+				}
+				25 = {
+					transfer_state_to = OCC
+				}
+				OCC = {
+					set_politics = {
+    					ruling_party = anarchist
+    					elections_allowed = no
+					}
+					set_cosmetic_tag = ANCOM
+				}
+
+				SPC = {
+					set_autonomy = {
+    					target = OCC
+    					autonomous_state = autonomy_federated_commune
+    					end_wars = yes
+    					end_civil_wars = yes
+					}
+				}
+			}
+		}
+	}
+	country = {
+
+		SPC_factory_payments = {
+			picture = FRA_factory_strikes
+			removal_cost = -1
+
+			modifier = {
+				consumer_goods_factor = 0.25
+			}
+			on_add = {
+				FRA = {
+					add_offsite_building = { type = arms_factory level = 5 }
+				}
+			}
+		}
+		
+		FCC_the_global_underground_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = generic_spy_coup
+			modifier = {
+				agency_upgrade_time = -0.25
+				foreign_subversive_activites = -0.3
+				operation_cost = -0.25
+				operation_outcome = 0.25
+			}
+		}
+
+		FCC_decentralized_networks_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = generic_spy_coup
+			modifier = {
+				operation_risk = -0.25
+				intel_network_gain_factor = 0.25
+				operation_infiltrate_cost = -0.25
+			}
+		}
+
+		FCC_citizen_codebreakers_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = generic_spy_coup
+			modifier = {
+				decryption_power_factor = 0.25
+				intel_from_combat_factor = 0.25
+			}
+		}
+
+		FCC_propaganda_workshops_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = generic_spy_coup
+			modifier = {
+				boost_ideology_mission_factor = 0.5
+			}
+		}
+
+		FCC_partisan_workshops_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_spy_coup
+			modifier = {
+				operation_boost_resistance_cost = -0.25
+				operation_make_resistance_contacts_cost = -0.25
+				operation_boost_resistance_risk = -0.25
+				operation_make_resistance_contacts_risk = -0.25
+				operation_boost_resistance_outcome = 0.25
+				operation_make_resistance_contacts_outcome = 0.25
+			}
+		}
+
+		FCC_sabotage_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_spy_coup
+			modifier = {
+				operation_targeted_sabotage_industry_cost = -0.25
+				operation_targeted_sabotage_industry_risk = -0.25
+				operation_targeted_sabotage_industry_outcome = 0.25
+				operation_targeted_sabotage_infrastructure_cost = -0.25
+				operation_targeted_sabotage_infrastructure_risk = -0.25
+				operation_targeted_sabotage_infrastructure_outcome = 0.25
+				operation_targeted_sabotage_resources_cost = -0.25
+				operation_targeted_sabotage_resources_risk = -0.25
+				operation_targeted_sabotage_resources_outcome = 0.25
+			}
+		}
+
+		FCC_security_culture_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_spy_coup
+			modifier = {
+				operation_risk = -0.15
+			}
+		}
+
+		FCC_guerrilla_tactics_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = generic_spy_coup
+			modifier = {
+				operation_anarchist_revolution_1_cost = -0.25
+				operation_anarchist_revolution_1_risk = -0.25
+				operation_anarchist_revolution_1_outcome = 0.25
+			}
+		}
+
+		FCC_political_assasinations_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_spy_coup
+			modifier = {
+				operation_political_assasination_cost = -0.25
+				operation_political_assasination_risk = -0.25
+			}
+		}
+
+		FCC_dangerous_friends_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = generic_communist_army
+			cancel = {
+				NOT = {
+					GER = {
+						has_government = fascism
+					}
+				}
+
+				has_war_with = SOV
+
+			}
+			modifier = {
+				weekly_manpower = 500
+			}
+		}
+
+		FCC_tenuous_relations_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = generic_democratic_drift_bonus
+			cancel = {
+				NOT = {
+					GER = {
+						has_government = fascism
+					}
+				}
+				has_war_with = ENG
+			}
+			modifier = {
+				consumer_goods_factor = -0.15
+			}
+		}
+
+		FCC_anti_fascism_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = GER_iron_front
+			cancel = {
+				NOT = {
+					JAP = {
+						has_government = fascism
+					}
+				}
+				NOT = {
+					GER = {
+						has_government = fascism
+					}
+				}
+				NOT = {
+					ITA = {
+						has_government = fascism
+					}
+				}
+			}
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.5
+				defense_bonus_against = 0.5
+			}
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.5
+				defense_bonus_against = 0.5
+			}
+			targeted_modifier = {
+				tag = ITA
+				attack_bonus_against = 0.5
+				defense_bonus_against = 0.5
+			}
+		}
+
+		FCC_anti_imperialism_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = EST_democratic_opposition
+			
+			modifier = {
+				army_attack_against_major_factor = 0.25
+				army_breakthrough_against_major_factor = 0.25
+				army_defence_against_major_factor = 0.25
+			}
+		}
+
+		FCC_anarchism_on_the_world_stage_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = ARG_establish_the_free_association
+			
+			modifier = {
+				faction_trade_opinion_factor = 0.25
+				guarantee_cost = -0.1
+				guarantee_tension = -0.25
+				lend_lease_tension = -0.25
+				embargo_threshold_factor = -0.25
+			}
+		}
+
+		FCC_destroyer_production_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = AUS_naval_efficiency_idea
+			equipment_bonus = {
+				ship_hull_light = {
+					instant = yes
+					build_cost_ic = -0.75
+				}
+			}
+		}
+
+		FCC_submarine_production_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = generic_navy_submarines
+			equipment_bonus = {
+				ship_hull_submarine = {
+					instant = yes
+					build_cost_ic = -0.75
+				}
+			}
+		}
+
+		SAV_motmech_production_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = SOV_the_road_of_life
+			equipment_bonus = {
+				mechanized = {
+					instant = yes
+					build_cost_ic = -0.25
+				}
+			}
+			equipment_bonus = {
+				motorized = {
+					instant = yes
+					build_cost_ic = -0.25
+				}
+			}
+		}
+
+		SAV_german_anti_fascism_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = FIN_german_threat
+			cancel = {
+				NOT = {
+					GER = {
+						has_government = fascism
+					}
+				}
+			}
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.1
+    			defense_bonus_against = 0.1
+			}
+		}
+
+		SAV_threat_from_the_west_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = FIN_german_threat
+			cancel = {
+				NOT = {
+					GER = {
+						has_government = fascism
+					}
+				}
+			}
+			targeted_modifier = {
+				tag = GER
+				attack_bonus_against = 0.25
+    			defense_bonus_against = 0.25
+			}
+		}
+
+		SAV_spanish_anti_fascism_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = DEN_occupation_laws
+			cancel = {
+				NOT = {
+					SPR = {
+						has_government = fascism
+					}
+				}
+			}
+			targeted_modifier = {
+				tag = SPR
+				attack_bonus_against = 0.1
+    			defense_bonus_against = 0.1
+			}
+		}
+
+		SAV_italian_anti_fascism_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = RAJ_private_military_complex
+			cancel = {
+				NOT = {
+					ITA = {
+						has_government = fascism
+					}
+				}
+			}
+			targeted_modifier = {
+				tag = ITA
+				attack_bonus_against = 0.1
+    			defense_bonus_against = 0.1
+			}
+		}
+
+		SAV_japanese_anti_fascism_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_japanese_conflict
+			
+			targeted_modifier = {
+				tag = JAP
+				attack_bonus_against = 0.1
+    			defense_bonus_against = 0.1
+			}
+		}
+
+		SAV_armored_car_production_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = NORDIC_army_communist
+			equipment_bonus = {
+				armored_car_equipment = {
+					instant = yes
+					build_cost_ic = -0.25
+				}
+			}
+		}
+
+		SAV_mot_artillery_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_rocket_bonus
+			equipment_bonus = {
+				motorized_rocket_equipment = {
+					instant = yes
+					build_cost_ic = -0.25
+				}
+			}
+		}
+
+		SAV_our_shared_future_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = man_five_year_plan_tank
+			
+			modifier = {
+				production_speed_buildings_factor = 0.25
+				consumer_goods_factor = -0.05
+				industrial_capacity_factory = 0.15
+				supply_node_range = 0.1
+			}
+		}
+
+		SAV_union_democracy_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = SPR_torchbearers_of_tomorrow
+			
+			modifier = {
+				stability_factor = 0.15
+				political_advisor_cost_factor = -0.25
+				improve_relations_maintain_cost_factor = -0.1
+				female_random_country_leader_chance = 0.5
+				party_popularity_stability_factor = 0.15
+				drift_defence_factor = 0.15
+			}
+		}
+
+		SAV_bread_and_roses_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = ARG_women_in_industry
+			
+			modifier = {
+				consumer_goods_factor = -0.2
+				industrial_capacity_factory = 0.15
+				industrial_capacity_dockyard = 0.15
+			}
+		}
+
+		SAV_night_of_fear_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = FRA_scw_intervention_republicans_focus
+			
+			modifier = {
+				agency_upgrade_time = -0.5
+			}
+		}
+
+		SAV_night_of_freedom_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = FRA_scw_intervention_nationalists_focus
+			
+			modifier = {
+				foreign_subversive_activites = -0.15
+				intel_network_gain_factor = 0.15
+				subversive_activites_upkeep = -0.15
+				operation_cost = -0.15
+			}
+		}
+
+		SAV_beyond_politics_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = POL_the_peasants_strike
+			
+			modifier = {
+				stability_weekly = -0.05
+				war_support_weekly = 0.05
+				resistance_activity = -0.25
+			}
+		}
+
+		SAV_no_future_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_flexible_foreign_policy2
+			
+			modifier = {
+				compliance_growth_on_our_occupied_states = -0.25
+				required_garrison_factor = -0.25
+			}
+		}
+
+		SAV_dealing_with_the_allies_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = SPR_class_war
+			
+			modifier = {
+				generate_wargoal_tension = -0.5
+			}
+		}
+
+		SAV_an_end_to_the_old_world_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = chi_war_of_resistance3
+			
+			modifier = {
+				offensive_war_stability_factor = 0.3
+				defensive_war_stability_factor = 0.3
+				war_support_factor = 0.15
+			}
+		}
+
+		SAV_the_social_revolution_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = ARG_no_gods_no_masters
+			
+			modifier = {
+				justify_war_goal_time = -0.75
+			}
+		}
+
+		SAV_the_general_strike_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = ARG_establish_the_free_association
+			
+			modifier = {
+				consumer_goods_factor = 0.15
+			}
+		}
+
+		SAV_static_solution_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = FRA_fortification_focus
+			
+			modifier = {
+				production_speed_bunker_factor = 0.25
+				production_speed_coastal_bunker_factor = 0.25
+				production_speed_supply_node_factor = 0.25
+			}
+		}
+
+		SAV_mobile_solution_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_motorized_equipment_manufacturer_2
+			
+			modifier = {
+				army_attack_speed_factor = 0.25
+				army_speed_factor = 0.25
+				motorized_attack_factor = 0.25
+				mechanized_attack_factor = 0.25
+			}
+		}
+
+		SAV_winter_training_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = SWE_ga_pa_tactics
+			
+			modifier = {
+				acclimatization_cold_climate_gain_factor = 0.5
+			}
+		}
+
+		SAV_partisan_offensives_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = RAJ_partition_chaos_bad
+			
+			modifier = {
+				resistance_damage_to_garrison_on_our_occupied_states = 0.5
+				resistance_decay_on_our_occupied_states = -0.5
+				resistance_growth_on_our_occupied_states = 0.5
+				resistance_target_on_our_occupied_states = 0.5
+			}
+		}
+
+
+		SAV_railroad_syndicate_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = generic_train_tracks
+			
+			modifier = {
+				production_speed_rail_way_factor = 0.25
+				production_speed_supply_node_factor = 0.25
+			}
+		}
+
+		SAV_pluralistic_society_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = MEX_church_power_4
+			
+			modifier = {
+				stability_factor = 0.15
+				monthly_population = 0.05
+			}
+		}
+
+		SAV_love_and_be_loved_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = NOR_broken_gun_ns
+			cancel = {
+				has_war = yes
+			}
+			
+			on_add = {
+				annex_country = {
+    				target = MEL
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = CHU
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = TAT
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = UDM
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = BSK
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = VGE
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = KAL
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = DON
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = KUB
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = DAG
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = GEO
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = ARM
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = AZR
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = CIN
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = NOA
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = KBK
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = CRI
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = UKR
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = BLR
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = KAR
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = SMI
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = KOM
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = NEN
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = OVO
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = YAM
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = TAY
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = EVE
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = YAK
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = FER
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = BYA
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = KHA
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = ALT
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = KAZ
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = KYR
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = TAJ
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = UZB
+    				transfer_troops = no
+				}
+				annex_country = {
+    				target = TMS
+    				transfer_troops = no
+				}
+			}
+
+			on_remove = {
+				add_ideas = SAV_autonomous_defense_idea
+			}
+		}
+
+		SAV_autonomous_defense_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = NOR_sivog
+			cancel = {
+				has_war = no
+			}
+			
+			on_add = {
+				IF = {
+					limit = {
+						ROOT = {
+							is_in_faction = no
+						}
+					}
+					create_faction = "Emergency Defence Council"
+				}
+				release_autonomy = {
+					target = MEL
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				MEL = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = MEL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					
+				}
+				release_autonomy = {
+					target = TAT
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				TAT = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				release_autonomy = {
+					target = CHU
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				CHU = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CHU
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				release_autonomy = {
+					target = UDM
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				UDM = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UDM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				release_autonomy = {
+					target = BSK
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				BSK = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BSK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				release_autonomy = {
+					target = VGE
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				VGE = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = VGE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				release_autonomy = {
+					target = KAL
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				KAL = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAL
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = DAG
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				DAG = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = DAG
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = GEO
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				GEO = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = GEO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = ARM
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				ARM = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					
+				}
+
+				release_autonomy = {
+					target = AZR
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				AZR = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = AZR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = CIN
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				CIN = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CIN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = NOA
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				NOA = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NOA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = KBK
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				KBK = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KBK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = CRI
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				CRI = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = CRI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = UKR
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				UKR = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UKR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				release_autonomy = {
+					target = BLR
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				BLR = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BLR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = KAR
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				KAR = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = SMI
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				SMI = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = SMI
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = KOM
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				KOM = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KOM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = NEN
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				NEN = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = NEN
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				release_autonomy = {
+					target = OVO
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				OVO = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = OVO
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = YAM
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				YAM = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAM
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = TAY
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				TAY = {
+					
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAY
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = EVE
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				EVE = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = EVE
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = YAK
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				YAK = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = YAK
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+				release_autonomy = {
+					target = FER
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				FER = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = FER
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = BYA
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				BYA = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = BYA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = KHA
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				KHA = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KHA
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = ALT
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				ALT = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = ALT
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = KAZ
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				KAZ = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KAZ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = KYR
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				KYR = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = KYR
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = TAJ
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				TAJ = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TAJ
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = UZB
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				UZB = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = UZB
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+
+				release_autonomy = {
+					target = TMS
+					autonomy_state = autonomy_federated_commune
+					freedom_level = 0.5
+				}
+				TMS = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+					division_template = {
+						name = "Anarchist Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 14
+						regiments = {
+							irregular_infantry = { x = 0 y = 0 }
+							irregular_infantry = { x = 0 y = 1 }
+							irregular_infantry = { x = 0 y = 2 }
+							irregular_infantry = { x = 0 y = 3 }
+						}
+					}
+					division_template = {
+						name = "Motorized Militants"
+						is_locked = yes 
+						priority = 0
+						template_counter = 0
+						regiments = {
+							motorized = { x = 0 y = 0 }
+							motorized = { x = 0 y = 1 }
+							motorized = { x = 0 y = 2 }
+							motorized = { x = 0 y = 3 }
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Motorized Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+					random_core_state = {
+						create_unit = {
+							division = "name = \"Anarchist Militants\" division_template = \"Anarchist Militants\" start_experience_factor = 0.5"
+							owner = TMS
+							allow_spawning_on_enemy_provs = yes
+						}
+					}
+				}
+			}
+
+			on_remove = {
+				add_ideas = SAV_love_and_be_loved_idea
+			}
+		}
+
+		SAV_armor_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = man_five_year_plan_tank
+			equipment_bonus = {
+				armor = {
+					instant = yes
+					build_cost_ic = -0.25
+				}
+			}
+		}
+
+		FCC_specialized_marines_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = gre_royal_hellenic_naval_shipyard
+			modifier = {
+				invasion_preparation = -0.25
+				naval_invasion_planning_bonus_speed = 0.25
+				naval_invasion_prep_speed = 0.25
+				extra_marine_supply_grace = 100
+			}
+		}
+
+		FCC_land_recognition_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = CHL_liberal_party_in_power
+			modifier = {
+				stability_factor = 0.3
+				war_support_factor = 0.3
+			}
+		}
+
+		FCC_coastal_invasion_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = FIN_coastal_batteries_effort
+			modifier = {
+				naval_enemy_fleet_size_ratio_penalty_factor = 0.5
+				naval_enemy_positioning_in_initial_attack = 0.5
+				naval_night_attack = 0.5
+				naval_retreat_speed = 0.5
+				navy_visibility = -0.30
+				night_spotting_chance = 0.5
+				positioning = 0.5
+				spotting_chance = 0.25
+			}
+		}
+
+		FCC_standardized_marines_idea = {
+			allowed = {
+				always = no
+				tag = FCC
+			}
+			removal_cost = -1
+			picture = generic_sea_focused_navy
+			modifier = {
+				marines_special_forces_contribution_factor = -0.30
+				special_forces_training_time_factor = -0.25
+			}
+		}
+
+		FCC_mutual_aid_idea = {
+			picture = ARG_social_welfare_fund_ns
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			on_remove = {
+    			random_core_state = {
+					add_extra_state_shared_building_slots = 1
+				}
+				add_timed_idea = {
+    				idea = FCC_mutual_aid_idea
+    				days = 90
+				}
+			}
+		}
+
+		FCC_pressuring_the_usa_idea = {
+			picture = ARG_eliminate_american_imperialism
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			cancel = {
+				USA = {
+					has_war_with = FCC
+				}
+			}
+			on_remove = {
+    			IF = {
+					limit = {
+						FCC = {
+							NOT = {
+								has_completed_focus = FCC_break_up_ufc
+							}
+						}
+					}
+					diplomatic_relation = {
+    					country = USA
+    					relation = embargo
+    					active = yes
+					}
+				}
+			}
+		}
+
+		FCC_public_schools = {
+			picture = FIN_socialist_welfare
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				always = yes
+			}
+			removal_cost = -1
+			on_remove = {
+    			add_research_slot = 3
+			}
+		}
+
+		FCC_public_assemblies_idea = {
+			picture = AUS_women_in_academia
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				political_power_factor = 0.3
+				stability_weekly = 0.01
+			}
+		}
+
+		FCC_syndicalist_miracle_idea = {
+			picture = generic_economic_increase
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.25
+				production_factory_max_efficiency_factor = 0.25
+				production_speed_buildings_factor = 0.25
+				consumer_goods_factor = -0.25
+				industrial_capacity_dockyard = 0.3
+				industrial_capacity_factory = 0.3
+			}
+		}
+
+		FCC_the_divide_resolved_idea = {
+			picture = NOR_broken_gun_ns
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				party_popularity_stability_factor = 0.25
+				research_speed_factor = 0.15
+				consumer_goods_factor = -0.15
+			}
+		}
+
+		ANCOM_economic_future = {
+			picture = generic_economic_increase
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				production_factory_efficiency_gain_factor = 0.5
+				production_factory_max_efficiency_factor = 0.5
+				production_speed_industrial_complex_factor = 0.5
+			}
+		}
+
+		ANCOM_us_trade = {
+			picture = generic_flexible_foreign_policy
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			targeted_modifier = {
+				tag = USA
+				extra_trade_to_target_factor = 0.5
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+
+		ANCOM_eng_trade = {
+			picture = generic_flexible_foreign_policy
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			targeted_modifier = {
+				tag = ENG
+				extra_trade_to_target_factor = 0.5
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+
+		ANCOM_fra_trade = {
+			picture = generic_flexible_foreign_policy
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			targeted_modifier = {
+				tag = FRA
+				extra_trade_to_target_factor = 0.5
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+
+		ANCOM_jap_trade = {
+			picture = generic_flexible_foreign_policy
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			targeted_modifier = {
+				tag = JAP
+				extra_trade_to_target_factor = 0.5
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+
+		ANCOM_ger_trade = {
+			picture = generic_flexible_foreign_policy
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			targeted_modifier = {
+				tag = GER
+				extra_trade_to_target_factor = 0.5
+				trade_cost_for_target_factor = -0.5
+			}
+		}
+
+		ANCOM_non_intervention_idea = {
+			picture = generic_neutrality_drift_bonus
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			removal_cost = -1
+
+			modifier = {
+				send_volunteers_tension = 1.0
+				enemy_operative_intel_extraction_rate = 0.5
+				enemy_operative_detection_chance_factor = 0.5
+
+			}
+		}
+
+		ANCOM_anarchist_delegates = {
+
+			picture = ARG_anarchist_delegates
+
+			removal_cost = -1
+
+			modifier = {
+				anarchist_drift = 0.25
+			}
+
+		}
+
+		FCC_revolutionary_zeal_idea = {
+
+			picture = ARG_no_gods_no_masters
+
+			removal_cost = -1
+
+			cancel = {
+    			has_war = no
+			}
+
+			modifier = {
+				anarchist_drift = 0.2
+				army_attack_factor = 0.25
+				army_defence_factor = 0.25
+				army_morale_factor = 0.25
+				supply_consumption_factor = -0.25
+				weekly_manpower = 250
+			}
+
+		}
+
+		SAV_th_black_army_idea = {
+
+			picture = ARG_no_gods_no_masters
+
+			removal_cost = -1
+
+			modifier = {
+				anarchist_drift = 0.2
+				army_attack_factor = 0.1
+				army_defence_factor = 0.1
+				army_morale_factor = 0.1
+				supply_consumption_factor = -0.1
+				army_fuel_consumption_factor = -0.25
+			}
+
+		}
+
+		SAV_safehouses_idea = {
+
+			picture = SPR_anarchist_public_transport
+
+			allowed_civil_war = {
+				always = yes
+			}
+
+			cancel = {
+				has_global_flag = SOV_soviet_civil_war_over
+				NOT = {
+					any_enemy_country = {
+						original_tag = SOV
+					}
+				}
+			}
+
+			modifier = {
+				army_speed_factor = 0.5
+				supply_consumption_factor = -0.5
+			}
+		}
+
+		SAV_revolutionary_zeal = {
+			picture = ARG_no_gods_no_masters
+
+			removal_cost = -1
+			cancel = {
+				has_global_flag = SOV_soviet_civil_war_over
+				NOT = {
+					any_enemy_country = {
+						original_tag = SOV
+					}
+				}
+			}
+			modifier = {
+				army_attack_factor = 1.0
+				army_defence_factor = 1.0
+				army_morale_factor = 1.0
+				supply_consumption_factor = -0.5
+			}
+		}
+
+		
+
+		FCC_anarchist_federation_idea_1 = {
+
+			picture = SPR_anarchist_society
+
+			removal_cost = -1
+
+			modifier = {
+				anarchist_drift = 0.01
+				enemy_justify_war_goal_time = -0.5
+				stability_weekly = -0.01
+			}
+
+		}
+
+		FCC_anarchist_federation_idea_2 = {
+
+			picture = SPR_anarchist_society
+
+			removal_cost = -1
+
+			modifier = {
+				anarchist_drift = 0.05
+				enemy_justify_war_goal_time = -0.25
+				female_random_country_leader_chance = 0.5
+				consumer_goods_factor = -0.05
+			}
+
+		}
+
+		FCC_insurgent_island_hopping_idea = {
+
+			picture = generic_naval_invasion
+
+			removal_cost = -1
+
+			cancel = {
+    			has_war = no
+			}
+
+			modifier = {
+				invasion_preparation = -0.75
+				naval_invasion_capacity = 10
+			}
+
+		}
+
+		FCC_communism_on_the_rise_idea = {
+
+			picture = generic_communism_drift_bonus
+
+			removal_cost = -1
+
+			cancel = {
+    			AND = {
+					has_stability < 0.15
+					communism > 0.75
+				}
+			}
+
+			modifier = {
+				communism_drift = 0.01
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						has_stability < 0.15
+						communism > 0.75
+					}
+					start_civil_war = {
+    					ideology = communism
+						size = 0.05
+						keep_unit_leaders_trigger = {
+							has_trait = militant_anarchist
+						}
+					}
+				}
+			}
+		}
+
+		FCC_communist_surge_idea = {
+
+			picture = generic_communism_drift_bonus
+
+			removal_cost = -1
+
+			cancel = {
+    			AND = {
+					has_stability < 0.25
+					communism > 0.5
+				}
+			}
+
+			modifier = {
+				communism_drift = 0.01
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						has_stability < 0.25
+						communism > 0.5
+					}
+					start_civil_war = {
+    					ideology = communism
+						size = 0.25
+						keep_unit_leaders_trigger = {
+							has_trait = militant_anarchist
+						}
+					}
+				}
+			}
+		}
+
+		FCC_looming_communist_uprising_idea = {
+
+			picture = generic_communism_drift_bonus
+
+			removal_cost = -1
+
+			cancel = {
+    			AND = {
+					has_stability < 0.5
+					communism > 0.3
+				}
+			}
+
+			modifier = {
+				communism_drift = 0.01
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						has_stability < 0.5
+						communism > 0.3
+					}
+					start_civil_war = {
+    					ideology = communism
+						size = 0.5
+						keep_unit_leaders_trigger = {
+							has_trait = militant_anarchist
+						}
+					}
+				}
+			}
+		}
+
+		FCC_imminent_communist_uprising_idea = {
+
+			picture = generic_communism_drift_bonus
+
+			removal_cost = -1
+
+			cancel = {
+    			AND = {
+					has_stability < 0.7
+					communism > 0.2
+				}
+			}
+
+			modifier = {
+				communism_drift = 0.01
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						has_stability < 0.7
+						communism > 0.2
+					}
+					start_civil_war = {
+    					ideology = communism
+						size = 0.75
+						keep_unit_leaders_trigger = {
+							has_trait = militant_anarchist
+						}
+					}
+				}
+			}
+		}
+		
+	}
+
+}

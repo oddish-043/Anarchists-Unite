@@ -1,0 +1,343 @@
+SPC_ideological_struggle_balance_of_power_category = {
+	SPC_expand_column_system = {
+		icon = GFX_decision_generic_military
+		cost = 25
+		allowed = {
+			original_tag = SPR
+		}
+
+		available = {
+			has_completed_focus = SPR_expand_confederal_militias
+		}
+		visible = {
+			has_government = anarchist
+			has_completed_focus = SPR_expand_confederal_militias
+		}
+		fire_only_once = no
+		days_remove = 14
+		complete_effect = {
+			add_power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value = -0.1
+    			tooltip_side = SPC_anarchist_side
+			}
+			add_manpower = 500
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	SPC_protest_labor_camps = {
+		icon = GFX_decision_generic_political_rally
+		cost = 25
+		allowed = {
+			original_tag = SPR
+		}
+		available = {
+			has_completed_focus = SPR_protest_republican_labor_camps
+		}
+		visible = {
+			has_government = anarchist
+			has_completed_focus = SPR_protest_republican_labor_camps
+		}
+		fire_only_once = no
+		days_remove = 14
+		complete_effect = {
+			add_power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value = -0.1
+    			tooltip_side = SPC_anarchist_side
+			}
+			add_autonomy_score = {
+    			value = 50
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	SPC_fifth_brigade_integration = {
+		icon = GFX_decision_generic_army_support
+		cost = 25
+		allowed = {
+			original_tag = SPR
+		}
+		available = {
+			has_completed_focus = SPR_support_the_fifth_brigade
+		}
+		visible = {
+			has_government = anarchist
+			has_completed_focus = SPR_support_the_fifth_brigade
+		}
+		fire_only_once = no
+		days_remove = 14
+		complete_effect = {
+			add_power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value = 0.1
+    			tooltip_side = SPC_communist_side
+			}
+			add_manpower = 1000
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+
+	SPC_soviet_aid_request = {
+		icon = GFX_decision_generic_army_support
+		cost = 25
+		allowed = {
+			original_tag = SPR
+		}
+		available = {
+			has_completed_focus = SPR_request_soviet_aid
+		}
+		visible = {
+			has_government = anarchist
+			has_completed_focus = SPR_request_soviet_aid
+		}
+		fire_only_once = no
+		days_remove = 14
+		modifier = {
+			mic_to_overlord_factor = -1.0
+		}
+		complete_effect = {
+			add_power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value = 0.1
+    			tooltip_side = SPC_communist_side
+			}
+		}
+		ai_will_do = {
+			base = 0
+		}
+	}
+
+	SPR_nkvd_infiltration = {
+		icon = GFX_decision_onmap_recruit_operative
+		cost = 25
+		allowed = {
+			original_tag = SPR
+		}
+		available = {
+			NOT = {
+				SPC = {
+					has_completed_focus = SPR_eliminate_nkvd_infiltrators
+				}
+			}
+		}
+		visible = {
+			has_government = democratic
+			NOT = {
+				SPC = {
+					has_completed_focus = SPR_eliminate_nkvd_infiltrators
+				}
+			}
+		}
+		fire_only_once = no
+		days_remove = 14
+		remove_effect = {
+			add_power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value = 0.05
+    			tooltip_side = SPC_anarchist_side
+			}
+			add_autonomy_score = {
+    			value = -25
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	SPR_put_down_anarchists = {
+		icon = GFX_decision_generic_police_action
+		cost = 25
+		allowed = {
+			original_tag = SPR
+		}
+		available = {
+			SPC = {
+				compare_autonomy_progress_ratio < 0.25
+			}
+			power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value > 0.35
+			}
+		}
+		visible = {
+			has_government = democratic
+		}
+		fire_only_once = no
+		days_remove = 14
+		remove_effect = {
+			add_power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value = 0.05
+    			tooltip_side = SPC_anarchist_side
+			}
+			add_autonomy_score = {
+    			value = -10
+			}
+			SPC = {
+				random_owned_controlled_state = {
+					limit = {
+						NOT = {
+							state = 165
+						}
+					}
+					transfer_state_to = SPD
+				}
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	SPR_reintegrate_anarchists = {
+		icon = GFX_decision_oppression
+		cost = 50
+		allowed = {
+			original_tag = SPR
+		}
+		available = {
+			SPC = {
+				compare_autonomy_progress_ratio < 0.01
+			}
+			power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value > 0.9
+			}
+		}
+		visible = {
+			has_government = democratic
+		}
+		fire_only_once = no
+		days_remove = 35
+		remove_effect = {
+			annex_country = {
+    			target = SPC
+    			transfer_troops = no
+			}
+			set_global_flag = ANCOM_struggle_completed
+			clr_global_flag = SPR_anarchists_won
+			set_global_flag = SPR_democrats_won
+			news_event = lar_news.2
+			set_global_flag = scw_over
+			remove_power_balance = {
+    			id = SPC_ideological_struggle_balance
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	SPC_expand_territory = {
+		icon = GFX_decision_infiltrate_state
+		cost = 10
+		targets = { 171 790 174 791 176 792 172 166 794 165 788 793 167 170 175 168 169 789 173 }
+		allowed = {
+			original_tag = SPR
+		}
+		available = {
+			has_completed_focus = SPR_extend_our_reach
+			SPC = {
+				compare_autonomy_progress_ratio > 0.5
+			}
+			power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value < -0.35
+			}
+		}
+		visible = {
+			has_government = anarchist
+			FROM = {
+				any_neighbor_state = {
+					is_controlled_by = ROOT
+				}
+			}
+			NOT = {
+				FROM = {
+					is_controlled_by = ROOT
+				}
+			}
+		}
+		state_target = yes
+		on_map_mode = map_only
+		fire_only_once = no
+		days_remove = 14
+		remove_effect = {
+			FROM = {
+				transfer_state_to = SPC
+			}
+			add_autonomy_score = {
+    			value = 250
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	SPC_subsume_government = {
+		icon = GFX_decision_generic_nationalism
+		cost = 25
+		targets = { 41 }
+		allowed = {
+			original_tag = SPR
+		}
+		available = {
+			has_completed_focus = SPR_subsume_republican_government
+			SPC = {
+				compare_autonomy_progress_ratio > 0.9
+			}
+			power_balance_value = {
+    			id = SPC_ideological_struggle_balance
+    			value < -0.9
+			}
+		}
+		visible = {
+			has_government = anarchist
+			FROM = {
+				any_neighbor_state = {
+					is_controlled_by = ROOT
+				}
+			}
+			NOT = {
+				FROM = {
+					is_controlled_by = ROOT
+				}
+			}
+		}
+		state_target = yes
+		on_map_mode = map_only
+
+		fire_only_once = no
+		days_remove = 35
+		remove_effect = {
+			SPC = {
+				annex_country = {
+					target = SPD
+    				transfer_troops = no
+				}
+			}
+			set_global_flag = ANCOM_struggle_completed
+			remove_power_balance = {
+    			id = SPC_ideological_struggle_balance
+			}
+			clr_global_flag = SPR_democrats_won
+			set_global_flag = SPR_anarchists_won
+			news_event = lar_news.2
+			set_global_flag = scw_over
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+}

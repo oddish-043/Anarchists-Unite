@@ -1,0 +1,72 @@
+
+FCC_anarchist_plan = {
+	name = "Soviet Anarchist Plan"
+	desc = ""
+
+	allowed = {
+		OR = {
+			original_tag = CUB
+			original_tag = FCC
+		}
+	}
+	enable = {
+		AND = {
+			OR = {
+				has_country_flag = FCC_AI_RANDOM_ANARCHIST
+				has_game_rule = {
+					rule = FCC_ai_behavior 
+					option = ANARCHIST
+				}
+			}
+		}
+	}
+	abort = {
+		is_subject = yes 
+	}
+
+	ai_national_focuses = {
+		CUB_syndicalism_on_the_rise
+		ANCOM_syndicalism_in_centroamerica
+		CUB_juventud_libertaria
+		CUB_spanish_anarchist_support
+		CUB_infiltrate_cnoc
+
+		FCC_convoy_conversions
+		FCC_insurgent_island_hopping
+		FCC_founding_the_facc
+		FCC_the_fight_for_spain
+		FCC_united_states_intervention
+		FCC_expropriate_plantations
+		FCC_lobby_soviet_support
+		FCC_lobby_british_support
+		FCC_return_indigenous_land
+		FCC_lobby_brazilian_support
+		FCC_lobby_league_of_nations
+		FCC_lobby_french_support
+		FCC_force_US_to_table
+		FCC_break_up_ufc
+
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

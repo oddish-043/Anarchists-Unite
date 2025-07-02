@@ -1,0 +1,73 @@
+
+SOV_anarchist_plan = {
+	name = "Soviet Anarchist Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = SOV
+	}
+	enable = {
+		AND = {
+			OR = {
+				has_country_flag = SOV_AI_RANDOM_ANARCHIST
+				has_game_rule = {
+					rule = SOV_ai_behavior 
+					option = ANARCHIST
+				}
+			}
+		}
+	}
+	abort = {
+		is_subject = yes 
+	}
+
+	ai_national_focuses = {
+		SOV_beaten_but_not_defeated
+		SAV_the_farthest_left
+		SAV_rescuing_purge_victims
+		SAV_a_new_black_army
+		SAV_a_military_syndicate
+		SAV_community_armories
+		SAV_community_motorpools
+		SAV_contacting_the_exiles
+		SAV_the_kropotkin_museum
+		SAV_the_ghost_of_nikiforova
+		SAV_unification_by_necesity
+		SAV_peasant_safehouse_network
+		SAV_intensify_gulag_uprisings
+		SAV_raid_soviet_stockpiles
+		SAV_arming_the_escapees
+		SAV_an_end_to_leninist_hypocrisy
+		SAV_our_spanish_comrades
+		SAV_supporting_the_recovery_effort
+		SAV_an_eye_to_european_fascism
+		SAV_spreading_the_revolution_east
+		SAV_a_decentralized_federation
+		SAV_supporting_federated_communes
+		SAV_our_shared_future
+		SAV_the_anarchist_international
+		SAV_renewed_diplomatic_efforts
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}

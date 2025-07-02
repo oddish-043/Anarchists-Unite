@@ -1,0 +1,1426 @@
+﻿focus_tree = {
+	id = korea_focus_tree
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			original_tag = KOR
+		}
+	}
+
+	default = no
+
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 200 y = 1500 }
+
+	initial_show_position = {
+		focus = KOR_strengthen_government_authority
+	}
+
+	######################################
+	#Combined non-alighned/communist path#
+	######################################
+
+	focus = {
+		id = KOR_strengthen_government_authority
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 2
+		y = 0
+		cost = 5
+		mutually_exclusive = { focus = KOR_reach_out_to_anarchists }
+		allow_branch = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = KOR_reach_out_to_anarchists }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = neutrality 
+				popularity = 0.15
+			}
+			add_popularity = {
+				ideology = communism 
+				popularity = 0.15
+			}
+		}
+	}
+
+	###################
+	#monarchist branch#
+	###################
+
+	focus = {
+		id = KOR_rally_behind_Yi_Kang
+		icon = GFX_goal_support_yi_kang
+		x = 1
+		y = 1
+		cost = 5
+		prerequisite = { focus = KOR_strengthen_government_authority }
+		mutually_exclusive = { focus = KOR_alighn_with_prc }
+		allow_branch = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = KOR_reach_out_to_anarchists }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = neutrality 
+				popularity = 0.10
+			}
+			set_politics = {
+				ruling_party = neutrality
+				elections_allowed = no
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_build_patriotic_nobility
+		icon = GFX_goal_noble_officers
+		relative_position_id = KOR_rally_behind_Yi_Kang
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = KOR_rally_behind_Yi_Kang }
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_popularity = {
+				ideology = neutrality 
+				popularity = 0.10
+			}
+			add_ideas = kor_building_nobility
+		}
+	}
+
+	focus = {
+		id = KOR_rightful_emperor
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		relative_position_id = KOR_build_patriotic_nobility
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = KOR_build_patriotic_nobility }
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = kor_rightful_emperor
+		}
+	}
+
+	##################
+	#communist branch#
+	##################
+
+	focus = {
+		id = KOR_alighn_with_prc
+		icon = GFX_focus_chi_cooperation_with_the_communists
+		x = -1
+		y = 1
+		cost = 5
+		prerequisite = { focus = KOR_strengthen_government_authority }
+		mutually_exclusive = { focus = KOR_rally_behind_Yi_Kang }
+		allow_branch = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = KOR_reach_out_to_anarchists }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = communism 
+				popularity = 0.10
+			}
+			set_politics = {
+				ruling_party = communism
+				elections_allowed = no
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_juche_philosophy
+		icon = GFX_focus_kor_juche
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = KOR_alighn_with_prc }
+		relative_position_id = KOR_alighn_with_prc
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_popularity = {
+				ideology = communism 
+				popularity = 0.10
+			}
+			add_ideas = KOR_juche_idea
+		}
+	}
+
+	focus = {
+		id = KOR_demand_soviet_intervention
+		icon = GFX_soviet_intervention
+		x = 0
+		y = 1
+		cost = 5
+		prerequisite = { focus = KOR_juche_philosophy }
+		relative_position_id = KOR_juche_philosophy
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		available = {
+			CHI = {
+				has_war_with = JAP
+			}
+		}
+
+		completion_reward = {
+			SOV = {
+				create_wargoal = {
+					target = JAP
+					type = topple_government
+				}
+			}
+		}
+	}
+
+	####################################
+	#Combined Anarchist/Democratic path#
+	####################################
+	focus = {
+		id = KOR_reach_out_to_anarchists
+		icon = GFX_focus_spr_masters_of_our_own_fate
+		x = 4
+		y = 0
+		cost = 5
+		mutually_exclusive = { focus = KOR_strengthen_government_authority }
+		allow_branch = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = KOR_strengthen_government_authority }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = anarchist 
+				popularity = 0.15
+			}
+			add_popularity = {
+				ideology = democratic 
+				popularity = 0.15
+			}
+			set_party_name = { 
+				ideology = anarchist
+				long_name = KOR_anarchist_party_long 
+				name = KOR_anarchist_party 
+			}
+			set_country_flag = KOR_anarchist_advisors_join
+		}
+	}
+
+	focus = {
+		id = KOR_disband_the_KPG
+		icon = GFX_focus_ARG_establish_the_free_association
+		prerequisite = { focus = KOR_reach_out_to_anarchists }
+		x = 1
+		y = 1
+		relative_position_id = KOR_reach_out_to_anarchists
+		cost = 5
+		mutually_exclusive = { focus = KOR_the_center_holds }
+		allow_branch = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = KOR_the_center_holds }
+			}
+		}
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			set_cosmetic_tag = KOR_ancom
+			add_popularity = {
+				ideology = anarchist
+				popularity = 0.1
+			}
+			set_politics = {
+				ruling_party = anarchist
+				elections_allowed = no
+			}
+			create_country_leader = {
+				name = "Anarchist Commune"
+				desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+				picture = "GFX_portrait_SPR_anarchist_commune"
+				expire = "1965.1.1"
+				ideology = anarchism
+				traits = {
+					our_right_to_survive
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_organize_prison_breaks
+		icon = GFX_focus_CZE_german_puppet
+		prerequisite = { focus = KOR_disband_the_KPG }
+		x = 0
+		y = 1
+		relative_position_id = KOR_disband_the_KPG
+		cost = 5
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KOR_free_prisoners_tt
+			set_country_flag = KOR_free_anarchist_prisoners
+			add_popularity = {
+				ideology = anarchist 
+				popularity = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_establish_insurrectionary_cells
+		icon = GFX_focus_ARG_no_gods_no_masters
+		prerequisite = { focus = KOR_organize_prison_breaks }
+		x = 0
+		y = 1
+		relative_position_id = KOR_organize_prison_breaks
+		cost = 5
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			custom_effect_tooltip = KOR_organize_regional_revolts_tt
+			set_country_flag = KOR_organize_regional_revolts_flag 
+			add_popularity = {
+				ideology = anarchist 
+				popularity = 0.15
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_found_korean_patriot_organization
+		icon = GFX_goal_generic_political_pressure
+		prerequisite = {  }
+		mutually_exclusive = { focus = KOR_rebuild_the_black_wave }
+		x = 4
+		y = 0
+		relative_position_id = KOR_reach_out_to_anarchists
+		cost = 5
+		available = {
+			OR = { 
+				has_completed_focus = KOR_strengthen_government_authority
+				has_completed_focus = KOR_the_center_holds
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			create_intelligence_agency = {
+				name = "K.P.O."
+				icon = GFX_intelligence_agency_logo_agency
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_rebuild_the_black_wave
+		icon = GFX_focus_generic_coastal_fort
+		prerequisite = {  }
+		mutually_exclusive = { focus = KOR_found_korean_patriot_organization }
+		x = 6
+		y = 0
+		relative_position_id = KOR_reach_out_to_anarchists
+		cost = 5
+		available = {
+			has_completed_focus = KOR_disband_the_KPG
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			create_intelligence_agency = {
+				name = "Heukdo hoe"
+				icon = GFX_black_wave
+			}
+			add_popularity = {
+				ideology = anarchist 
+				popularity = 0.15
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_underground_aid
+		icon = GFX_focus_generic_concessions
+		prerequisite = { focus = KOR_found_korean_patriot_organization focus = KOR_rebuild_the_black_wave }
+		x = 5
+		y = 1
+		relative_position_id = KOR_reach_out_to_anarchists
+		cost = 5
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+
+	focus = {
+		id = KOR_expand_opperational_capacity
+		icon = GFX_focus_generic_secret_service_agency
+		prerequisite = { focus = KOR_underground_aid }
+		x = 0
+		y = 2
+		relative_position_id = KOR_underground_aid
+		cost = 5
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = KOR_agency_idea_1
+		}
+	}
+
+	focus = {
+		id = KOR_train_anarchist_insurrectionaries
+		icon = GFX_focus_generic_infiltration
+		prerequisite = { focus = KOR_expand_opperational_capacity }
+		prerequisite = { focus = KOR_anarchist_mutual_aid }
+		x = 0
+		y = 1
+		relative_position_id = KOR_expand_opperational_capacity
+		cost = 5
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			swap_ideas = { 
+				remove_idea = KOR_agency_idea_1
+				add_idea = KOR_agency_idea_2
+			}
+			add_popularity = {
+				ideology = anarchist 
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_smuggling_network
+		icon = GFX_focus_prc_infiltration
+		prerequisite = { focus = KOR_underground_aid }
+		x = 4
+		y = 2
+		relative_position_id = KOR_reach_out_to_anarchists
+		cost = 5
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 2 }
+		}
+	}
+
+	focus = {
+		id = KOR_anarchist_mutual_aid
+		icon = GFX_focus_ITA_corpo_volontari_della_liberta
+		prerequisite = { focus = KOR_reach_out_to_anarchists }
+		prerequisite = { focus = KOR_smuggling_network }
+		x = 3
+		y = 3
+		relative_position_id = KOR_reach_out_to_anarchists
+		cost = 5
+
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_offsite_building = { type = industrial_complex level = 3 }
+		}
+	}
+
+	focus = {
+		id = KOR_reach_out_to_diaspora
+		icon = GFX_goal_generic_demand_territory
+		x = 14
+		y = 0
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_ideas = KOR_korean_volunteers
+			set_country_flag = KOR_exile_recruiting
+		}
+	}
+
+	focus = {
+		id = KOR_foreign_arms_purchasing
+		icon = GFX_focus_DEN_no_regulations
+		prerequisite = {
+			focus = KOR_reach_out_to_diaspora
+		}
+		x = -3
+		y = 1
+		relative_position_id = KOR_reach_out_to_diaspora
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			custom_effect_tooltip = KOR_foreign_arms_purchasing_tt
+		}
+	}
+
+	focus = {
+		id = KOR_foreign_arms_smuggling
+		icon = GFX_focus_DEN_heavy_regulations
+		prerequisite = {
+			focus = KOR_foreign_arms_purchasing
+		}
+		prerequisite = {
+			focus = KOR_underground_aid
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_foreign_arms_purchasing
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_offsite_building = { type = arms_factory level = 1 }
+		}
+	}
+
+	focus = {
+		id = KOR_petition_the_kmt
+		icon = GFX_focus_generic_china1
+		prerequisite = {
+			focus = KOR_foreign_arms_purchasing
+		}
+		x = 2
+		y = 1
+		relative_position_id = KOR_foreign_arms_purchasing
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_equipment_to_stockpile = {
+				type = infantry_equipment
+				amount = 2000
+				producer = CHI
+			}
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 200
+				producer = CHI
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_found_korean_liberation_army
+		icon = GFX_focus_FIN_motti_tactics
+		prerequisite = {
+			focus = KOR_petition_the_kmt
+		}
+		available = { is_in_faction = yes }
+		x = 0
+		y = 1
+		relative_position_id = KOR_petition_the_kmt
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			division_template = {
+				name = "KLA Division"
+				division_names_group = CHI_MOT_01
+				is_locked = yes
+				force_allow_recruiting = yes
+				regiments = {					
+					motorized = { x = 0 y = 0 }	
+					motorized = { x = 0 y = 1 }
+					motorized = { x = 1 y = 0 }
+					motorized = { x = 1 y = 1 }
+				}
+			}
+			613 = {
+				create_unit = {
+					division = "name = \"KLA Division\" division_template = \"KLA Division\" start_experience_factor = 0.5"
+					owner = KOR
+					count = 3
+				}
+			}
+			
+		}
+	}
+
+	focus = {
+		id = KOR_rebuild_the_heroic_corp
+		icon = GFX_focus_ETH_freedom_at_gunpoint
+		prerequisite = {
+			focus = KOR_reach_out_to_diaspora
+		}
+		available = { 
+			has_completed_focus = KOR_disband_the_KPG 
+			is_in_faction = yes 
+		}
+		x = 2
+		y = 1
+		relative_position_id = KOR_petition_the_kmt
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_popularity = {
+				ideology = anarchist 
+				popularity = 0.05
+			}
+			division_template = {
+				name = "Heroic Corp Division"
+				is_locked = yes
+				force_allow_recruiting = yes
+				regiments = {					
+					irregular_infantry = { x = 0 y = 0 }	
+					irregular_infantry = { x = 0 y = 1 }
+					irregular_infantry = { x = 1 y = 0 }
+					irregular_infantry = { x = 1 y = 1 }
+				}
+			}
+			613 = { 
+				create_unit = {
+					division = "name = \"Heroic Corp Division\" division_template = \"Heroic Corp Division\" start_experience_factor = 0.5"
+					owner = KOR
+					count = 6
+				}
+			}
+			
+		}
+	}
+
+	focus = {
+		id = KOR_chinese_volunteers
+		icon = GFX_focus_prc_social_democracy
+		prerequisite = { focus = KOR_rebuild_the_heroic_corp }
+		x = -1
+		y = 1
+		relative_position_id = KOR_rebuild_the_heroic_corp
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_manpower = 2000
+			add_popularity = {
+				ideology = anarchist 
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_japanese_volunteers
+		icon = GFX_focus_jap_pacific_guardian
+		prerequisite = { focus = KOR_rebuild_the_heroic_corp }
+		x = 1
+		y = 1
+		relative_position_id = KOR_rebuild_the_heroic_corp
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			add_manpower = 2000
+			add_popularity = {
+				ideology = anarchist 
+				popularity = 0.05
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_form_the_korean_volunteer_association
+		icon = GFX_focus_CHL_departemento_de_las_tropas_nacistas_de_asalto
+		prerequisite = {
+			focus = KOR_reach_out_to_diaspora
+		}
+		available = { is_in_faction = yes }
+		x = 4
+		y = 1
+		relative_position_id = KOR_petition_the_kmt
+		cost = 5
+		available_if_capitulated = yes
+		completion_reward = {
+			division_template = {
+				name = "KVA Division"
+				is_locked = yes
+				force_allow_recruiting = yes
+				regiments = {					
+					infantry = { x = 0 y = 0 }	
+					infantry = { x = 0 y = 1 }
+					infantry = { x = 0 y = 2 }
+					infantry = { x = 1 y = 0 }
+					infantry = { x = 1 y = 1 }
+					infantry = { x = 1 y = 2 }
+				}
+			}
+			613 = { 
+				create_unit = {
+					division = "name = \"KVA Division\" division_template = \"KVA Division\" start_experience_factor = 0.5"
+					owner = KOR
+					count = 3
+				}
+			}
+			 
+		}
+	}
+
+	focus = {
+		id = KOR_the_center_holds
+		icon = GFX_focus_BRA_end_the_state_of_emergency
+		prerequisite = { focus = KOR_reach_out_to_anarchists }
+		x = -1
+		y = 1
+		relative_position_id = KOR_reach_out_to_anarchists
+		cost = 5
+		mutually_exclusive = { focus = KOR_disband_the_KPG }
+		allow_branch = {
+			IF = {
+				limit = {
+					has_game_rule = {
+						rule = obsolete_focus_branches_visibility
+						option = HIDE
+					}
+				}
+				NOT = { has_completed_focus = KOR_disband_the_KPG }
+			}
+		}
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 100
+			add_popularity = {
+				ideology = democratic
+				popularity = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_seek_foreign_aid
+		icon = GFX_goal_generic_intelligence_exchange
+		prerequisite = { focus = KOR_the_center_holds }
+		x = 0
+		y = 1
+		relative_position_id = KOR_the_center_holds
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = KOR_foreign_aid
+		}
+	}
+
+	focus = {
+		id = KOR_long_war_for_independence
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = KOR_seek_foreign_aid }
+		x = 0
+		y = 1
+		relative_position_id = KOR_seek_foreign_aid
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = KOR_the_long_war
+		}
+	}
+
+	focus = {
+		id = KOR_korea_restored
+		icon = GFX_goal_kor_korea_restored
+		prerequisite = { 
+			focus = KOR_long_war_for_independence 
+			focus = KOR_establish_insurrectionary_cells
+			focus = KOR_rightful_emperor
+			focus = KOR_demand_soviet_intervention
+		}
+		x = -1
+		y = 1
+		relative_position_id = KOR_long_war_for_independence
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_timed_idea = {
+				idea = KOR_rebuilding
+				days = 365
+			}
+			set_global_flag = korea_recognized_flag
+		}
+	}
+
+	focus = {
+		id = KOR_align_with_comintern
+		icon = GFX_goal_kor_join_soviets
+		prerequisite = { 
+			focus = KOR_demand_soviet_intervention 
+		}
+		prerequisite = { 
+			focus = KOR_korea_restored 
+		}
+		x = -5
+		y = 1
+		relative_position_id = KOR_korea_restored
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			SOV = {
+				add_to_faction = KOR
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_integrate_liberation_armies
+		icon = GFX_goal_kor_military_integration
+		prerequisite = { 
+			focus = KOR_korea_restored 
+		}
+		x = -3
+		y = 1
+		relative_position_id = KOR_korea_restored
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_division_force_allow_recruiting = {
+				division_template = "Heroic Corp Division"
+			}
+			set_division_force_allow_recruiting = {
+				division_template = "KVA Division"
+			}
+			set_division_force_allow_recruiting = {
+				division_template = "KLA Division"
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_doctrine_advancement
+		icon = GFX_goal_generic_army_doctrines
+		prerequisite = { 
+			focus = KOR_integrate_liberation_armies 
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_integrate_liberation_armies
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 1.0
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_improve_motorized_brigades
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { 
+			focus = KOR_doctrine_advancement 
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_doctrine_advancement
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = cat_mechanized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_tank_development
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { 
+			focus = KOR_improve_motorized_brigades 
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_improve_motorized_brigades
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_deal_with_the_devil
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { 
+			focus = KOR_integrate_liberation_armies 
+		}
+		available = {
+			has_completed_focus = KOR_rightful_emperor
+		}
+		x = -2
+		y = 1
+		relative_position_id = KOR_integrate_liberation_armies
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.15
+			}
+			GER = {
+				diplomatic_relation = {
+					country = KOR
+					relation = guarantee
+					active = yes
+				}
+			}
+			white_peace = JAP
+			add_country_leader_role = {
+				character = KOR_yi_kang
+				promote_leader = yes
+				country_leader = {
+					ideology = fascism_ideology
+					expire = "1965.1.1.1"
+					traits = {  }
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_centralize_imperial_power
+		icon = GFX_goal_tfv_sever_ties_with_uk
+		prerequisite = { 
+			focus = KOR_deal_with_the_devil 
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_deal_with_the_devil
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			set_politics = {
+				ruling_party = fascism
+				elections_allowed = no
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_align_with_germany
+		icon = GFX_goal_kor_join_axis
+		prerequisite = { 
+			focus = KOR_centralize_imperial_power 
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_centralize_imperial_power
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_popularity = {
+				ideology = fascism
+				popularity = 0.1
+			}
+			GER = {
+				add_to_faction = KOR
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_develope_northern_industry
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { 
+			focus = KOR_korea_restored 
+		}
+		available = {
+			527 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		x = -1
+		y = 1
+		relative_position_id = KOR_korea_restored
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			527 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_northern_arms_production
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { 
+			focus = KOR_develope_northern_industry 
+			focus = KOR_develope_southern_industry
+		}
+		available = {
+			527 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_develope_northern_industry
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			527 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_northern_naval_production
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { 
+			focus = KOR_northern_arms_production 
+			focus = KOR_southern_arms_production
+		}
+		available = {
+			527 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_northern_arms_production
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			527 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_northern_development
+		icon = GFX_goal_generic_construction2
+		prerequisite = { 
+			focus = KOR_northern_naval_production 
+			focus = KOR_southern_arms_production
+		}
+		available = {
+			527 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_northern_naval_production
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			527 = {
+				add_extra_state_shared_building_slots = 5
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_develope_southern_industry
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { 
+			focus = KOR_korea_restored 
+		}
+		available = {
+			525 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		x = 1
+		y = 1
+		relative_position_id = KOR_korea_restored
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			525 = {
+				add_extra_state_shared_building_slots = 5
+				add_building_construction = {
+					type = industrial_complex
+					level = 5
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_southern_arms_production
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { 
+			focus = KOR_develope_southern_industry 
+			focus = KOR_develope_northern_industry
+		}
+		available = {
+			525 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_develope_southern_industry
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			525 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = arms_factory
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_southern_naval_production
+		icon = GFX_goal_generic_construct_naval_dockyard
+		prerequisite = { 
+			focus = KOR_southern_arms_production 
+			focus = KOR_northern_arms_production
+		}
+		available = {
+			525 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_southern_arms_production
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			525 = {
+				add_extra_state_shared_building_slots = 3
+				add_building_construction = {
+					type = dockyard
+					level = 3
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_southern_development
+		icon = GFX_goal_generic_construction2
+		prerequisite = { 
+			focus = KOR_southern_naval_production 
+			focus = KOR_northern_naval_production
+		}
+		available = {
+			525 = {
+				is_owned_and_controlled_by = ROOT
+			}
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_southern_naval_production
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			525 = {
+				add_extra_state_shared_building_slots = 5
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_finish_reconstruction
+		icon = GFX_goal_kor_finish_reconstruction
+		prerequisite = { 
+			focus = KOR_southern_development 
+			focus = KOR_northern_development
+		}
+		x = -1
+		y = 1
+		relative_position_id = KOR_southern_development
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			remove_ideas = KOR_the_long_exile
+		}
+	}
+
+	focus = {
+		id = KOR_rebuild_public_schools
+		icon = GFX_focus_generic_university_1
+		prerequisite = { 
+			focus = KOR_korea_restored 
+		}
+		x = 3
+		y = 1
+		relative_position_id = KOR_korea_restored
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = electronics
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_establish_universities
+		icon = GFX_focus_research
+		prerequisite = { 
+			focus = KOR_rebuild_public_schools 
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_rebuild_public_schools
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+	focus = {
+		id = KOR_exiled_professors_return
+		icon = GFX_focus_generic_university_2
+		prerequisite = { 
+			focus = KOR_establish_universities 
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_establish_universities
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 1.0
+				uses = 2
+				category = industry
+			}
+		}
+	}
+
+	focus = {
+		id = KOR_technical_academies
+		icon = GFX_focus_research2
+		prerequisite = { 
+			focus = KOR_exiled_professors_return 
+		}
+		x = 0
+		y = 1
+		relative_position_id = KOR_exiled_professors_return
+		cost = 5
+		
+		search_filters = { FOCUS_FILTER_POLITICAL }
+		
+		available_if_capitulated = no
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+
+}

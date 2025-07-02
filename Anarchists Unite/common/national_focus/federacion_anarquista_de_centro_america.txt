@@ -1,0 +1,2769 @@
+﻿focus_tree = {
+	id = centro_america_focus_tree
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			original_tag = FCC
+		}
+	}
+
+	default = no
+
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 2000 y = 2000 }
+
+	initial_show_position = {
+		focus = FCC_central_american_uprising
+	}
+
+	###############
+	#uprising path#
+	###############
+
+	focus = {
+		id = FCC_central_american_uprising
+		icon = GFX_focus_ARG_no_gods_no_masters
+
+		x = 0
+		y = 0
+
+		cost = 0
+
+		dynamic = yes
+
+		available = {
+			always = no
+		}
+
+		
+
+		completion_reward = {
+			add_timed_idea = {
+    			idea = FCC_revolutionary_zeal_idea
+    			days = 90
+			}
+			add_ideas = FCC_anarchist_federation_idea_1
+			add_ideas = SPR_collectivized_society
+		}
+	}
+
+	focus = {
+		id = FCC_convoy_conversions
+		icon = GFX_focus_generic_refit_civilian_ships
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_central_american_uprising
+		prerequisite = { focus = FCC_central_american_uprising }
+
+		cost = 2
+
+		dynamic = yes
+
+		bypass = {
+			has_war = no
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+    			idea = FCC_revolutionary_zeal_idea
+    			days = 90
+			}
+			add_ideas = FCC_anarchist_federation_idea_1
+			add_ideas = SPR_collectivized_society
+			set_technology = {
+    			early_ship_hull_light = 1
+			}
+			set_technology = {
+    			basic_battery = 1
+			}
+			create_equipment_variant = {
+    			name = "Convoy Conversion"								
+    			type = ship_hull_light_1
+    			name_group = CUB_DD_HISTORICAL
+    			modules = {
+        			fixed_ship_battery_slot = ship_light_battery_1
+        			fixed_ship_engine_slot = light_ship_engine_1
+    			}
+			}
+			FCC = {
+    			create_ship = {
+        			type = ship_hull_light_1
+        			equipment_variant = "Convoy Conversion"
+        			creator = FCC
+					amount = 3
+    			}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_insurgent_island_hopping
+		icon = GFX_focus_generic_naval_invasion
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_central_american_uprising
+		prerequisite = { focus = FCC_central_american_uprising }
+
+		cost = 2
+
+		dynamic = yes
+
+		bypass = {
+			has_war = no
+		}
+
+		completion_reward = {
+			add_timed_idea = {
+    			idea = FCC_insurgent_island_hopping_idea
+    			days = 70
+			}
+			division_template = {
+				name = "Island Hoppers"
+				regiments = {
+					marine = { x = 0 y = 0 }
+					marine = { x = 0 y = 1 }
+					marine = { x = 1 y = 0 }
+					marine = { x = 1 y = 1 }
+				}
+			}
+			random_controlled_state = {
+				create_unit = {
+					division = "name = \"First Marines\" division_template = \"Island Hoppers\" start_experience_factor = 0.5"
+					owner = FCC
+				}
+				create_unit = {
+					division = "name = \"Second Marines\" division_template = \"Island Hoppers\" start_experience_factor = 0.5"
+					owner = FCC
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_founding_the_facc
+		icon = GFX_SOV_annex_tannu_tuva_ccp_2d_sov_compatibility
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_insurgent_island_hopping
+		prerequisite = {
+			focus = FCC_insurgent_island_hopping
+			focus = FCC_convoy_conversions
+		}
+
+		cost = 5
+
+		dynamic = yes
+
+		available = {
+			has_war = no
+			owns_state = 316
+			owns_state = 315
+			owns_state = 319
+			owns_state = 314
+			owns_state = 313
+			owns_state = 318
+			owns_state = 312
+			owns_state = 317
+			owns_state = 304
+		}
+
+		completion_reward = {
+			add_state_core = 316
+			add_state_core = 315
+			add_state_core = 319
+			add_state_core = 314
+			add_state_core = 313
+			add_state_core = 318
+			add_state_core = 312
+			add_state_core = 317
+			add_state_core = 304
+			swap_ideas = {
+				remove_idea = FCC_anarchist_federation_idea_1
+				add_idea = FCC_anarchist_federation_idea_2
+			}
+			set_power_balance = {
+    			id = FCC_ideological_struggle_balance
+				set_value = 0.0
+			}
+			activate_mission = FCC_looming_us_intervention
+			hidden_effect = {
+				add_country_leader_role = {
+    				character = FCC_adrian_de_valle
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_manuel_bautista_grajeda
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_gregorio_galeano
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_jose_maria_zeledon
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_jose_nestor_mourelo
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_enrique_conde
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_antonio_mendez_paz
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_martin_blasquez_de_pedro
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_wilfredo_chavez
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_juan_beteta
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_nicolas_mendoza
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_jose_victor_guzman
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_council_of_theorists
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_defensive_military_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_offensive_military_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_organizational_military_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_air_safety_aviation_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_all_weather_aviation_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_commerce_raiding_naval_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_reform_naval_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_infantry_military_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_army_regrouping_military_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_concealment_military_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_naval_strike_aviation_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_close_air_support_aviation_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_logistics_naval_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+				add_country_leader_role = {
+    				character = FCC_anti_submarine_naval_council
+    				country_leader = {
+        				ideology = anarchism
+        				expire = "1965.1.1.1"
+    				}
+				}
+			}
+		}
+	}
+
+	#############################
+	#Ideological Struggle Branch#
+	#############################
+
+	focus = {
+		id = FCC_the_ideological_struggle
+		icon = GFX_SOV_coup_detat_ccp_2d_sov_compatibility
+
+		x = 3
+		y = 1
+
+		relative_position_id = FCC_founding_the_facc
+		prerequisite = { focus = FCC_founding_the_facc }
+
+		cost = 5
+
+		completion_reward = {
+			unlock_decision_tooltip = FCC_demilitarization
+			unlock_decision_tooltip = FCC_reorganize_militias
+		}
+	}
+
+	focus = {
+		id = FCC_decentralized_mutual_aid
+		icon = GFX_goal_generic_national_unity
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_the_ideological_struggle
+		prerequisite = { focus = FCC_the_ideological_struggle }
+		mutually_exclusive = { focus = FCC_labor_vouchers }
+
+		cost = 10
+
+		available = {
+			power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value < -0.15
+			}
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = FCC_decentralized_mutual_aid_tt
+			random_core_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_timed_idea = {
+    			idea = FCC_mutual_aid_idea
+    			days = 90
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_labor_vouchers
+		icon = GFX_focus_RAJ_war_taxes
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_the_ideological_struggle
+		prerequisite = { focus = FCC_the_ideological_struggle }
+		mutually_exclusive = { focus = FCC_decentralized_mutual_aid }
+
+		cost = 5
+
+		available = {
+			power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value > 0.15
+			}
+		}
+
+		completion_reward = {
+			random_core_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				add_extra_state_shared_building_slots = 1
+			}
+			add_popularity = {
+    			ideology = communism
+    			popularity = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_public_assemblies
+		icon = GFX_focus_POL_complete_april_constitution
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_decentralized_mutual_aid
+		prerequisite = { 
+			focus = FCC_decentralized_mutual_aid
+			focus = FCC_labor_vouchers
+		}
+		mutually_exclusive = { focus = FCC_central_committee }
+
+		cost = 10
+
+		available = {
+			power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value < -0.35
+			}
+		}
+
+		completion_reward = {
+			add_ideas = FCC_public_assemblies_idea
+		}
+	}
+
+	focus = {
+		id = FCC_central_committee
+		icon = GFX_focus_NOR_our_royal_claims
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_labor_vouchers
+		prerequisite = { 
+			focus = FCC_decentralized_mutual_aid
+			focus = FCC_labor_vouchers
+		}
+		mutually_exclusive = { focus = FCC_public_assemblies }
+
+		cost = 5
+
+		available = {
+			power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value > 0.35
+			}
+		}
+
+		completion_reward = {
+			add_stability = 0.5
+			add_political_power = 300
+			add_popularity = {
+    			ideology = communism
+    			popularity = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_local_schools
+		icon = GFX_focus_generic_university_1
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_public_assemblies
+		prerequisite = { 
+			focus = FCC_public_assemblies
+			focus = FCC_central_committee
+		}
+		mutually_exclusive = { focus = FCC_standardized_education }
+
+		cost = 10
+
+		available = {
+			power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value < -0.65
+			}
+		}
+
+		completion_reward = {
+			custom_effect_tooltip = FCC_public_schools_tt
+			add_research_slot = 1
+			add_timed_idea = {
+    			idea = FCC_public_schools
+    			days = 365
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_standardized_education
+		icon = GFX_focus_research
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_central_committee
+		prerequisite = { 
+			focus = FCC_public_assemblies
+			focus = FCC_central_committee
+		}
+		mutually_exclusive = { focus = FCC_local_schools }
+
+		cost = 5
+
+		available = {
+			power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value > 0.65
+			}
+		}
+
+		completion_reward = {
+			add_research_slot = 2
+			add_popularity = {
+    			ideology = communism
+    			popularity = 0.1
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_ending_the_divide
+		icon = GFX_focus_SWE_form_rfsu
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_local_schools
+		prerequisite = { 
+			focus = FCC_standardized_education
+			focus = FCC_local_schools
+		}
+
+		cost = 5
+
+		available = {
+			OR = {
+				power_balance_value = {
+    				id = FCC_ideological_struggle_balance
+    				value < -0.9
+				}
+
+				power_balance_value = {
+    				id = FCC_ideological_struggle_balance
+    				value > 0.9
+				}
+			}
+		}
+
+		completion_reward = {
+			remove_power_balance = {
+    			id = FCC_ideological_struggle_balance
+			}
+			add_ideas = FCC_the_divide_resolved_idea
+		}
+	}
+
+	#########################
+	#UFC intervention branch#
+	#########################
+
+	focus = {
+		id = FCC_united_states_intervention
+		icon = GFX_focus_ARG_the_american_push
+
+		x = -3
+		y = 1
+
+		relative_position_id = FCC_founding_the_facc
+		prerequisite = { focus = FCC_founding_the_facc }
+
+		cost = 5
+
+		completion_reward = {
+			add_days_mission_timeout = {
+    			mission = FCC_looming_us_intervention
+    			days = 50
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_expropriate_plantations
+		icon = GFX_focus_generic_farmland
+
+		x = -2
+		y = 1
+
+		relative_position_id = FCC_united_states_intervention
+		prerequisite = { focus = FCC_united_states_intervention }
+
+		cost = 5
+
+		completion_reward = {
+			312 = {
+				add_extra_state_shared_building_slots = 2
+			}
+			313 = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_lobby_soviet_support
+		icon = GFX_focus_chi_mission_to_the_soviet_union
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_united_states_intervention
+		prerequisite = { focus = FCC_united_states_intervention }
+
+		cost = 5
+
+		available = {
+			SOV = {
+				has_opinion = {
+    				target = FCC
+    				value > 49
+				}
+			}
+		}
+
+		completion_reward = {
+			unlock_decision_tooltip = FCC_soviet_planners
+			SOV = {
+				add_ideas = FCC_pressuring_the_usa_idea
+			}
+			add_days_mission_timeout = {
+    			mission = FCC_looming_us_intervention
+    			days = 50
+			}
+			add_popularity = {
+    			ideology = communism
+    			popularity = 0.1
+			}
+			add_power_balance_value = {
+    			id = FCC_ideological_struggle_balance
+    			value = 0.15
+    			tooltip_side = FCC_communist_side
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_lobby_british_support
+		icon = GFX_focus_chi_british_cooperation
+
+		x = 2
+		y = 1
+
+		relative_position_id = FCC_united_states_intervention
+		prerequisite = { focus = FCC_united_states_intervention }
+
+		cost = 5
+
+		available = {
+			ENG = {
+				has_opinion = {
+    				target = FCC
+    				value > 49
+				}
+			}
+		}
+
+		completion_reward = {
+			unlock_decision_tooltip = FCC_english_unions
+			ENG = {
+				add_ideas = FCC_pressuring_the_usa_idea
+			}
+			add_days_mission_timeout = {
+    			mission = FCC_looming_us_intervention
+    			days = 50
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_return_indigenous_land
+		icon = GFX_SOV_committee_in_exile_ccp_2d_sov_compatibility
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_expropriate_plantations
+		prerequisite = { focus = FCC_expropriate_plantations }
+		prerequisite = { focus = FCC_lobby_soviet_support }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_land_recognition_idea
+		}
+	}
+
+	focus = {
+		id = FCC_lobby_brazilian_support
+		icon = GFX_focus_BRA_third_republic
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_lobby_soviet_support
+		prerequisite = { focus = FCC_lobby_british_support }
+		prerequisite = { focus = FCC_lobby_soviet_support }
+
+		cost = 5
+
+		available = {
+			BRA = {
+				has_opinion = {
+    				target = FCC
+    				value > 49
+				}
+			}
+		}
+
+		completion_reward = {
+			unlock_decision_tooltip = FCC_stoke_tensions
+			BRA = {
+				add_ideas = FCC_pressuring_the_usa_idea
+			}
+			add_days_mission_timeout = {
+    			mission = FCC_looming_us_intervention
+    			days = 50
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_lobby_league_of_nations
+		icon = GFX_focus_generic_league_of_nations
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_lobby_soviet_support
+		prerequisite = { focus = FCC_lobby_british_support }
+		prerequisite = { focus = FCC_lobby_soviet_support }
+
+		cost = 5
+
+		available = {
+			NOT = { has_global_flag = LoN_disbanded_flag }
+		}
+
+		completion_reward = {
+			unlock_decision_tooltip = FCC_league_of_nations_speech
+			add_days_mission_timeout = {
+    			mission = FCC_looming_us_intervention
+    			days = 50
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_lobby_french_support
+		icon = GFX_focus_chi_reach_out_to_france
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_lobby_british_support
+		prerequisite = { focus = FCC_lobby_british_support }
+		prerequisite = { focus = FCC_lobby_soviet_support }
+
+		cost = 5
+
+		available = {
+			FRA = {
+				has_opinion = {
+    				target = FCC
+    				value > 49
+				}
+			}
+		}
+
+		completion_reward = {
+			unlock_decision_tooltip = FCC_contact_french_illegalists
+			FRA = {
+				add_ideas = FCC_pressuring_the_usa_idea
+			}
+			add_days_mission_timeout = {
+    			mission = FCC_looming_us_intervention
+    			days = 50
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_force_US_to_table
+		icon = GFX_focus_ARG_anti_american_propaganda
+
+		x = -1
+		y = 2
+
+		relative_position_id = FCC_lobby_british_support
+		prerequisite = { focus = FCC_lobby_french_support }
+		prerequisite = { focus = FCC_lobby_brazilian_support }
+
+		cost = 5
+
+		completion_reward = {
+			add_days_mission_timeout = {
+    			mission = FCC_looming_us_intervention
+    			days = 50
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_break_up_ufc
+		icon = GFX_goal_FCC_break_up_ufc
+
+		x = -3
+		y = 1
+
+		relative_position_id = FCC_force_US_to_table
+		prerequisite = { focus = FCC_force_US_to_table }
+		prerequisite = { focus = FCC_return_indigenous_land }
+
+		cost = 5
+
+		completion_reward = {
+			remove_mission = FCC_looming_us_intervention
+		}
+	}
+
+	##########################
+	#Spanish Civil War Branch#
+	##########################
+
+	focus = {
+		id = FCC_the_fight_for_spain
+		icon = GFX_focus_spr_no_pasaran
+
+		x = 7
+		y = 1
+
+		relative_position_id = FCC_founding_the_facc
+		prerequisite = { focus = FCC_founding_the_facc }
+
+		cost = 2
+
+		available = {
+			AND = {
+				country_exists = SPC
+				NOT = { has_global_flag = scw_over}	
+			}
+		}
+
+		completion_reward = {
+			add_relation_modifier = {
+				target = SPC
+				modifier  = ETH_support_spain_static_modifier #this does not show up in the ui, is that intended or should there be an idea instead?
+			}
+			add_ideas = ARG_anarchist_volunteers
+		}
+	}
+
+	focus = {
+		id = FCC_spanish_refugees
+		icon = GFX_focus_SWE_refuge_from_war
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_the_fight_for_spain
+		prerequisite = { focus = FCC_the_fight_for_spain }
+		mutually_exclusive = { focus = FCC_the_anarchist_international }
+
+		cost = 5
+
+		available = {
+			AND = {
+				country_exists = SPC
+				has_global_flag = scw_over
+			}
+		}
+
+		completion_reward = {
+			add_ideas = ETH_refuge_for_spanish_exiles_idea
+		}
+	}
+
+	focus = {
+		id = FCC_the_anarchist_international
+		icon = GFX_focus_ARG_anarchists_unite
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_the_fight_for_spain
+		prerequisite = { focus = FCC_the_fight_for_spain }
+		mutually_exclusive = { focus = FCC_spanish_refugees }
+
+		cost = 5
+
+		available = {
+			AND = {
+				country_exists = SPC
+				has_global_flag = scw_over
+			}
+		}
+
+		completion_reward = {
+			if = {
+				limit = {
+					country_exists = SPC
+					has_global_flag = scw_over
+					FCC = {
+						is_subject = no
+					}
+					SPC = {
+						NOT = {
+							is_in_faction_with = FCC
+						}
+					}
+				}
+				SPC = {
+					create_faction = "Global Anarchist Federation"
+					add_to_faction = FCC
+					if = {
+						limit = {
+							any_other_country = {
+								NOT = { is_in_faction_with = ROOT }
+								is_subject = no
+								has_government = anarchist
+							}
+						}
+						every_other_country = {
+							limit = {
+								NOT = { is_in_faction_with = ROOT }
+								is_subject = no
+								has_government = anarchist
+							}
+							country_event = {
+								id = SPC_anarchist_diplomacy.1
+								hours = 6
+							}
+						}
+					}	
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = {
+						country_exists = SPC
+					}
+					has_global_flag = scw_over
+					FCC = {
+						is_subject = no
+					}
+				}
+				FCC = {
+					create_faction = "Global Anarchist Federation"
+					if = {
+						limit = {
+							any_other_country = {
+								NOT = { is_in_faction_with = ROOT }
+								is_subject = no
+								has_government = anarchist
+							}
+						}
+						every_other_country = {
+							limit = {
+								NOT = { is_in_faction_with = ROOT }
+								is_subject = no
+								has_government = anarchist
+							}
+							country_event = {
+								id = AGR_anarchist_diplomacy.1
+								hours = 6
+							}
+						}
+					}	
+				}
+			}
+			else_if = {
+				limit = {
+					country_exists = SPC
+					has_global_flag = scw_over
+					FCC = {
+						is_subject = yes
+					}
+					SPC = {
+						NOT = {
+							is_in_faction_with = FCC
+						}
+					}
+				}
+				add_ideas = AGR_anarchist_international_idea
+			}
+		}
+	}
+
+	#################
+	#Military Branch#
+	#################
+
+	focus = {
+		id = FCC_syndicates_of_the_caribean
+		icon = GFX_goal_agr_the_black_fleet
+
+		x = 17
+		y = 1
+
+		relative_position_id = FCC_founding_the_facc
+		prerequisite = { focus = FCC_founding_the_facc }
+
+		cost = 5
+
+		completion_reward = {
+			army_experience = 25
+			navy_experience = 25
+			air_experience = 25
+		}
+	}
+
+	#Airforce sub-branch
+
+	focus = {
+		id = FCC_naval_aviation
+		icon = GFX_goal_generic_air_naval_bomber
+
+		x = -7
+		y = 1
+
+		relative_position_id = FCC_syndicates_of_the_caribean
+		prerequisite = { focus = FCC_syndicates_of_the_caribean }
+
+		cost = 5
+
+		completion_reward = {
+			air_experience = 25
+			random_core_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+    				type = air_base
+    				level = 2
+    				instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_fighter_designs
+		icon = GFX_goal_generic_air_fighter2
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_naval_aviation
+		prerequisite = { focus = FCC_naval_aviation }
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = light_fighter
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_fighter_standardization
+		icon = GFX_focus_generic_aircraft_production
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_fighter_designs
+		prerequisite = { focus = FCC_fighter_designs }
+		mutually_exclusive = { focus = FCC_bomber_standardization }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = AGR_fighter_production_idea
+		}
+	}
+
+	focus = {
+		id = FCC_bomber_designs
+		icon = GFX_focus_generic_cryptologic_bomb
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_naval_aviation
+		prerequisite = { focus = FCC_naval_aviation }
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = naval_air
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_bomber_standardization
+		icon = GFX_focus_SWE_marauder_bombers
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_bomber_designs
+		prerequisite = { focus = FCC_bomber_designs }
+		mutually_exclusive = { focus = FCC_fighter_standardization }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = AGR_nav_bomber_production_idea
+		}
+	}
+
+	#naval sub-branch
+
+	focus = {
+		id = FCC_planning_a_fleet
+		icon = GFX_focus_generic_merchant_fleet
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_syndicates_of_the_caribean
+		prerequisite = { focus = FCC_syndicates_of_the_caribean }
+
+		cost = 5
+
+		completion_reward = {
+			navy_experience = 25
+			random_core_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+    				type = naval_base
+    				level = 2
+    				instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_destroyer_focus
+		icon = GFX_focus_generic_destroyer
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_planning_a_fleet
+		prerequisite = { focus = FCC_planning_a_fleet }
+		mutually_exclusive = { focus = FCC_submarine_focus }
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = dd_tech
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_destroyer_production
+		icon = GFX_focus_SWE_italian_destroyers
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_destroyer_focus
+		prerequisite = { focus = FCC_destroyer_focus }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_destroyer_production_idea
+		}
+	}
+
+	focus = {
+		id = FCC_surface_fleet_dominance
+		icon = GFX_focus_ARG_study_the_battle_of_the_river_plate
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_destroyer_production
+		prerequisite = { focus = FCC_destroyer_production }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = AGR_destroyers_supremacy_idea
+		}
+	}
+
+	focus = {
+		id = FCC_cruiser_experiments
+		icon = GFX_focus_generic_cruiser2
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_destroyer_focus
+		prerequisite = { 
+			focus = FCC_destroyer_focus 
+			focus = FCC_submarine_focus 
+		}
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = cl_tech
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_heavy_cruiser_designs
+		icon = GFX_goal_generic_navy_battleship
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_cruiser_experiments
+		prerequisite = { focus = FCC_cruiser_experiments }
+		prerequisite = { focus = FCC_destroyer_production }
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = ca_tech
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_carrier_designs
+		icon = GFX_focus_generic_air_carrier
+
+		x = -4
+		y = 1
+
+		relative_position_id = FCC_heavy_cruiser_designs
+		prerequisite = { focus = FCC_heavy_cruiser_designs }
+		prerequisite = { focus = FCC_bomber_designs }
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = cv_tech
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_improved_carrier_tactics
+		icon = GFX_focus_GER_graf_zeppelin
+
+		x = -4
+		y = 1
+
+		relative_position_id = FCC_carrier_designs
+		prerequisite = { focus = FCC_carrier_designs }
+		prerequisite = { focus = FCC_fighter_designs }
+
+		cost = 5
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.75
+				uses = 2
+				category = cat_base_strike
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_submarine_focus
+		icon = GFX_SOV_submarine_warfare_ccp_2d_sov_compatibility
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_planning_a_fleet
+		prerequisite = { focus = FCC_planning_a_fleet }
+		mutually_exclusive = { focus = FCC_destroyer_focus }
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = ss_tech
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_submarine_standardization
+		icon = GFX_goal_generic_navy_anti_submarine
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_submarine_focus
+		prerequisite = { focus = FCC_submarine_focus }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_submarine_production_idea
+		}
+	}
+
+	focus = {
+		id = FCC_sea_raiding_tactics
+		icon = GFX_focus_generic_cruiser_submarines
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_submarine_standardization
+		prerequisite = { focus = FCC_submarine_standardization }
+
+		cost = 5
+
+		completion_reward = {
+			add_doctrine_cost_reduction = {
+				cost_reduction = 0.75
+				uses = 3
+				category = trade_interdiction_tree
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_experimental_ship_designs
+		icon = GFX_SOV_expand_the_morskaya_aviatsiya_ccp_2d_sov_compatibility
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_submarine_standardization
+		prerequisite = { focus = FCC_submarine_standardization }
+		prerequisite = { focus = FCC_cruiser_experiments }
+
+		cost = 5
+
+		completion_reward = {
+			random_core_state = {
+				limit = {
+					is_coastal = yes
+				}
+				add_building_construction = {
+					type = naval_facility 
+    				level = 1
+    				instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_midget_subs
+		icon = GFX_focus_generic_midget_submarines
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_experimental_ship_designs
+		prerequisite = { focus = FCC_experimental_ship_designs }
+
+		cost = 5
+
+		completion_reward = {
+			set_technology = {
+    			midget_submarines = 1
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_fleet_subs
+		icon = GFX_SOV_rebuild_the_far_eastern_fleet_ccp_2d_sov_compatibility
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_experimental_ship_designs
+		prerequisite = { focus = FCC_experimental_ship_designs }
+		
+		cost = 5
+
+		completion_reward = {
+			set_technology = {
+    			cruiser_submarines = 1
+			}
+		}
+	}
+
+	#army sub-brach
+
+	focus = {
+		id = FCC_autonomous_marine_corps
+		icon = GFX_focus_BEL_maritime_phoenix
+
+		x = 6
+		y = 1
+
+		relative_position_id = FCC_syndicates_of_the_caribean
+		prerequisite = { focus = FCC_syndicates_of_the_caribean }
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = marine_tech
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_specialist_marines
+		icon = GFX_focus_ETH_peacekeeping_forces
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_autonomous_marine_corps
+		prerequisite = { focus = FCC_autonomous_marine_corps }
+		mutually_exclusive = { focus = FCC_standardized_marines }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_specialized_marines_idea
+		}
+	}
+
+	focus = {
+		id = FCC_standardized_marines
+		icon = GFX_SOV_barrier_troops_ccp_2d_sov_compatibility
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_autonomous_marine_corps
+		prerequisite = { focus = FCC_autonomous_marine_corps }
+		mutually_exclusive = { focus = FCC_specialist_marines }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_standardized_marines_idea
+		}
+	}
+
+	focus = {
+		id = FCC_conquering_the_shores
+		icon = GFX_focus_generic_offshore_oil_rig
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_standardized_marines
+		prerequisite = { 
+			focus = FCC_standardized_marines 
+			focus = FCC_specialist_marines
+		}
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 2
+				category = naval_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_amphibious_tractors
+		icon = GFX_focus_generic_mechanized
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_conquering_the_shores
+		prerequisite = { 
+			focus = FCC_conquering_the_shores 
+		}
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 3
+				category = cat_mechanized_equipment
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_amphibious_tanks
+		icon = GFX_focus_generic_naval_invasion_tank
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_conquering_the_shores
+		prerequisite = { 
+			focus = FCC_conquering_the_shores 
+		}
+
+		cost = 5
+
+		completion_reward = {
+			add_tech_bonus = {
+				bonus = 0.75
+				uses = 3
+				category = armor
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_masters_of_the_coast
+		icon = GFX_focus_SWE_coastal_support
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_amphibious_tanks
+		prerequisite = { 
+			focus = FCC_amphibious_tanks
+		}
+		prerequisite = { 
+			focus = FCC_amphibious_tractors 
+		}
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_coastal_invasion_idea
+		}
+	}
+
+	#############################################
+	#Establishing International Relations Branch#
+	#############################################
+
+	focus = {
+		id = FCC_anarchism_on_the_world_stage
+		icon = GFX_focus_AGR_global_revolution
+
+		x = 4
+		y = 1
+
+		relative_position_id = FCC_break_up_ufc
+		prerequisite = { focus = FCC_break_up_ufc }
+		prerequisite = { focus = FCC_ending_the_divide }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_anarchism_on_the_world_stage_idea
+		}
+	}
+
+	focus = {
+		id = FCC_allied_diplomacy
+		icon = GFX_focus_ARG_join_the_allies
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_anarchism_on_the_world_stage
+		prerequisite = { focus = FCC_anarchism_on_the_world_stage }
+		mutually_exclusive = { focus = FCC_soviet_diplomacy }
+
+		cost = 5
+
+		completion_reward = {
+			IF = {
+				limit = {
+					ENG = {
+						is_faction_leader = yes
+						has_government = democratic
+					}
+				}
+				ENG = {
+					give_guarantee = FCC
+				}
+				FCC = {
+					give_guarantee = ENG
+				}
+			}
+			else_if = {
+				limit = {
+					any_other_country = {
+						is_faction_leader = yes
+						has_government = democratic
+					}
+				}
+				random_country = {
+					limit = {
+						is_faction_leader = yes
+						has_government = democratic
+					}
+					give_guarantee = FCC
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_tenuous_relations
+		icon = GFX_focus_RAJ_give_me_blood_and_i_will_grant_you_freedom
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_allied_diplomacy
+		prerequisite = { focus = FCC_allied_diplomacy }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_tenuous_relations_idea
+		}
+	}
+
+	focus = {
+		id = FCC_soviet_diplomacy
+		icon = GFX_focus_generic_join_comintern
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_anarchism_on_the_world_stage
+		prerequisite = { focus = FCC_anarchism_on_the_world_stage }
+		mutually_exclusive = { focus = FCC_allied_diplomacy }
+
+		cost = 5
+
+		completion_reward = {
+			IF = {
+				limit = {
+					SOV = {
+						is_faction_leader = yes
+						has_government = communism
+					}
+				}
+				SOV = {
+					give_guarantee = FCC
+				}
+				FCC = {
+					give_guarantee = SOV
+				}
+			}
+			else_if = {
+				limit = {
+					any_other_country = {
+						is_faction_leader = yes
+						has_government = communism
+					}
+				}
+				random_country = {
+					limit = {
+						is_faction_leader = yes
+						has_government = communism
+					}
+					give_guarantee = FCC
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_dangerous_friends
+		icon = GFX_focus_RAJ_union_busting
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_soviet_diplomacy
+		prerequisite = { focus = FCC_soviet_diplomacy }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_dangerous_friends_idea
+		}
+	}
+
+	focus = {
+		id = FCC_anti_fascist_action
+		icon = GFX_focus_focus_fra_fascist_threat
+
+		x = 3
+		y = 1
+
+		relative_position_id = FCC_anarchism_on_the_world_stage
+		prerequisite = { focus = FCC_anarchism_on_the_world_stage }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_anti_fascism_idea
+		}
+	}
+
+	focus = {
+		id = FCC_the_war_to_end_fascism
+		icon = GFX_focus_ITA_liberation_or_death
+
+		x = 2
+		y = 1
+
+		relative_position_id = FCC_dangerous_friends
+		prerequisite = { focus = FCC_anti_fascist_action }
+		prerequisite = {
+			focus = FCC_dangerous_friends
+			focus = FCC_tenuous_relations
+		}
+
+		cost = 5
+
+		completion_reward = {
+			every_other_country = {
+				limit = {
+					OR = {
+						is_in_faction_with = ROOT
+						is_guaranteed_by = ROOT
+						has_non_aggression_pact_with = ROOT
+					}
+					has_government = fascism
+					NOT = {
+						AGR = {
+							has_wargoal_against = PREV
+						}
+					}
+				}
+				if = {
+					limit = {
+						ROOT = { is_faction_leader = yes }
+					}
+					ROOT = { remove_from_faction = PREV }
+				}
+				else_if = {
+					limit = {
+						is_faction_leader = yes
+					}
+					ROOT = { leave_faction = yes }
+				}
+				if = {
+					limit = {
+						ROOT = {
+							has_guaranteed = PREV
+						}
+					}
+					ROOT = {
+						diplomatic_relation = {
+						    country = PREV
+						    relation = guarantee
+						    active = no
+						}
+					}
+				}
+				if = {
+					limit = {
+						has_non_aggression_pact_with = ROOT
+					}
+					ROOT = {
+						diplomatic_relation = {
+						    country = PREV
+						    relation = non_aggression_pact
+						    active = no
+						}
+					}
+				}
+				ROOT = {
+					create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+				}
+			}
+			every_other_country = {
+				limit = {
+					has_government = fascism
+					NOT = { is_in_faction_with = ROOT }
+					NOT = { is_guaranteed_by = ROOT }
+					NOT = { has_non_aggression_pact_with = ROOT }
+					NOT = {
+						AGR = {
+							has_wargoal_against = PREV
+						}
+					}	
+				}
+				ROOT = {
+					create_wargoal = {
+						type = annex_everything
+						target = PREV
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_anti_imperialism
+		icon = GFX_focus_PER_communist_afghanistan_intervention
+
+		x = -4
+		y = 1
+
+		relative_position_id = FCC_anarchism_on_the_world_stage
+		prerequisite = { focus = FCC_anarchism_on_the_world_stage }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_anti_imperialism_idea
+		}
+	}
+
+	focus = {
+		id = FCC_reclaiming_the_canal
+		icon = GFX_SOV_protect_the_white_sea_baltic_canal_ccp_2d_sov_compatibility
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_anti_imperialism
+		prerequisite = { focus = FCC_anti_imperialism }
+
+		cost = 5
+
+		completion_reward = {
+			unlock_decision_tooltip = {
+    			decision = FCC_arm_independence_movement_3
+    			show_effect_tooltip = yes
+    			show_modifiers = yes
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_ultimatum_to_colonial_powers
+		icon = GFX_focus_ETH_callout_to_the_world
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_anti_imperialism
+		prerequisite = { focus = FCC_anti_imperialism }
+
+		cost = 5
+
+		completion_reward = {
+			unlock_decision_tooltip = {
+    			decision = FCC_arm_independence_movement_1
+    			show_effect_tooltip = yes
+    			show_modifiers = yes
+			}	
+		}
+	}
+
+	focus = {
+		id = FCC_demand_free_belize
+		icon = GFX_focus_RAJ_clamp_down_on_corruption
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_reclaiming_the_canal
+		prerequisite = { focus = FCC_ultimatum_to_colonial_powers }
+		prerequisite = { focus = FCC_reclaiming_the_canal }
+
+		cost = 5
+
+		completion_reward = {
+			unlock_decision_tooltip = {
+    			decision = FCC_arm_independence_movement_2
+    			show_effect_tooltip = yes
+    			show_modifiers = yes
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_support_neo_zapatismo
+		icon = GFX_goal_FCC_support_neo_zapatismo
+
+		x = 0
+		y = 2
+
+		relative_position_id = FCC_reclaiming_the_canal
+		prerequisite = { focus = FCC_reclaiming_the_canal }
+
+		cost = 5
+
+		completion_reward = {
+			MEX = {
+				start_civil_war = {
+    				ideology = anarchist
+    				size = 0.3
+					set_cosmetic_tag = MEX_EZLN
+					states = {
+        				475 474 476
+    				}
+    				create_country_leader = {
+						name = "Revolutionary Indigenous Clandestine Committee – General Command"
+						desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+						picture = "GFX_portrait_SPR_anarchist_commune"
+						expire = "1965.1.1"
+						ideology = neozapatismo
+						traits = {
+							our_right_to_survive
+						}
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_integrate_centro_america_and_caribean
+		icon = GFX_focus_CHL_liberate_the_caribbean
+
+		x = 0
+		y = 2
+
+		relative_position_id = FCC_ultimatum_to_colonial_powers
+		prerequisite = { focus = FCC_ultimatum_to_colonial_powers }
+
+		cost = 5
+
+		completion_reward = {
+			unlock_decision_tooltip = {
+    			decision = FCC_integrate_independent_state
+    			show_effect_tooltip = yes
+    			show_modifiers = yes
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_intervention_in_mexico
+		icon = GFX_focus_mex_jefe_maximo
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_support_neo_zapatismo
+		prerequisite = { focus = FCC_support_neo_zapatismo }
+		prerequisite = { focus = FCC_integrate_centro_america_and_caribean }
+
+		cost = 5
+
+		completion_reward = {
+			every_country = {
+				limit = {
+					original_tag = MEX
+					has_government = anarchist
+				}
+				FCC = {
+					faction_leader = { add_to_faction = PREV.PREV }
+					add_to_war = {
+    					targeted_alliance = PREV.PREV
+    					enemy = MEX
+					    hostility_reason = asked_to_join
+					}
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_beyond_the_darien
+		icon = GFX_focus_generic_south_america
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_intervention_in_mexico
+		prerequisite = { focus = FCC_intervention_in_mexico }
+
+		cost = 5
+
+		completion_reward = {
+			create_wargoal = {
+    			type = puppet_wargoal_focus
+    			target = COL
+			}
+		}
+	}
+
+	###################
+	#Industrial Branch#
+	###################
+
+	focus = {
+		id = FCC_regional_industrial_integration
+		icon = GFX_goal_generic_construct_infrastructure
+
+		x = -13
+		y = 1
+
+		relative_position_id = FCC_founding_the_facc
+		prerequisite = { focus = FCC_founding_the_facc }
+
+		cost = 5
+
+		completion_reward = {
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = infrastructure
+    				level = 2
+    				instant_build = yes
+				}
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = infrastructure
+    				level = 2
+    				instant_build = yes
+				}
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = infrastructure
+    				level = 2
+    				instant_build = yes
+				}
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_develope_cuban_steel_mills
+		icon = GFX_focus_generic_steel
+
+		x = -4
+		y = 1
+
+		relative_position_id = FCC_regional_industrial_integration
+		prerequisite = { focus = FCC_regional_industrial_integration }
+
+		cost = 5
+
+		completion_reward = {
+			add_resource = {
+    			type = steel
+    			amount = 10
+    			state = 315
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_cuban_naval_facilities
+		icon = GFX_goal_generic_construct_naval_dockyard
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_develope_cuban_steel_mills
+		prerequisite = { focus = FCC_develope_cuban_steel_mills }
+
+		cost = 5
+
+		completion_reward = {
+			315 = {
+				add_building_construction = {
+    				type = dockyard
+    				level = 4
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 4
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_hispaniola_naval_facilities
+		icon = GFX_SOV_naval_infantry_ccp_2d_sov_compatibility
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_develope_cuban_steel_mills
+		prerequisite = { focus = FCC_develope_cuban_steel_mills }
+
+		cost = 5
+
+		completion_reward = {
+			318 = {
+				add_building_construction = {
+    				type = dockyard
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			319 = {
+				add_building_construction = {
+    				type = dockyard
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_hispaniola_infrastructure
+		icon = GFX_SOV_infrastructure_effort_nsb_ccp_2d_sov_compatibility
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_hispaniola_naval_facilities
+		prerequisite = { focus = FCC_hispaniola_naval_facilities }
+
+		cost = 5
+
+		completion_reward = {
+			318 = {
+				add_building_construction = {
+    				type = infrastructure
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			319 = {
+				add_building_construction = {
+    				type = infrastructure
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_civilian_industrial_boom
+		icon = GFX_SOV_heavy_industry_ccp_2d_sov_compatibility
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_cuban_naval_facilities
+		prerequisite = { focus = FCC_hispaniola_naval_facilities }
+		prerequisite = { focus = FCC_cuban_naval_facilities }
+
+		cost = 5
+
+		completion_reward = {
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_panamanian_oil
+		icon = GFX_SOV_oil_production_ccp_2d_sov_compatibility
+
+		x = 0
+		y = 1
+
+		relative_position_id = FCC_regional_industrial_integration
+		prerequisite = { focus = FCC_regional_industrial_integration }
+
+		cost = 5
+
+		completion_reward = {
+			add_resource = {
+    			type = oil
+    			amount = 10
+    			state = 304
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_regional_propserity
+		icon = GFX_focus_generic_economic_recovery
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_panamanian_oil
+		prerequisite = { focus = FCC_panamanian_oil }
+
+		cost = 5
+
+		completion_reward = {
+			304 = {
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_panamanian_civilian_infrastructure
+		icon = GFX_focus_BEL_engine_of_the_economy
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_panamanian_oil
+		prerequisite = { focus = FCC_panamanian_oil }
+
+		cost = 5
+
+		completion_reward = {
+			304 = {
+				add_building_construction = {
+    				type = infrastructure
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_full_industrial_syndicalisation
+		icon = GFX_focus_spr_anarchism_knows_no_borders
+
+		x = 4
+		y = 1
+
+		relative_position_id = FCC_regional_industrial_integration
+		prerequisite = { focus = FCC_regional_industrial_integration }
+
+		cost = 5
+
+		completion_reward = {
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_public_workshops
+		icon = GFX_focus_generic_public_works
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_full_industrial_syndicalisation
+		prerequisite = { focus = FCC_full_industrial_syndicalisation }
+
+		cost = 5
+
+		completion_reward = {
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = industrial_complex 
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_local_arms_manufacturers
+		icon = GFX_SOV_expand_the_aircraft_industry_ccp_2d_sov_compatibility
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_full_industrial_syndicalisation
+		prerequisite = { focus = FCC_full_industrial_syndicalisation }
+
+		cost = 5
+
+		completion_reward = {
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = arms_factory 
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = arms_factory 
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = arms_factory
+    				level = 1
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 1
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_arms_production_boom
+		icon = GFX_focus_generic_military_industry
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_local_arms_manufacturers
+		prerequisite = { focus = FCC_local_arms_manufacturers }
+		prerequisite = { focus = FCC_public_workshops }
+
+		cost = 5
+
+		completion_reward = {
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = arms_factory 
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = arms_factory 
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+			random_core_state = {
+				limit = {
+					is_owned_and_controlled_by = FCC
+				}
+				add_building_construction = {
+    				type = arms_factory
+    				level = 2
+    				instant_build = yes
+				}
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+	}
+
+	focus = {
+		id = FCC_syndicalist_miracle
+		icon = GFX_focus_GER_wirtschaftswunder
+
+		x = -4
+		y = 1
+
+		relative_position_id = FCC_arms_production_boom
+		prerequisite = { focus = FCC_arms_production_boom }
+		prerequisite = { focus = FCC_panamanian_civilian_infrastructure }
+		prerequisite = { focus = FCC_civilian_industrial_boom }
+		prerequisite = { focus = FCC_regional_propserity }
+		prerequisite = { focus = FCC_hispaniola_infrastructure }
+		
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_syndicalist_miracle_idea
+		}
+	}
+
+	##################
+	#Espionage Branch#
+	##################
+
+	focus = {
+		id = FCC_the_global_underground
+		icon = GFX_SOV_an_adaptable_army_ccp_2d_sov_compatibility
+
+		x = -23
+		y = 1
+
+		relative_position_id = FCC_founding_the_facc
+		prerequisite = { focus = FCC_founding_the_facc }
+
+		cost = 5
+
+		completion_reward = {
+			create_intelligence_agency = {
+				name = "The Global Underground"
+				icon = GFX_black_wave
+			}
+			add_ideas = FCC_the_global_underground_idea
+		}
+	}
+
+	focus = {
+		id = FCC_decentralized_operations
+		icon = GFX_goal_generic_intelligence_exchange
+
+		x = -3
+		y = 1
+
+		relative_position_id = FCC_the_global_underground
+		prerequisite = { focus = FCC_the_global_underground }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_decentralized_networks_idea
+		}
+	}
+
+	focus = {
+		id = FCC_opperative_training
+		icon = GFX_focus_AFG_work_with_german_inteligence
+
+		x = -1
+		y = 1
+
+		relative_position_id = FCC_the_global_underground
+		prerequisite = { focus = FCC_the_global_underground }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = KOR_agency_idea_2
+		}
+	}
+
+	focus = {
+		id = FCC_citizen_codebreakers
+		icon = GFX_focus_generic_radio_communication
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_the_global_underground
+		prerequisite = { focus = FCC_the_global_underground }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_citizen_codebreakers_idea
+		}
+	}
+
+	focus = {
+		id = FCC_propaganda_workshops
+		icon = GFX_SOV_collectivist_propaganda_ccp_2d_sov_compatibility
+
+		x = 3
+		y = 1
+
+		relative_position_id = FCC_the_global_underground
+		prerequisite = { focus = FCC_the_global_underground }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_propaganda_workshops_idea
+		}
+	}
+
+	focus = {
+		id = FCC_assasination_training
+		icon = GFX_focus_IRQ_attempted_assasination_of_sidqi
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_decentralized_operations
+		prerequisite = { focus = FCC_decentralized_operations }
+		prerequisite = { focus = FCC_opperative_training }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_political_assasinations_idea
+		}
+	}
+
+	focus = {
+		id = FCC_partisan_education
+		icon = GFX_focus_COG_force_publique_mutiny
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_opperative_training
+		prerequisite = { focus = FCC_citizen_codebreakers }
+		prerequisite = { focus = FCC_opperative_training }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_partisan_workshops_idea
+		}
+	}
+
+	focus = {
+		id = FCC_guerilla_tactics
+		icon = GFX_SOV_claims_in_baltic_ccp_2d_sov_compatibility
+
+		x = 1
+		y = 1
+
+		relative_position_id = FCC_citizen_codebreakers
+		prerequisite = { focus = FCC_citizen_codebreakers }
+		prerequisite = { focus = FCC_propaganda_workshops }
+
+		cost = 5
+
+		completion_reward = {
+			add_ideas = FCC_guerrilla_tactics_idea
+		}
+	}
+
+}

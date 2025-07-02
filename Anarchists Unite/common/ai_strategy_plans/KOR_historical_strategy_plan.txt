@@ -1,0 +1,70 @@
+KOR_historical_plan = {
+	name = "Korea Historical Plan"
+	desc = ""
+
+	allowed = {
+		original_tag = KOR
+	}
+	enable = {
+		OR = {
+			AND = {
+				is_historical_focus_on = yes 
+				has_game_rule = {
+					rule = KOR_AI_BEHAVIOR
+					option = DEFAULT
+				}
+			}
+			has_country_flag = KOR_AI_RANDOM_HISTORICAL
+			has_game_rule = {
+				rule = KOR_ai_behavior
+				option = HISTORICAL
+			}
+		}	
+
+	}
+	abort = {
+		is_subject = yes 
+	}
+
+	ai_national_focuses = {
+		KOR_reach_out_to_diaspora
+		KOR_foreign_arms_purchasing
+		KOR_petition_the_kmt
+		KOR_form_the_korean_volunteer_association
+		KOR_found_korean_liberation_army
+		KOR_foreign_arms_smuggling
+		KOR_reach_out_to_anarchists
+		KOR_the_center_holds
+		KOR_found_korean_patriot_organization
+		KOR_underground_aid
+		KOR_smuggling_network
+		KOR_expand_opperational_capacity
+		KOR_anarchist_mutual_aid
+		KOR_train_anarchist_insurrectionaries
+		KOR_seek_foreign_aid
+		KOR_long_war_for_independence
+	}
+
+	focus_factors = {
+		
+	}
+
+	research = {
+
+	}
+
+	ideas = {
+
+	}
+
+	# Keep small, as it is used as a factor for some things (such as research needs)
+	# Recommended around 1.0. Useful for relation between plans
+	weight = {
+		factor = 1.0
+		modifier = {
+			factor = 1.0
+		}
+	}
+
+}
+

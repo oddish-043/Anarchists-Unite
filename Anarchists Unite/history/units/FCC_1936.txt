@@ -1,0 +1,24 @@
+﻿division_template = {
+	name = "Anarchist Militants"		
+	division_names_group = SPAN_INF_01
+
+	regiments = {
+		irregular_infantry = { x = 0 y = 0 }
+		irregular_infantry = { x = 0 y = 1 }
+		irregular_infantry = { x = 0 y = 2 }
+		irregular_infantry = { x = 0 y = 3 }
+	}
+}
+
+##### No notable armed forces #####
+instant_effect = {
+	add_equipment_production = {
+		equipment = {
+			type = infantry_equipment_0
+			creator = "FCC"
+		}
+		requested_factories = 1
+		progress = 0.51
+		efficiency = 100
+	}
+}

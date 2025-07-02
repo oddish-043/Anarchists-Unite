@@ -1,0 +1,6 @@
+opinion_modifiers = {
+	ANCOM_trade_modifier = {
+        value = 50
+		trade = yes
+    }
+}

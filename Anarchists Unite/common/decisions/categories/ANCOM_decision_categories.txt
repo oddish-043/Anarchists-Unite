@@ -1,0 +1,114 @@
+ANCOM_the_seeds_of_revolution = {
+	icon = generic_propaganda
+
+	visible = {
+		has_government = anarchist
+	}
+}
+
+ANCOM_allied_diplomacy = {
+	icon = generic_propaganda
+
+	visible = {
+		has_government = anarchist
+		original_tag = SOV
+		has_completed_focus = SAV_syndicalist_practicality
+		has_completed_focus = SAV_dealing_with_the_allies
+	}
+}
+
+ANCOM_pacifist_diplomacy = {
+	icon = GFX_decision_hol_war_on_pacifism
+	visible_when_empty = yes
+	visible = {
+		has_government = anarchist
+		original_tag = SOV
+		has_completed_focus = SAV_love_and_be_loved
+	}
+}
+
+ANCOM_build_the_FACC = {
+	icon = generic_propaganda
+	picture = GFX_decision_cat_generic_united_central_america
+	priority = 10
+	
+	visible = {
+		OR = {
+			has_completed_focus = ANCOM_syndicalism_in_centroamerica
+			tag = FCC
+		}
+		
+	}
+}
+
+FCC_ideological_struggle_balance_of_power_category = {
+	icon = generic_propaganda
+	priority = 10
+	visible_when_empty = yes
+	visible = {
+		has_completed_focus = FCC_founding_the_facc
+		NOT = {
+			has_completed_focus = FCC_ending_the_divide
+		}
+	}
+}
+
+ANCOM_evading_the_gestapo = {
+	icon = gestapo_eye
+	priority = 10
+	visible = {
+		has_government = anarchist
+		original_tag = AGR
+		AGR = {
+			is_subject = yes
+		}
+	}
+}
+
+ANCOM_spreading_the_underground = {
+	icon = spreading_the_underground
+	priority = 10
+	visible_when_empty = yes
+	visible = {
+		has_government = anarchist
+		original_tag = AGR
+		AGR = {
+			is_subject = yes
+		}
+		has_country_flag = AGR_spreading_the_underground
+	}
+}
+
+AGR_spanish_intervention_category = {
+	icon = FRA_spanish_intervention_category
+	allowed = {
+		original_tag = AGR
+	}
+	visible = {
+		has_completed_focus = AGR_supporting_the_scw
+		SPR_scw_in_progress = yes
+	}
+}
+
+ANCOM_establish_balkan_communes = {
+	icon = generic_propaganda
+
+	visible = {
+		has_government = anarchist
+		has_country_flag = AGR_balkan_anarchism
+	}
+}
+
+SPC_ideological_struggle_balance_of_power_category = {
+	icon = generic_propaganda
+
+	visible = {
+		OR = {
+			tag = SPC
+			tag = SPD
+		}
+		NOT = {
+			has_global_flag = ANCOM_struggle_completed
+		}
+	}
+}

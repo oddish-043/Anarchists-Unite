@@ -1,0 +1,41 @@
+﻿focus_tree = {
+	id = honduras_focus_tree
+	
+	country = {
+		factor = 0
+		modifier = {
+			add = 20
+			original_tag = HON
+		}
+	}
+
+	default = no
+
+	reset_on_civilwar = no
+
+	continuous_focus_position = { x = 200 y = 1500 }
+
+	initial_show_position = {
+		focus = HON_banana_republic
+	}
+
+	shared_focus = ANCOM_support_regime
+	shared_focus = ANCOM_support_proletariat
+	shared_focus = ANCOM_syndicalism_in_centroamerica
+
+	#############
+	#First Focus#
+	#############
+
+	focus = {
+		id = HON_banana_republic
+		icon = GFX_goal_HON_banana_republic
+		x = 0
+		y = 0
+		cost = 5
+
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+}

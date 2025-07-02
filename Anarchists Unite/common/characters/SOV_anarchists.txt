@@ -1,0 +1,531 @@
+characters={
+
+	#Free Agents
+	SAV_aleksy_gan ={
+		name = SAV_aleksy_gan_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_aleksy_gan_small"
+			}
+
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SAV_aleksy_gan
+			traits = {
+				anarchist_art_critic
+			}
+			visible = {
+				has_completed_focus = SAV_the_farthest_left
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	#Prisoners
+	SAV_aida_basevich ={
+		name = SAV_aida_basevich_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_aida_basevich_small"
+			}
+
+		}
+		gender = female
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SAV_aida_basevich
+			traits = {
+				illegalist_anarchist
+			}
+			visible = {
+				has_completed_focus = SAV_rescuing_purge_victims
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_peter_arshinov = {
+		name = SAV_peter_arshinov_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_peter_arshinov_small"
+			}
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = SAV_peter_arshinov
+			traits = {
+				repentant_ex_bolshevik
+			}
+			visible = {
+				has_completed_focus = SAV_rescuing_purge_victims
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_aron_baron = {
+		name = SAV_aron_baron_name
+		portraits = {
+			civilian = {
+				large="GFX_portrait_sav_aron_baron_large"
+			}
+		}
+
+		corps_commander = {
+			traits = { 
+				war_hero
+				adaptable 
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 3
+			legacy_id = -1 
+			visible = {
+				has_completed_focus = SAV_rescuing_purge_victims
+				has_government = anarchist
+			}
+		}
+
+	}
+
+	SAV_hristo_zarezankov = {
+		name = SAV_hristo_zarezankov_name
+		portraits = {
+			civilian = {
+				large="GFX_portrait_sav_hristo_zarezankov_large"
+			}
+		}
+
+		corps_commander = {
+			traits = { 
+				trait_cautious 
+			}
+			skill = 1
+			attack_skill = 2
+			defense_skill = 3
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = -1 
+			visible = {
+				has_completed_focus = SAV_rescuing_purge_victims
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_nazar_zuychenko = {
+		name = SAV_nazar_zuychenko_name
+		portraits = {
+			civilian = {
+				large="GFX_portrait_sav_nazar_zuychenko_large"
+			}
+		}
+		
+		corps_commander = {
+			traits = { 
+				trait_reckless
+			}
+			skill = 1
+			attack_skill = 3
+			defense_skill = 2
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1 
+			visible = {
+				has_completed_focus = SAV_rescuing_purge_victims
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_lev_zadov = {
+		name = SAV_lev_zadov_name
+		portraits = {
+			civilian = {
+				large="GFX_portrait_sav_lev_zadov_large"
+				small="GFX_portrait_sav_lev_zadov_small"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = SAV_lev_zadov
+			ledger = all
+
+			visible = {
+				has_completed_focus = SAV_rescuing_purge_victims
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+			traits = { army_CombinedArms_3 }
+			cost = 200
+		}
+		field_marshal = {
+			traits = { 
+				cavalry_officer
+				cavalry_leader
+				combined_arms_expert
+			}
+			skill = 3
+			attack_skill = 3
+			defense_skill = 3
+			planning_skill = 5
+			logistics_skill = 4
+			legacy_id = -1 
+			visible = {
+				has_completed_focus = SAV_rescuing_purge_victims
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_victor_bilash = {
+		name = SAV_victor_bilash_name
+		portraits = {
+			civilian = {
+				large="GFX_portrait_sav_victor_bilash_large"
+				small="GFX_portrait_sav_victor_bilash_small"
+			}
+		}
+		advisor={	
+			slot = army_chief
+			idea_token = SAV_victor_bilash
+			ledger = army
+			
+			visible = {
+				has_completed_focus = SAV_rescuing_purge_victims
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+			traits = { army_chief_offensive_2 }
+			cost = 100
+		}
+		field_marshal = {
+			traits = { 
+				war_hero
+				brilliant_strategist
+				brave 
+			}
+			skill = 3
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 5
+			logistics_skill = 3
+			legacy_id = -1 
+			visible = {
+				has_completed_focus = SAV_rescuing_purge_victims
+				has_government = anarchist
+			}
+		}
+	}
+
+	#exiles
+	SAV_mollie_steimer ={
+		name = SAV_mollie_steimer_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_mollie_steimer_small"
+			}
+
+		}
+		gender = female
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SAV_mollie_steimer
+			traits = {
+				international_anarchist
+			}
+			visible = {
+				has_country_flag = SAV_exiles_return
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_senya_fleshin ={
+		name = SAV_senya_fleshin_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_senya_fleshin_small"
+			}
+
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SAV_senya_fleshin
+			traits = {
+				anarchist_journalist
+			}
+			visible = {
+				has_country_flag = SAV_exiles_return
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_abba_gordin ={
+		name = SAV_abba_gordin_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_abba_gordin_small"
+			}
+
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SAV_abba_gordin
+			traits = {
+				anarchist_poet
+			}
+			visible = {
+				has_completed_focus = SAV_the_kropotkin_museum
+				has_country_flag = SAV_exiles_return
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_wolf_gordin ={
+		name = SAV_wolf_gordin_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_wolf_gordin_small"
+			}
+
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SAV_wolf_gordin
+			traits = {
+				pan_anarchist
+			}
+			visible = {
+				has_completed_focus = SAV_the_kropotkin_museum
+				has_country_flag = SAV_exiles_return
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_grigorii_maksimov ={
+		name = SAV_grigorii_maksimov_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_grigorii_maksimov_small"
+			}
+
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SAV_grigorii_maksimov
+			traits = {
+				ARG_anarchosyndicalist
+			}
+			visible = {
+				has_country_flag = SAV_exiles_return
+				has_completed_focus = SAV_the_kropotkin_museum
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_victor_serge ={
+		name = SAV_victor_serge_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_victor_serge_small"
+			}
+
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = SAV_victor_serge
+			traits = {
+				anti_stalinist_marxist
+			}
+			visible = {
+				has_completed_focus = SAV_unification_by_necesity
+				has_country_flag = SAV_exiles_return
+				has_government = anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_ossip_tsebry = {
+		name = SAV_ossip_tsebry_name
+		portraits = {
+			civilian = {
+				large="GFX_portrait_sav_ossip_tsebry_large"
+			}
+		}
+		
+		corps_commander = {
+			traits = { 
+				war_hero
+				brave
+			}
+			skill = 2
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 2
+			legacy_id = -1 
+			visible = {
+				has_completed_focus = SAV_unification_by_necesity
+				has_country_flag = SAV_exiles_return
+				has_government = anarchist
+			}
+		}
+	}
+
+	SAV_volin = {
+		name = SAV_volin_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_volin_small"
+			}
+		}
+
+		advisor={
+			slot = high_command
+			idea_token = SAV_volin
+			ledger = all
+
+			visible = {
+				has_government = anarchist
+				has_country_flag = SAV_exiles_return
+			}
+			available = {
+				has_country_flag = SAV_exiles_return
+			}
+			traits = { army_regrouping_2 }
+			cost = 100
+		}
+		
+	}
+
+	SAV_stepan_petrichenko = {
+		name = SAV_stepan_petrichenko_name
+		portraits = {
+			civilian = {
+				small="GFX_portrait_sav_stepan_petrichenko_small"
+			}
+		}
+
+		advisor={
+			slot = navy_chief
+			idea_token = SAV_stepan_petrichenko
+			ledger = navy
+
+			visible = {
+				has_completed_focus = SAV_unification_by_necesity
+				has_government = anarchist
+				has_country_flag = SAV_exiles_return
+			}
+			available = {
+				has_country_flag = SAV_exiles_return
+			}
+			traits = { navy_chief_commerce_raiding_2 }
+			cost = 100
+		}
+		
+	}
+
+	#life and labor
+
+	SAV_life_and_labor_commune = {
+		name = SAV_life_and_labor_commune_name
+		portraits = {
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+				large="GFX_portrait_SPR_anarchist_commune"
+			}
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = SAV_life_and_labor_commune
+			ledger = military
+			
+			visible = {
+				has_completed_focus = SAV_tolstoyan_commune_partnership
+				has_government = anarchist
+			}
+			available = {
+				
+			}
+			traits = { agricultural_theorist }
+		}
+	}
+
+	#leaders
+	SAV_syndicalist_commune = {
+		name = SAV_syndicalist_commune
+		portraits = {
+			civilian = {
+				large="GFX_portrait_SPR_anarchist_commune"
+			}
+		}
+	}
+
+	SAV_nihilist_commune = {
+		name = SAV_nihilist_commune
+		portraits = {
+			civilian = {
+				large="GFX_portrait_SPR_anarchist_commune"
+			}
+		}
+	}
+
+	SAV_communist_commune = {
+		name = SAV_communist_commune
+		portraits = {
+			civilian = {
+				large="GFX_portrait_SPR_anarchist_commune"
+			}
+		}
+	}
+}

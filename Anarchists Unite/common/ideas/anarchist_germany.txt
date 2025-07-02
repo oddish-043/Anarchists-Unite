@@ -1,0 +1,1240 @@
+ideas = {
+	country = {
+
+		AGR_leadership_in_chaos = {
+			allowed = {
+				always = no
+				tag = GER
+			}
+			removal_cost = -1
+			picture = GER_iron_front
+			modifier = {
+				army_attack_factor = -0.5
+				army_attack_speed_factor = -0.5
+				army_defence_factor = -0.5
+				army_speed_factor = -0.5
+				army_strength_factor = -0.5
+				army_morale_factor = -0.5
+				army_org_factor = -0.5
+				army_org_regain = -0.5
+				breakthrough_factor = -0.5
+				coordination_bonus = -0.5
+				dig_in_speed_factor = -0.5
+				initiative_factor = -0.5
+				recon_factor = -0.5
+				planning_speed = -0.5
+			}
+		}
+
+		AGR_ire_of_gestapo = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -7.0
+				fascism_drift = 1.0
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_1a = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -7.0
+				fascism_drift = 0.75
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_1b = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -7.0
+				fascism_drift = 1.0
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_1c = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -6.0
+				fascism_drift = 1.0
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_2a = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -7.0
+				fascism_drift = 0.5
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_2b = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -5.0
+				fascism_drift = 1.0
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_2c = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -6.0
+				fascism_drift = 0.75
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_2d = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -6.0
+				fascism_drift = 1.0
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_2e = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -7.0
+				fascism_drift = 0.75
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_3a = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -6.0
+				fascism_drift = 0.5
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_3b = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -6.0
+				fascism_drift = 0.75
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_3c = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -5.0
+				fascism_drift = 0.75
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_3d = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -5.0
+				fascism_drift = 1.0
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_3e = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -7.0
+				fascism_drift = 0.5
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_4a = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.5
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -5.0
+				fascism_drift = 0.5
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_4b = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -6.0
+				fascism_drift = 0.5
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_4c = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -5.0
+				fascism_drift = 0.75
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_ire_of_gestapo_5 = {
+			name = AGR_ire_of_gestapo
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = Gestapo_eye
+
+			modifier = {
+				stability_factor = -0.25
+				war_support_factor = -0.5
+				research_speed_factor = -0.5
+				autonomy_gain = -5.0
+				fascism_drift = 0.5
+			}
+
+			cancel = {
+				is_subject = no
+			}
+		}
+
+		AGR_underground_movement = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -1.0
+				production_speed_buildings_factor = -1.0
+				local_resources = -1.0
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_1a = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -1.0
+				production_speed_buildings_factor = -0.75
+				local_resources = -1.0
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_1b = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -1.0
+				production_speed_buildings_factor = -1.0
+				local_resources = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_2a = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -1.0
+				production_speed_buildings_factor = -0.75
+				local_resources = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_2b = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -0.75
+				production_speed_buildings_factor = -0.75
+				local_resources = -1.0
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_3a = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -0.75
+				production_speed_buildings_factor = -0.75
+				local_resources = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_3b = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -1.0
+				production_speed_buildings_factor = -0.5
+				local_resources = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_4a = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -0.75
+				production_speed_buildings_factor = -0.5
+				local_resources = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_4b = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -0.5
+				production_speed_buildings_factor = -0.75
+				local_resources = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_5a = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -0.75
+				production_speed_buildings_factor = -0.25
+				local_resources = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_5b = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -0.5
+				production_speed_buildings_factor = -0.5
+				local_resources = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_underground_movement_6 = {
+			name = AGR_underground_movement
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = undergeound_movement
+
+			modifier = {
+				army_speed_factor = -0.5
+				production_speed_buildings_factor = -0.25
+				local_resources = -0.5
+				anarchist_drift = 0.1
+			}
+		}
+
+		AGR_surge_in_support_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+			picture = ARG_establish_the_free_association
+			cancel = {
+				NOT = {
+					country_exists = GER
+				}
+			}
+
+			modifier = {
+				weekly_manpower = 500
+				anarchist_drift = 0.5
+			}
+		}
+
+		AGR_surge_in_support_idea_2 = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+			name = AGR_surge_in_support_idea
+			picture = ARG_establish_the_free_association
+			cancel = {
+				NOT = {
+					country_exists = GER
+				}
+			}
+
+			modifier = {
+				weekly_manpower = 500
+				anarchist_drift = 1.5
+			}
+		}
+
+		AGR_edelweiss_pirates = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+
+			removal_cost = -1
+
+			picture = edelweiss_pirate_emblem
+
+			cancel = {
+				has_war = yes
+			}
+
+			on_add = {
+    			division_template = {
+					name = "Edelweiss Pirates"
+					is_locked = yes 
+					priority = 0
+					template_counter = 1
+					regiments = {
+						irregular_infantry = { x = 0 y = 0 }
+					}
+				}
+				57 = {
+					create_unit = {
+						division = "name = \"Kittleback Pirates\" division_template = \"Edelweiss Pirates\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+					create_unit = {
+						division = "name = \"Roving Dudes\" division_template = \"Edelweiss Pirates\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+					create_unit = {
+						division = "name = \"Navajos\" division_template = \"Edelweiss Pirates\" start_experience_factor = 0.5"
+						owner = AGR
+					}
+				}
+				set_country_flag = AGR_edelweiss_pirates_arrive
+			}
+
+			on_remove = {
+				delete_unit_template_and_units = {
+					division_template = "Edelweiss Pirates"
+					disband = yes
+				}
+				clr_country_flag = AGR_edelweiss_pirates_arrive
+			}
+		}
+
+		AGR_fascist_crackdown = {
+
+			picture = generic_fascism_rising
+
+			removal_cost = -1
+
+			cancel = {
+				OR = {
+					fascism > 0.5
+					compare_autonomy_progress_ratio < 0.0
+				}
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						OR = {
+							fascism > 0.5
+							compare_autonomy_progress_ratio < 0.0
+						}
+					}
+					GER = {
+						annex_country = {
+    						target = AGR
+    						transfer_troops = no
+						}
+					}
+				}
+			}
+		}
+
+		ARG_tank_supremacy_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			picture = generic_acquire_tanks
+			modifier = {
+				army_armor_speed_factor = 0.25
+				army_armor_defence_factor = 0.25
+				army_armor_attack_factor = 0.25
+			}
+			equipment_bonus = {
+				armor = {
+					instant = yes
+					breakthrough = 0.25
+					max_organisation = 0.5
+					armor_value = 0.5
+				}
+			}
+		}
+
+		ARG_artillery_supremacy_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			picture = SOV_defense_industry_artillery_bonus_ccp_sov_compatibility
+			modifier = {
+				army_artillery_defence_factor = 0.5
+				army_artillery_attack_factor = 0.5
+			}
+			equipment_bonus = {
+				artillery_equipment = {
+					instant = yes
+					breakthrough = 0.5
+					max_organisation = 0.5
+				}
+			}
+		}
+
+		ARG_peoples_militia_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			picture = ARG_no_gods_no_masters
+			modifier = {
+				army_infantry_defence_factor = 0.25
+				army_infantry_attack_factor = 0.25
+			}
+			equipment_bonus = {
+				infantry_equipment = {
+					instant = yes
+					max_organisation = 0.5
+					default_morale = 0.5
+				}
+			}
+		}
+
+		AGR_fighter_production_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			picture = SWE_formation_flying
+			equipment_bonus = {
+				small_plane_airframe = {
+					instant = yes
+					build_cost_ic = -0.75
+				}
+			}
+		}
+
+		AGR_tac_bomber_production_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = SWE_land_air_warfare
+			equipment_bonus = {
+				small_plane_cas_airframe = {
+					instant = yes
+					build_cost_ic = -0.75
+				}
+			}
+		}
+
+		AGR_nav_bomber_production_idea = {
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			picture = SWE_marauder_bombers
+			equipment_bonus = {
+				small_plane_naval_bomber_airframe = {
+					instant = yes
+					build_cost_ic = -0.75
+				}
+			}
+		}
+
+		AGR_naval_bombing_focus_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			picture = generic_navy_carrier_bonus
+			modifier = {
+				navy_carrier_air_agility_factor = 0.25
+				navy_carrier_air_attack_factor = 0.25
+				navy_carrier_air_targetting_factor = 0.25
+				carrier_traffic = 0.25
+				sortie_efficiency = 0.25
+				fighter_sortie_efficiency = 0.25
+			}
+		}
+
+		AGR_destroyers_supremacy_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			picture = AUS_naval_efficiency_idea
+			modifier = {
+				navy_screen_attack_factor = 0.5
+				navy_screen_defence_factor = 0.5
+				screening_efficiency = 0.5
+			}
+		}
+
+		AGR_subs_supremacy_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			picture = generic_navy_submarines
+			modifier = {
+				navy_submarine_attack_factor = 0.25
+				navy_submarine_defence_factor = 0.25
+				navy_submarine_detection_factor = 0.25
+				sub_retreat_speed = 0.25
+				naval_torpedo_cooldown_factor = -0.25
+				naval_torpedo_reveal_chance_factor = -0.25
+			}
+		}
+
+		AGR_improved_recycling_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			picture = ARG_civilian_economy_boost
+			modifier = {
+				local_resources_factor = 0.25
+			}
+		}
+
+		AGR_scw_german_solidarity_idea = {
+			allowed = {
+				always = no
+				tag = SPC
+			}
+			removal_cost = -1
+			picture = por_volunteers_in_the_war2
+			cancel = {
+				has_global_flag = scw_over
+			}
+			modifier = {
+				army_attack_factor = 0.75
+				army_attack_speed_factor = 0.75
+				army_defence_factor = 0.75
+				army_speed_factor = 0.75
+				army_strength_factor = 0.75
+				army_morale_factor = 0.75
+				army_org_factor = 0.75
+				army_org_regain = 0.75
+				breakthrough_factor = 0.75
+				cas_damage_reduction = 0.75
+				coordination_bonus = 0.75
+				max_planning_factor = 0.75
+				planning_speed = 0.75
+			}
+		}
+
+		ARG_anarchist_influence = {
+
+			allowed = {
+				always = no
+			}
+
+			picture = ARG_anarchist_delegates
+
+			removal_cost = -1
+
+			modifier = {
+				anarchist_drift = 5.0
+			}
+
+			cancel = {
+				anarchist > 0.4
+			}
+
+			on_remove = {
+				IF = {
+					limit = {
+						anarchist > 0.4
+					}
+					start_civil_war = {
+						ideology = anarchist
+						retire_country_leader = yes
+						create_country_leader = {
+							name = "Anarchist Commune"
+							desc = "POLITICS_ANARCHIST_COMMUNE_DESC"
+							picture = "GFX_portrait_SPR_anarchist_commune"
+							expire = "1965.1.1"
+							ideology = anarchism
+							traits = {
+								our_right_to_survive
+							}
+						}
+						set_cosmetic_tag = ANCOM
+						set_country_flag = autonomous_commune
+					}
+				}
+			}
+		}
+
+		ARG_anarchist_delegates = {
+
+			removal_cost = -1
+
+			modifier = {
+				anarchist_drift = 0.5
+			}
+
+		}
+
+		AGR_intelligence_sabotage = {
+			allowed = {
+				always = no
+			}
+			picture = anarchist_insurrectionaries
+			removal_cost = -1
+			modifier = {
+				decryption_factor = -0.5
+				encryption_factor = -0.5
+				foreign_subversive_activites = 0.5
+				intel_network_gain_factor = -0.5
+				subversive_activites_upkeep = 0.5
+				operation_risk = 0.5
+				intel_from_operatives_factor = -0.5
+			}
+		}
+
+		AGR_global_revolution_idea = {
+			allowed = {
+				always = no
+			}
+			picture = GFX_idea_anarchist_diplomacy
+			removal_cost = -1
+			modifier = {
+				justify_war_goal_time = -0.75
+				puppet_cost_factor = -0.5
+				send_volunteer_size = 10
+				send_volunteer_divisions_required = -0.75
+			}
+		}
+	}
+
+	hidden_ideas = {
+		AGR_scw_fighters_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			cancel = {
+				has_global_flag = scw_over
+			}
+			on_remove = {
+				IF = {
+					limit = {
+						NOT = {
+							country_exists = SPC
+						}
+						has_global_flag = scw_over
+					}
+					set_country_flag = AGR_scw_vets_return
+				}
+				else_if = {
+					limit = {
+						country_exists = SPC
+						has_global_flag = scw_over
+					}
+					set_country_flag = AGR_scw_vets_return
+					add_manpower = 10000
+					add_equipment_to_stockpile = {
+    					type = infantry_equipment
+    					amount = 5000
+						producer = SPC
+					}
+					SPC = {
+						add_manpower = -10000
+						add_equipment_to_stockpile = {
+    						type = infantry_equipment
+    						amount = -5000
+						}
+					}
+				}
+			}
+		}
+	}
+
+	hidden_ideas = {
+		AGR_anarchist_international_idea = {
+			allowed = {
+				always = no
+				tag = AGR
+			}
+			removal_cost = -1
+			cancel = {
+				AGR = {
+					is_subject = no
+				}
+				AGR = {
+					has_war_with = GER
+				}
+			}
+			on_remove = {
+				if = {
+					limit = {
+						country_exists = SPC
+						has_global_flag = scw_over
+						AGR = {
+							is_subject = no
+						}
+						SPC = {
+							NOT = {
+								is_in_faction_with = AGR
+							}
+						}
+					}
+					SPC = {
+						create_faction = "Global Anarchist Federation"
+						add_to_faction = AGR
+						add_to_war = {
+    						targeted_alliance = AGR
+    						enemy = GER
+    						hostility_reason = asked_to_join
+						}
+					}
+					every_other_country = {
+						limit = {
+							NOT = { is_in_faction_with = SPC }
+							is_subject = no
+							has_government = anarchist
+							has_civil_war = no
+						}
+						country_event = {
+							id = SPC_anarchist_diplomacy.1
+							hours = 6
+						}
+					}	
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							country_exists = SPC
+						}
+						has_global_flag = scw_over
+						AGR = {
+							is_subject = no
+						}
+					}
+					AGR = {
+						create_faction = "Global Anarchist Federation"	
+					}
+					every_other_country = {
+						limit = {
+							NOT = { is_in_faction_with = AGR }
+							is_subject = no
+							has_government = anarchist
+							has_civil_war = no
+						}
+						country_event = {
+							id = AGR_anarchist_diplomacy.1
+							hours = 6
+						}
+					}
+				}
+				else_if = {
+					limit = {
+						NOT = {
+							country_exists = SPC
+						}
+						has_global_flag = scw_over
+						AGR = {
+							is_subject = no
+						}
+						any_other_country = {
+							has_government = anarchist
+							is_in_faction = yes
+						}
+					}
+					every_other_country = {
+						limit = {
+							has_government = anarchist
+							is_in_faction = yes
+							is_faction_leader = yes
+							NOT = {
+								is_in_faction_with = AGR
+							}
+						}
+						THIS = {
+							add_to_faction = AGR
+						}
+					}
+				}
+			}
+		}
+		
+	}
+
+}

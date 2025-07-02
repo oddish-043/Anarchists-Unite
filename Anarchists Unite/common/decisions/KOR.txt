@@ -1,0 +1,249 @@
+governments_in_exile = {
+	KOR_recruit_volunteers = {
+		icon = GFX_decision_generic_military
+		allowed = { original_tag = KOR }
+		available = {
+			NOT = { has_country_flag = KOR_recruiting_mercenaries_flag }
+		}
+
+		visible = {
+			AND = {
+				has_completed_focus = KOR_reach_out_to_diaspora
+				has_country_flag = KOR_exile_recruiting
+				is_government_in_exile = yes
+			}
+		}
+		days_remove = 35
+		fire_only_once = no
+		cost = 200
+		complete_effect = {
+			set_country_flag = KOR_recruiting_mercenaries_flag
+		}
+		remove_effect = {
+			clr_country_flag = KOR_recruiting_mercenaries_flag
+			KOR = {
+				add_manpower = 5000
+			}
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+	
+	KOR_recruit_merchant_marines_from_host = {
+		icon = GFX_decision_generic_merge_plant_ship
+		allowed = { original_tag = KOR }
+		available = {
+			NOT = { has_country_flag = KOR_recruiting_mercenaries_flag }
+		}
+
+		visible = {
+			AND = {
+				has_completed_focus = KOR_petition_the_kmt
+				is_government_in_exile = yes
+			}
+		}
+		days_remove = 35
+		fire_only_once = no
+		cost = 200
+		complete_effect = {
+			set_country_flag = KOR_recruiting_mercenaries_flag
+		}
+		remove_effect = {
+			clr_country_flag = KOR_recruiting_mercenaries_flag
+			add_equipment_to_stockpile = {
+				type = convoy_1
+				amount = 20
+				producer = CHI
+			}
+			navy_experience = 10
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	# Arms trade
+	KOR_procure_chinese_rifles = {
+		icon = GFX_decision_generic_prepare_civil_war
+		allowed = { original_tag = KOR }
+		available = {
+			NOT = { has_country_flag = KOR_securing_arms_deals_flag }
+		}
+
+		visible = {
+			AND = { 
+				has_completed_focus = KOR_foreign_arms_purchasing
+				is_government_in_exile = yes
+			}
+		}
+		days_remove = 35
+		fire_only_once = no
+		cost = 100
+		complete_effect = {
+			set_country_flag = KOR_securing_arms_deals_flag
+		}
+		remove_effect = {
+			clr_country_flag = KOR_securing_arms_deals_flag
+			KOR = {
+				add_equipment_to_stockpile = {
+					type = infantry_equipment_0
+					amount = 1000
+					producer = CHI
+				}
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+
+	KOR_procure_support_equipment = {
+		icon = GFX_decision_generic_merge_plant_materiel
+		allowed = { original_tag = KOR }
+		available = {
+			NOT = { has_country_flag = KOR_securing_arms_deals_flag }
+		}
+
+		visible = {
+			AND = {
+				has_completed_focus = KOR_foreign_arms_purchasing
+				is_government_in_exile = yes
+			}
+		}
+		days_remove = 35
+		fire_only_once = no
+		cost = 100
+		complete_effect = {
+			set_country_flag = KOR_securing_arms_deals_flag
+		}
+		remove_effect = {
+			clr_country_flag = KOR_securing_arms_deals_flag
+			KOR = {
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 250
+					producer = CHI
+				}
+			}
+		}
+		ai_will_do = {
+			base = 200
+		}
+	}
+	
+	KOR_procure_chinese_trucks = {
+		icon = GFX_decision_generic_trucks
+		allowed = { original_tag = KOR }
+		available = {
+			NOT = { has_country_flag = KOR_securing_arms_deals_flag }
+		}
+
+		visible = {
+			AND = {
+				has_completed_focus = KOR_petition_the_kmt
+				is_government_in_exile = yes
+			}
+		}
+		days_remove = 35
+		fire_only_once = no
+		cost = 150
+		complete_effect = {
+			set_country_flag = KOR_securing_arms_deals_flag
+		}
+		remove_effect = {
+			clr_country_flag = KOR_securing_arms_deals_flag
+			add_equipment_to_stockpile = {
+				type = motorized_equipment
+				amount = 100
+				producer = CHI
+			}			
+		}
+		ai_will_do = {
+			base = 100
+		}
+	}
+
+	KOR_build_local_resistance_force = {
+		icon = GFX_decision_revolt
+		available = {
+			NOT = { has_country_flag = KOR_building_local_resistance_flag }
+			FROM = { 
+				compliance < 50 
+				resistance > 20
+			}
+		}
+		state_target = yes
+		on_map_mode = map_only 
+		target_trigger = {
+			FROM = {
+				is_core_of = KOR
+				NOT = { is_controlled_by = KOR }
+				# Patriot states
+				OR = {
+					state = 525
+					state = 527
+				}
+			}
+		}
+		target_root_trigger = {
+			original_tag = KOR
+			has_country_flag = KOR_organize_regional_revolts_flag
+		}
+
+		visible = {
+			is_government_in_exile = yes 
+			NOT = { has_country_flag = KOR_started_uprising_flag }
+		}
+		cancel_if_not_visible = yes 
+		days_remove = 60
+		
+		fire_only_once = no
+		custom_cost_trigger = {
+			command_power > 24.9
+		}
+		custom_cost_text = KOR_build_local_resistance_force_cost
+		complete_effect = {
+			add_command_power = -25
+			set_country_flag = KOR_building_local_resistance_flag
+		}
+		remove_effect = {
+			clr_country_flag = KOR_building_local_resistance_flag
+			add_to_variable = { FROM.KOR_resistance_force_strength = 1 }
+			custom_effect_tooltip = KOR_build_local_resistance_force_increase_tt
+			FROM = { add_resistance = -5 }
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+	}
+
+	#### Local uprisings
+
+	KOR_launch_large_scale_uprising = {
+		icon = GFX_decision_revolt
+		available = {
+			NOT = { has_country_flag = KOR_building_local_resistance_flag }
+			custom_trigger_tooltip = {
+				tooltip = KOR_has_readied_uprising_tt
+				any_owned_state = {
+					check_variable = {KOR_resistance_force_strength > 0 }
+				}
+			}
+		}
+		cost = 150
+		fire_only_once = yes 
+		visible = {
+			has_country_flag = KOR_organize_regional_revolts_flag
+			is_government_in_exile = yes 
+		}
+		days_remove = 14
+		complete_effect = {
+			set_country_flag = KOR_started_uprising_flag 
+		}
+		remove_effect = {
+			KOR_partisan_uprising = yes 
+		}
+	}
+}

@@ -1,0 +1,193 @@
+characters={
+	ARG_virginia_bolten ={
+		name = "Virgina Bolten"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_arg_virginia_bolten_large"
+				small="GFX_portrait_arg_virginia_bolten_small"
+			}
+
+		}
+		gender = female
+		country_leader = {
+			ideology = anarchism
+			expire = "1960.1.1.1"
+			id = -1
+			traits = {
+				anarchist_zeal
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = ARG_virginia_bolten
+			traits = {
+				international_anarchist
+			}
+			visible = {
+				has_completed_focus = ARG_viva_la_revolucion
+			}
+			available = {
+				has_completed_focus = ARG_viva_la_revolucion
+				NOT = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+		}
+	}
+
+	ARG_herminia_brumana = {
+		name = "Herminia Catalina Brumana"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_arg_herminia_brumana_large"
+				small="GFX_portrait_arg_herminia_brumana_small"
+			}
+		}
+		gender = female
+		advisor = {
+			slot = political_advisor
+			idea_token = ARG_herminia_brumana
+			traits = {
+				anarcha_feminist_teacher
+			}
+			visible = {
+				has_completed_focus = ARG_viva_la_revolucion
+			}
+			available = {
+				has_completed_focus = ARG_viva_la_revolucion
+				NOT = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+		}
+	}
+
+	ARG_iris_pavon = {
+		name = "Iris Pavón"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_arg_iris_pavon_large"
+				small="GFX_portrait_arg_iris_pavon_small"
+			}
+		}
+		gender = female
+		advisor = {
+			slot = political_advisor
+			idea_token = ARG_iris_pavon
+			traits = {
+				anarchist_poet
+			}
+			visible = {
+				has_completed_focus = ARG_viva_la_revolucion
+			}
+			available = {
+				has_completed_focus = ARG_viva_la_revolucion
+				NOT = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+		}
+
+	}
+
+	ARG_salvadora_onrubia = {
+		name = "Salvadora Medina Onrubia"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_arg_salvadora_onrubia_large"
+				small="GFX_portrait_arg_salvadora_onrubia_small"
+			}
+		}
+		gender = female
+		advisor = {
+			slot = political_advisor
+			idea_token = ARG_salvadora_onrubia
+			traits = {
+				anarchist_journalist
+			}
+			visible = {
+				has_completed_focus = ARG_viva_la_revolucion
+			}
+			available = {
+				has_completed_focus = ARG_viva_la_revolucion
+				NOT = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+		}
+	}
+
+	ARG_miguel_roscigna = {
+		name = "Miguel Arcángel Roscigna"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_arg_miguel_roscigna_large"
+				small="GFX_portrait_arg_miguel_roscigna_small"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = ARG_miguel_roscigna
+			traits = {
+				illegalist_anarchist
+			}
+			visible = {
+				has_global_flag = ARG_tiera_del_fuego_liberated
+			}
+			available = {
+				has_global_flag = ARG_tiera_del_fuego_liberated
+				NOT = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+		}
+	}
+
+	ARG_simon_radowitzky = {
+		name = "Simón Radowitzky"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_arg_simon_radowitzky_large"
+				small="GFX_portrait_arg_simon_radowitzky_small"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = ARG_simon_radowitzky
+			traits = {
+				disdain_for_politicians_1
+			}
+			visible = {
+				has_global_flag = ARG_tiera_del_fuego_liberated
+			}
+			available = {
+				has_global_flag = ARG_tiera_del_fuego_liberated
+				NOT = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+		}
+		corps_commander = {
+			traits = { 
+				trickster
+				adaptable 
+			}
+			skill = 2
+			attack_skill = 4
+			defense_skill = 2
+			planning_skill = 3
+			logistics_skill = 2
+			legacy_id = -1 
+			visible = {
+				has_global_flag = ARG_tiera_del_fuego_liberated
+			}
+		}
+	}
+
+}

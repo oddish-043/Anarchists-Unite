@@ -1,0 +1,68 @@
+﻿capital = 315 
+
+oob = "FCC_1936"
+
+# Starting tech
+set_technology = {
+	infantry_weapons = 1
+	tech_trucks = 1
+	mass_assault = 1
+}
+
+add_ideas = {
+	
+}
+
+recruit_character = FCC_Anarchist_Commune
+recruit_character = FCC_council_of_theorists
+recruit_character = FCC_defensive_military_council
+recruit_character = FCC_offensive_military_council
+recruit_character = FCC_organizational_military_council
+recruit_character = FCC_air_safety_aviation_council
+recruit_character = FCC_all_weather_aviation_council
+recruit_character = FCC_commerce_raiding_naval_council
+recruit_character = FCC_reform_naval_council
+recruit_character = FCC_infantry_military_council
+recruit_character = FCC_army_regrouping_military_council
+recruit_character = FCC_concealment_military_council
+recruit_character = FCC_naval_strike_aviation_council
+recruit_character = FCC_close_air_support_aviation_council
+recruit_character = FCC_logistics_naval_council
+recruit_character = FCC_anti_submarine_naval_council
+
+#named characters
+recruit_character = FCC_adrian_de_valle
+recruit_character = FCC_manuel_bautista_grajeda
+recruit_character = FCC_gregorio_galeano
+recruit_character = FCC_jose_maria_zeledon
+recruit_character = FCC_jose_nestor_mourelo
+recruit_character = FCC_enrique_conde
+recruit_character = FCC_antonio_mendez_paz
+recruit_character = FCC_martin_blasquez_de_pedro
+recruit_character = FCC_wilfredo_chavez
+recruit_character = FCC_juan_beteta
+recruit_character = FCC_nicolas_mendoza
+recruit_character = FCC_jose_victor_guzman
+recruit_character = FCC_antonio_cumes
+recruit_character = FCC_antonio_sanches
+recruit_character = FCC_julio_antonio_mella
+recruit_character = FCC_julio_alberto_del_pinal
+recruit_character = FCC_ricardo_avelarde
+
+set_convoys = 5
+
+set_politics = {
+	ruling_party = anarchist
+	last_election = "1933.10.1"
+	election_frequency = 48
+	elections_allowed = no
+}
+set_popularities = {
+	democratic = 0
+	anarchist = 70
+	fascism = 0
+	communism = 30
+	neutrality = 0
+}
+
+

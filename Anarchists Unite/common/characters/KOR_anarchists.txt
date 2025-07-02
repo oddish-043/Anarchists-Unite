@@ -1,0 +1,275 @@
+characters={
+	KOR_sim_yong_cheol ={
+		name = "Sim Yong-cheol"
+		portraits = {
+			civilian = {
+				small="GFX_portrait_kor_sim_yong_cheol_small"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = KOR_sim_yong_cheol
+			traits = {
+				trusty
+				anarchist_zeal
+			}
+			visible = {
+				has_country_flag = KOR_anarchist_advisors_join 
+			}
+			available = {
+				has_country_flag = KOR_anarchist_advisors_join 
+			}
+		}
+	}
+
+	KOR_yu_hwa_min = {
+		name = "Yu Hwa-min"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_kor_yu_hwa_min_large"
+			}
+		}
+		
+		corps_commander = {
+			traits = { 
+				trickster
+				adaptable 
+			}
+			skill = 2
+			attack_skill = 2
+			defense_skill = 2
+			planning_skill = 4
+			logistics_skill = 5
+			legacy_id = -1 
+			visible = {
+				has_country_flag = KOR_anarchist_advisors_join
+			}
+		}
+	}
+
+	KOR_yu_gi_seok = {
+		name = "Yu Gi-seok"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_kor_yu_gi_seok_large"
+				small="GFX_portrait_kor_yu_gi_seok_small"
+			}
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = KOR_yu_gi_seok
+			traits = {
+				international_anarchist
+			}
+			visible = {
+				has_country_flag = KOR_anarchist_advisors_join
+			}
+			available = {
+				has_country_flag = KOR_anarchist_advisors_join
+				NOT = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+		}
+		corps_commander = {
+			traits = { 
+				trickster
+				adaptable 
+			}
+			skill = 2
+			attack_skill = 4
+			defense_skill = 3
+			planning_skill = 2
+			logistics_skill = 4
+			legacy_id = -1 
+			visible = {
+				has_country_flag = KOR_anarchist_advisors_join
+			}
+		}
+	}
+
+	KOR_pak_yol = {
+		name = "Pak Yol"
+		portraits = {
+			civilian = {
+				small="GFX_portrait_kor_pak_yol_small"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = KOR_pak_yol
+			traits = {
+				illegalist_anarchist
+			}
+			visible = {
+				has_country_flag = KOR_pak_yol_free
+			}
+			available = {
+				has_country_flag = KOR_pak_yol_free
+				NOT = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+		}
+	}
+
+	KOR_yi_jeong_gyu = {
+		name = "Yi Jeong-gyu"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_kor_yi_jeong_gyu_large"
+				small="GFX_portrait_kor_yi_jeong_gyu_small"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = KOR_yi_jeong_gyu
+			traits = {
+				agricultural_theorist
+			}
+			visible = {
+				has_country_flag = KOR_anarchist_advisors_join
+			}
+			available = {
+				has_country_flag = KOR_anarchist_advisors_join
+				NOT = {
+					has_government = democratic
+					has_government = fascism
+				}
+			}
+		}
+		corps_commander = {
+			traits = { 
+				trickster
+				adaptable 
+			}
+			skill = 2
+			attack_skill = 3
+			defense_skill = 5
+			planning_skill = 4
+			logistics_skill = 2
+			legacy_id = -1 
+			visible = {
+				has_country_flag = KOR_anarchist_advisors_join
+			}
+		}
+	}
+	
+	KOR_ha_ki_rak ={
+		name = "Ha Ki-rak"
+		portraits = {
+			civilian = {
+				small="GFX_portrait_kor_ha_ki_rak_small"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = KOR_ha_ki_rak
+			traits = {
+				anarcho_pacifist_teacher
+			}
+			visible = {
+				has_country_flag = KOR_anarchist_advisors_join
+			}
+			available = {
+				has_country_flag = KOR_anarchist_advisors_join
+			}
+		}
+	}
+
+	KOR_yi_dongyeong = {
+		name = "Yi Dongyeong"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_Syngman_Rhee"
+			}
+		}
+		country_leader = {
+			expire = "1965.1.1"
+			ideology = conservatism
+			traits = {
+			#
+			}
+		}
+	}
+
+	KOR_syngman_rhee = {
+		name = "Syngman Rhee"
+		portraits = {
+			civilian = {
+				small="GFX_portrait_kor_syngman_rhee_small"
+			}
+
+		}
+		portraits = {
+			civilian = {
+				large="GFX_portrait_Syngman_Rhee"
+			}
+		}
+		advisor = {
+			slot = political_advisor
+			idea_token = KOR_syngman_rhee
+			traits = {
+				democratic_restorationist
+			}
+		}
+	}
+
+	KOR_yi_kang = {
+		name = "Yi Kang"
+		
+		portraits = {
+			civilian = {
+				large="GFX_portrait_Yi_Kang"
+			}
+		}
+		country_leader = {
+			expire = "1965.1.1"
+			ideology = despotism
+			traits = {
+			#
+			}
+		}
+	}
+
+	KOR_kim_il_sung = {
+		name = "Kim Il-sung"
+		
+		portraits = {
+			civilian = {
+				large="GFX_portrait_Kim_Il_sung"
+			}
+		}
+		country_leader = {
+			expire = "1965.1.1"
+			ideology = marxism
+			traits = {
+			#
+			}
+		}
+	}
+
+	KOR_yi_un = {
+		name = "Yi Un"
+		
+		portraits = {
+			civilian = {
+				large="GFX_portrait_Yi_Un"
+			}
+		}
+		country_leader = {
+			expire = "1965.1.1"
+			ideology = fascism_ideology
+			traits = {
+			#
+			}
+		}
+	}
+}

@@ -1,0 +1,2 @@
+AGR	= "countries/Anarchist Germany.txt"
+FCC = "countries/Federacion Anarquista de Centro America y Carib.txt"

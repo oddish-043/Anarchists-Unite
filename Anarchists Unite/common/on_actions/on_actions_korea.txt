@@ -1,0 +1,142 @@
+on_actions = {
+
+	on_startup = {
+		effect = {
+			JAP = {
+				declare_war_on = {
+					target = KOR
+					type = annex_everything
+				}
+				set_state_controller = 525
+				set_state_controller = 527
+				525 = {
+					create_unit = { # "19 'Tora' Hohei Shidan"
+						division = "name = \"Infantry Division\" division_template = \"Hohei Shidan\" start_experience_factor = 0.3"
+						owner = JAP
+						
+					}
+				}
+				525 = {
+					create_unit = { # "20 'Asa' Hohei Shidan"
+						division = "name = \"Infantry Division\" division_template = \"Hohei Shidan\" start_experience_factor = 0.3"
+						owner = JAP
+					}
+				}
+				527 = {
+					create_unit = {
+						division = "name = \"Chinkai Kichi Kaiheidan\" division_template = \"Chuton-chi Shidan\" start_experience_factor = 0.3 start_equipment_factor = 0.3"
+						owner = JAP
+					}
+				}
+			}
+			KOR = { become_exiled_in = { target = CHI legitimacy = 70 } }
+			CHI = {
+				set_rule = { can_create_factions = yes }
+				create_faction = chinese_united_front
+				add_to_faction = KOR
+			}
+			
+		}
+	}
+
+	on_startup = {
+		effect = {
+			GER = {
+				country_lock_all_division_template = yes
+				set_division_force_allow_recruiting = {
+    				division_template = "Infanterie-Division"
+				}
+				set_division_force_allow_recruiting = {
+    				division_template = "Gebirgs-Brigade"
+				}
+				set_division_force_allow_recruiting = {
+    				division_template = "Infanterie-Division (mot.)"
+				}
+				set_division_force_allow_recruiting = {
+    				division_template = "Panzer-Division"
+				}
+				set_division_force_allow_recruiting = {
+    				division_template = "Kavallerie-Brigade"
+				}
+			}
+		}
+	}
+
+	on_daily_GER = {
+		effect = {
+			if = {
+				limit = {
+					GER = {
+						has_completed_focus = GER_remilitarize_the_rhineland
+					}
+				}
+				GER = {
+					country_lock_all_division_template = {
+						is_locked = no
+					}
+				}
+			}
+		}
+	}
+
+	on_puppet = {
+    	effect = { 
+			IF = {
+				limit = {
+					FROM = {
+						has_government = anarchist
+					}
+				}
+				ROOT = {
+					set_cosmetic_tag = ANCOM
+					set_country_flag = autonomous_commune
+				}
+				
+			} 
+		}
+	}
+
+	on_state_control_changed = {
+		effect = {
+			IF = {
+				limit = {
+					FROM.FROM = {
+						state = 165
+					}
+					SPC = {
+						controls_state = 165
+					}
+					any_country = {
+						original_tag = SPR
+						has_government = democratic
+					}
+					any_country = {
+						NOT = {
+							has_completed_focus = SPR_the_anti_fascist_workers_revolution
+						}
+					}
+					SPR_scw_in_progress = yes
+					NOT = {
+						has_global_flag = ANCOM_scw_uprising
+					}
+				}
+				every_country = {
+					limit = {
+						original_tag = SPR
+						has_government = democratic
+					}
+					set_autonomy = {
+    					target = SPC
+    					autonomous_state = autonomy_autonomous_zone
+    					end_wars = no
+    					end_civil_wars = no
+					}
+				}
+				SPC = {
+					set_cosmetic_tag = SPR_anarchist_spain
+				}
+				set_global_flag = ANCOM_scw_uprising
+			}
+		}
+	}
+}

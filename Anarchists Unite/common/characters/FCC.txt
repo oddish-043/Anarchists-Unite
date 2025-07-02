@@ -1,0 +1,983 @@
+characters={
+
+	FCC_Anarchist_Commune = {
+		name = "Federacion Anarquista General Assembly"
+		portraits = {
+			civilian = {
+				large="GFX_portrait_SPR_anarchist_commune"
+			}
+		}
+		country_leader = {
+			ideology = anarcho_syndicalism
+			traits = {
+				our_right_to_survive
+			}
+		}
+	}
+
+	#named anarchists with pictures
+	FCC_adrian_de_valle = {
+		name = "Adrian de Valle"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_adrian_de_valle_small"
+				large= "GFX_portrait_fcc_adrian_de_valle_large"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_adrian_de_valle
+			traits = {
+				anarchist_journalist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_manuel_bautista_grajeda = {
+		name = "Manuel Bautista Grajeda"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_manuel_bautista_grajeda_small"
+				large= "GFX_portrait_fcc_manuel_bautista_grajeda_large"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_manuel_bautista_grajeda
+			traits = {
+				ARG_anarchosyndicalist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_gregorio_galeano = {
+		name = "Gregorio Galeano"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_gregorio_galeano_small"
+				large= "GFX_portrait_fcc_gregorio_galeano_large"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_gregorio_galeano
+			traits = {
+				transnational_anarchist
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_jose_maria_zeledon = {
+		name = "Jose Maria Zeledon"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_jose_maria_zeledon_small"
+				large= "GFX_portrait_fcc_jose_maria_zeledon_large"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_jose_maria_zeledon
+			traits = {
+				anarchist_poet
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_jose_nestor_mourelo = {
+		name = "José Néstor Mourelo"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_jose_nestor_mourelo_small"
+				large= "GFX_portrait_fcc_jose_nestor_mourelo_large"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_jose_nestor_mourelo
+			traits = {
+				anarchist_physician
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	#named anarchists no pictures available
+	FCC_enrique_conde = {
+		name = "Enrique Conde"
+		portraits = {
+			army = {
+        		large = "GFX_portrait_fcc_enrique_conde_large"
+        		small = "GFX_portrait_fcc_enrique_conde_small"
+    		}
+			civilian = {
+				small= "GFX_portrait_fcc_enrique_conde_small"
+				large= "GFX_portrait_fcc_enrique_conde_large"
+			}
+		}
+
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_enrique_conde
+			traits = {
+				anarchist_communist_trait
+			}
+			available = {
+				has_government = anarchist
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				brave
+				organizer
+				militant_anarchist
+			}
+			skill = 2
+    		attack_skill = 3
+    		defense_skill = 4
+    		planning_skill = 3
+    		logistics_skill = 4
+			visible = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_antonio_mendez_paz = {
+		name = "Antonio Mendez Paz"
+		portraits = {
+			army = {
+        		large = "GFX_portrait_fcc_antonio_mendez_large"
+        		small = "GFX_portrait_fcc_antonio_mendez_small"
+    		}
+			civilian = {
+				small= "GFX_portrait_fcc_antonio_mendez_small"
+				large= "GFX_portrait_fcc_antonio_mendez_large"
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				brilliant_strategist
+				trickster
+				militant_anarchist
+			}
+			skill = 2
+    		attack_skill = 4
+    		defense_skill = 3
+    		planning_skill = 3
+    		logistics_skill = 4
+			visible = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_martin_blasquez_de_pedro = {
+		name = "Martín Blásques de Pedro"
+		portraits = {
+			army = {
+        		large = "GFX_portrait_fcc_martin_blasquez_large"
+        		small = "GFX_portrait_fcc_martin_blasquez_small"
+    		}
+			civilian = {
+				small= "GFX_portrait_fcc_martin_blasquez_small"
+				large= "GFX_portrait_fcc_martin_blasquez_large"
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				infantry_officer
+				irregulars_officer
+				militant_anarchist
+			}
+			skill = 2
+    		attack_skill = 4
+    		defense_skill = 3
+    		planning_skill = 3
+    		logistics_skill = 4
+			visible = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_wilfredo_chavez = {
+		name = "Wilfredo Chavez"
+		portraits = {
+			army = {
+        		large = "GFX_portrait_fcc_wilfredo_chavez_large"
+        		small = "GFX_portrait_fcc_wilfredo_chavez_small"
+    		}
+			civilian = {
+				small= "GFX_portrait_fcc_wilfredo_chavez_large"
+				large= "GFX_portrait_fcc_wilfredo_chavez_small"
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				infantry_officer
+				skilled_staffer
+				militant_anarchist
+			}
+			skill = 2
+    		attack_skill = 4
+    		defense_skill = 3
+    		planning_skill = 4
+    		logistics_skill = 3
+			visible = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_juan_beteta = {
+		name = "Juan A. Beteta"
+		portraits = {
+			army = {
+        		large = "GFX_portrait_fcc_juan_beteta_large"
+        		small = "GFX_portrait_fcc_juan_beteta_small"
+    		}
+			civilian = {
+				small= "GFX_portrait_fcc_juan_beteta_small"
+				large= "GFX_portrait_fcc_juan_beteta_large"
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				armor_officer
+				adaptable
+				militant_anarchist
+			}
+			skill = 2
+    		attack_skill = 4
+    		defense_skill = 3
+    		planning_skill = 4
+    		logistics_skill = 3
+			visible = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_nicolas_mendoza = {
+		name = "Nicolás Mendoza"
+		portraits = {
+			army = {
+        		large = "GFX_portrait_fcc_nicolas_mendoza_large"
+        		small = "GFX_portrait_fcc_nicolas_mendoza_small"
+    		}
+			civilian = {
+				small= "GFX_portrait_fcc_nicolas_mendoza_small"
+				large= "GFX_portrait_fcc_nicolas_mendoza_large"
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				cavalry_officer
+				adaptable
+				militant_anarchist
+			}
+			skill = 2
+    		attack_skill = 5
+    		defense_skill = 3
+    		planning_skill = 3
+    		logistics_skill = 3
+			visible = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	FCC_jose_victor_guzman = {
+		name = "José Víctor Guzmán"
+		portraits = {
+			army = {
+        		large = "GFX_portrait_fcc_jose_victor_guzman_large"
+        		small = "GFX_portrait_fcc_jose_victor_guzman_small"
+    		}
+			civilian = {
+				small= "GFX_portrait_fcc_jose_victor_guzman_small"
+				large= "GFX_portrait_fcc_jose_victor_guzman_large"
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				engineer_officer
+				adaptable
+				militant_anarchist
+			}
+			skill = 2
+    		attack_skill = 3
+    		defense_skill = 3
+    		planning_skill = 5
+    		logistics_skill = 3
+			visible = {
+				has_government = anarchist
+			}
+		}
+	}
+
+	#named communists with pictures
+	FCC_antonio_cumes = {
+		name = "Antonio Cumes"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_antonio_cumes_small"
+				large= "GFX_portrait_fcc_antonio_cumes_large"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_antonio_cumes
+			traits = {
+				AFG_general_secretary
+			}
+			available = {
+				NOT = {
+					has_government = fascism
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+		}
+
+		country_leader = {
+			ideology = marxism
+			traits = {
+				AFG_general_secretary
+			}
+		}
+	}
+
+	FCC_antonio_sanches = {
+		name = "Antonio Sanches"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_antonio_sanches_small"
+				large= "GFX_portrait_fcc_antonio_sanches_large"
+			}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_antonio_sanches
+			traits = {
+				communist_orator
+			}
+			available = {
+				NOT = {
+					has_government = fascism
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+		}
+
+		country_leader = {
+			ideology = marxism
+			traits = {
+				communist_orator
+			}
+		}
+	}
+
+	#named comunists no pictures available
+
+	FCC_julio_antonio_mella = {
+		name = "Julio Antonio Mella"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_julio_antonio_mella_small"
+				large= "GFX_portrait_fcc_julio_antonio_mella_large"
+			}
+
+			army = {
+        		large = "GFX_portrait_fcc_julio_antonio_mella_large"
+        		small = "GFX_portrait_fcc_julio_antonio_mella_small"
+    		}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_julio_antonio_mella
+			traits = {
+				SWI_trade_unionist
+			}
+			available = {
+				NOT = {
+					has_government = fascism
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+		}
+
+		country_leader = {
+			ideology = marxism
+			traits = {
+				SWI_trade_unionist
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				engineer_officer
+				adaptable
+				trait_SPR_stalinist_loyalties
+			}
+			skill = 2
+    		attack_skill = 3
+    		defense_skill = 4
+    		planning_skill = 4
+    		logistics_skill = 3
+			visible = {
+				OR = {
+					has_government = anarchist
+					has_government = communism
+				}
+			}
+		}
+	}
+
+	FCC_julio_alberto_del_pinal = {
+		name = "Julio Alberto del Pinal"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_julio_alberto_del_pinal_small"
+				large= "GFX_portrait_fcc_julio_alberto_del_pinal_large"
+			}
+
+			army = {
+        		large = "GFX_portrait_fcc_julio_alberto_del_pinal_large"
+        		small = "GFX_portrait_fcc_julio_alberto_del_pinal_small"
+    		}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_julio_alberto_del_pinal
+			traits = {
+				devoted_communist
+			}
+			available = {
+				NOT = {
+					has_government = fascism
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+		}
+
+		country_leader = {
+			ideology = marxism
+			traits = {
+				devoted_communist
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				armor_officer
+				hill_fighter
+				trait_SPR_stalinist_loyalties
+			}
+			skill = 2
+    		attack_skill = 3
+    		defense_skill = 4
+    		planning_skill = 4
+    		logistics_skill = 3
+			visible = {
+				OR = {
+					has_government = anarchist
+					has_government = communism
+				}
+			}
+		}
+	}
+
+	FCC_ricardo_avelarde = {
+		name = "Ricardo Avelarde"
+		portraits = {
+			civilian = {
+				small= "GFX_portrait_fcc_ricardo_avelarde_small"
+				large= "GFX_portrait_fcc_antonio_sanches_large"
+			}
+
+			army = {
+        		large = "GFX_portrait_fcc_antonio_sanches_large"
+        		small = "GFX_portrait_fcc_antonio_sanches_small"
+    		}
+
+		}
+		
+		advisor = {
+			slot = political_advisor
+			idea_token = FCC_ricardo_avelarde
+			traits = {
+				veteran_communist
+			}
+			available = {
+				NOT = {
+					has_government = fascism
+					has_government = neutrality
+					has_government = democratic
+				}
+			}
+		}
+
+		country_leader = {
+			ideology = marxism
+			traits = {
+				veteran_communist
+			}
+		}
+
+		corps_commander = {
+			traits = {
+				commando
+				hill_fighter
+				trait_SPR_stalinist_loyalties
+			}
+			skill = 2
+    		attack_skill = 4
+    		defense_skill = 3
+    		planning_skill = 4
+    		logistics_skill = 3
+			visible = {
+				OR = {
+					has_government = anarchist
+					has_government = communism
+				}
+			}
+		}
+	}
+	
+	#anarchist councils
+
+	FCC_council_of_theorists = { # Anarchists
+		name = SPR_council_of_theorists
+		portraits = {
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			cost = 100
+			slot = theorist
+			idea_token = FCC_council_of_theorists
+			ledger = military
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { council_of_theorists }
+		}
+	}
+
+	FCC_defensive_military_council = { # Anarchist
+		name=SPR_defensive_military_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = FCC_defensive_military_council
+			ledger = army
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { army_chief_defensive_2 }
+			cost = 100
+		}
+	}
+
+	FCC_offensive_military_council = { # Anarchist
+		name=SPR_offensive_military_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={	
+			slot = army_chief
+			idea_token = FCC_offensive_military_council
+			ledger = army
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { army_chief_offensive_2 }
+			cost = 100
+		}
+	}
+
+	FCC_organizational_military_council = { # Anarchist
+		name=SPR_organizational_military_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = army_chief
+			idea_token = FCC_organizational_military_council
+			ledger = army
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { army_chief_organizational_2 }
+			cost = 100
+		}
+	}
+
+	FCC_air_safety_aviation_council = { # Anarchist
+		name=SPR_air_safety_aviation_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={	
+			slot = air_chief
+			idea_token = FCC_air_safety_aviation_council
+			ledger = air
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { air_chief_safety_2 }
+			cost = 100
+		}
+	}
+
+	FCC_all_weather_aviation_council = { # Anarchist
+		name=SPR_all_weather_aviation_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = air_chief
+			idea_token = FCC_all_weather_aviation_council
+			ledger = air
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { air_chief_all_weather_2 }
+			cost = 100
+		}
+	}
+
+	FCC_commerce_raiding_naval_council = { # Anarchist
+		name=SPR_commerce_raiding_naval_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = FCC_commerce_raiding_naval_council
+			ledger = navy
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { navy_chief_commerce_raiding_2 }
+			cost = 100
+		}
+	}
+
+	FCC_reform_naval_council = { # Anarchist
+		name=SPR_reform_naval_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = navy_chief
+			idea_token = FCC_reform_naval_council
+			ledger = navy
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { navy_chief_reform_2 }
+			cost = 100
+		}
+	}
+
+	FCC_infantry_military_council = { # Anarchist
+		name=SPR_infantry_military_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = FCC_infantry_military_council
+			ledger = army
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { army_infantry_3 }
+			cost = 200
+		}
+	}
+
+	FCC_army_regrouping_military_council = { # Anarchist
+		name=SPR_army_regrouping_military_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = FCC_army_regrouping_military_council
+			ledger = army
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { army_regrouping_2 }
+			cost = 100
+		}
+	}
+
+	FCC_concealment_military_council = { # Anarchist
+		name=SPR_concealment_military_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = FCC_concealment_military_council
+			ledger = army
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { army_concealment_2 }
+			cost = 100
+		}
+	}
+
+	FCC_naval_strike_aviation_council = { # Anarchist
+		name=SPR_naval_strike_aviation_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = FCC_naval_strike_aviation_council
+			ledger = navy
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { air_naval_strike_2 }
+			cost = 100
+		}
+	}
+
+	FCC_close_air_support_aviation_council = { # Anarchist
+		name=SPR_close_air_support_aviation_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = FCC_close_air_support_aviation_council
+			ledger = air
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { air_close_air_support_2 }
+			cost = 100
+		}
+	}
+
+	FCC_logistics_naval_council = { # Anarchist
+		name=SPR_logistics_naval_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = FCC_logistics_naval_council
+			ledger = navy
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { navy_fleet_logistics_2 }
+			cost = 100
+		}
+	}
+
+	FCC_anti_submarine_naval_council = { # Anarchist
+		name=SPR_anti_submarine_naval_council
+		portraits={
+			army={
+				small="GFX_idea_SPR_anarchist_council"
+			}
+		}
+		advisor={
+			slot = high_command
+			idea_token = FCC_anti_submarine_naval_council
+			ledger = navy
+			allowed = {
+				has_dlc = "La Resistance"
+				original_tag = FCC
+			}
+			visible = {
+				has_completed_focus = FCC_central_american_uprising
+			}
+			available = {
+				has_completed_focus = FCC_founding_the_facc
+			}
+			traits = { navy_anti_submarine_2 }
+			cost = 100
+		}
+	}
+	
+}
